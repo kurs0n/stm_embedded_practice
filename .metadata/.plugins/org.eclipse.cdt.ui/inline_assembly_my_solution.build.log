@@ -1,10 +1,17 @@
-17:45:53 **** Incremental Build of configuration Debug for project inline_assembly_my_solution ****
+00:24:36 **** Incremental Build of configuration Debug for project inline_assembly_my_solution ****
 make -j4 all 
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F3 -DSTM32F303RETx -DNUCLEO_F303RE -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/main.o"
+arm-none-eabi-gcc -o "inline_assembly_my_solution.elf" @"objects.list"   -mcpu=cortex-m4 -T"/home/patryk/Desktop/course_arm_cortex/inline_assembly_my_solution/STM32F303RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="inline_assembly_my_solution.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: inline_assembly_my_solution.elf
+ 
 arm-none-eabi-size   inline_assembly_my_solution.elf 
+arm-none-eabi-objdump -h -S  inline_assembly_my_solution.elf  > "inline_assembly_my_solution.list"
    text	   data	    bss	    dec	    hex	filename
-    664	      8	   1568	   2240	    8c0	inline_assembly_my_solution.elf
+    704	      8	   1568	   2280	    8e8	inline_assembly_my_solution.elf
 Finished building: default.size.stdout
  
+Finished building: inline_assembly_my_solution.list
+ 
 
-17:45:54 Build Finished. 0 errors, 0 warnings. (took 1s.75ms)
+00:24:37 Build Finished. 0 errors, 0 warnings. (took 1s.174ms)
 
