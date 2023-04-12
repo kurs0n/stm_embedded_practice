@@ -1,0 +1,26 @@
+16:41:26 **** Incremental Build of configuration Debug for project access_levels ****
+make -j4 all 
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F3 -DSTM32F303RETx -DNUCLEO_F303RE -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/main.o"
+../Src/main.c: In function 'HardFault_Handler':
+../Src/main.c:64:2: warning: implicit declaration of function 'printf' [-Wimplicit-function-declaration]
+   64 |  printf("Hard Fault detected \n");
+      |  ^~~~~~
+../Src/main.c:64:2: warning: incompatible implicit declaration of built-in function 'printf'
+../Src/main.c:20:1: note: include '<stdio.h>' or provide a declaration of 'printf'
+   19 | #include <stdint.h>
+  +++ |+#include <stdio.h>
+   20 | 
+arm-none-eabi-gcc -o "access_levels.elf" @"objects.list"   -mcpu=cortex-m4 -T"/home/patryk/Desktop/course_arm_cortex/access_levels/STM32F303RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="access_levels.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: access_levels.elf
+ 
+arm-none-eabi-size   access_levels.elf 
+arm-none-eabi-objdump -h -S  access_levels.elf  > "access_levels.list"
+   text	   data	    bss	    dec	    hex	filename
+   3808	    108	   1588	   5504	   1580	access_levels.elf
+Finished building: default.size.stdout
+ 
+Finished building: access_levels.list
+ 
+
+16:41:27 Build Finished. 0 errors, 2 warnings. (took 1s.132ms)
+

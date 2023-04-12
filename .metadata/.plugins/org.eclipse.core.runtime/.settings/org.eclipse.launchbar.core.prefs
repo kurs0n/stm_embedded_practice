@@ -1,9 +1,12 @@
 LaunchTargetManager/org.eclipse.launchbar.core.launchTargetType.local,Local/arch=x86_64
 LaunchTargetManager/org.eclipse.launchbar.core.launchTargetType.local,Local/name=Local
 LaunchTargetManager/org.eclipse.launchbar.core.launchTargetType.local,Local/os=linux
-configDescList=org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:hello_world,org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:hello_world_semihosting,org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:operation_modes,org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:inline_assembly_my_solution
+configDescList=org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:access_levels,org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:inline_assembly_my_solution,org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:operation_modes,org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:hello_world,org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:hello_world_semihosting,org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:t-bit
 eclipse.preferences.version=1
+org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:access_levels/activeLaunchMode=run
+org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:access_levels/activeLaunchTarget=null\:---
 org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:hello_world/activeLaunchMode=debug
 org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:hello_world/activeLaunchTarget=null\:---
 org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:hello_world_semihosting/activeLaunchTarget=null\:---
+org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:t-bit/activeLaunchMode=debug
 org.eclipse.launchbar.core.descriptorType.default\:hello_world_semihosting\ Debug/activeLaunchTarget=org.eclipse.launchbar.core.launchTargetType.local\:Local

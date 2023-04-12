@@ -1,0 +1,17 @@
+17:53:18 **** Incremental Build of configuration Debug for project t-bit ****
+make -j4 all 
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F3 -DSTM32F303RETx -DNUCLEO_F303RE -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/main.o"
+arm-none-eabi-gcc -o "t-bit.elf" @"objects.list"   -mcpu=cortex-m4 -T"/home/patryk/Desktop/course_arm_cortex/t-bit/STM32F303RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="t-bit.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: t-bit.elf
+ 
+arm-none-eabi-size   t-bit.elf 
+arm-none-eabi-objdump -h -S  t-bit.elf  > "t-bit.list"
+   text	   data	    bss	    dec	    hex	filename
+   3820	    108	   1588	   5516	   158c	t-bit.elf
+Finished building: default.size.stdout
+ 
+Finished building: t-bit.list
+ 
+
+17:53:20 Build Finished. 0 errors, 0 warnings. (took 1s.130ms)
+

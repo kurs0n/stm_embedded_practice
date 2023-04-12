@@ -1,105 +1,241 @@
-18:01:50 **** Incremental Build of configuration Debug for project inline_assembly_my_solution ****
+17:17:22 **** Build of configuration Debug for project t-bit ****
+make -j4 all 
+arm-none-eabi-gcc -mcpu=cortex-m4 -g3 -DDEBUG -c -x assembler-with-cpp -MMD -MP -MF"Startup/startup_stm32f303retx.d" -MT"Startup/startup_stm32f303retx.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Startup/startup_stm32f303retx.o" "../Startup/startup_stm32f303retx.s"
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F3 -DSTM32F303RETx -DNUCLEO_F303RE -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/main.o"
+arm-none-eabi-gcc "../Src/syscalls.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F3 -DSTM32F303RETx -DNUCLEO_F303RE -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/syscalls.d" -MT"Src/syscalls.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/syscalls.o"
+arm-none-eabi-gcc "../Src/sysmem.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F3 -DSTM32F303RETx -DNUCLEO_F303RE -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/sysmem.d" -MT"Src/sysmem.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/sysmem.o"
+arm-none-eabi-gcc -o "t-bit.elf" @"objects.list"   -mcpu=cortex-m4 -T"/home/patryk/Desktop/course_arm_cortex/t-bit/STM32F303RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="t-bit.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: t-bit.elf
+ 
+arm-none-eabi-size   t-bit.elf 
+arm-none-eabi-objdump -h -S  t-bit.elf  > "t-bit.list"
+   text	   data	    bss	    dec	    hex	filename
+   3820	    108	   1588	   5516	   158c	t-bit.elf
+Finished building: default.size.stdout
+Finished building: t-bit.list
+ 
+ 
+17:17:54 **** Incremental Build of configuration Debug for project t-bit ****
+make -j4 all 
+arm-none-eabi-size   t-bit.elf 
+   text	   data	    bss	    dec	    hex	filename
+   3820	    108	   1588	   5516	   158c	t-bit.elf
+Finished building: default.size.stdout
+ 
+17:20:02 **** Incremental Build of configuration Debug for project t-bit ****
+make -j4 all 
+arm-none-eabi-size   t-bit.elf 
+   text	   data	    bss	    dec	    hex	filename
+   3820	    108	   1588	   5516	   158c	t-bit.elf
+Finished building: default.size.stdout
+ 
+17:22:55 **** Incremental Build of configuration Debug for project t-bit ****
 make -j4 all 
 arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F3 -DSTM32F303RETx -DNUCLEO_F303RE -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/main.o"
-arm-none-eabi-gcc -o "inline_assembly_my_solution.elf" @"objects.list"   -mcpu=cortex-m4 -T"/home/patryk/Desktop/course_arm_cortex/inline_assembly_my_solution/STM32F303RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="inline_assembly_my_solution.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: inline_assembly_my_solution.elf
+../Src/main.c: In function 'main':
+../Src/main.c:58:10: warning: assignment to 'void (*)(void)' from 'int' makes pointer from integer without a cast [-Wint-conversion]
+   58 |  fun_ptr = 0x8000208;
+      |          ^
+arm-none-eabi-gcc -o "t-bit.elf" @"objects.list"   -mcpu=cortex-m4 -T"/home/patryk/Desktop/course_arm_cortex/t-bit/STM32F303RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="t-bit.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: t-bit.elf
  
-arm-none-eabi-size   inline_assembly_my_solution.elf 
-arm-none-eabi-objdump -h -S  inline_assembly_my_solution.elf  > "inline_assembly_my_solution.list"
+arm-none-eabi-size   t-bit.elf 
+arm-none-eabi-objdump -h -S  t-bit.elf  > "t-bit.list"
    text	   data	    bss	    dec	    hex	filename
-    676	      8	   1568	   2252	    8cc	inline_assembly_my_solution.elf
+   3776	    108	   1588	   5472	   1560	t-bit.elf
 Finished building: default.size.stdout
  
-Finished building: inline_assembly_my_solution.list
+Finished building: t-bit.list
  
-18:02:02 **** Incremental Build of configuration Debug for project inline_assembly_my_solution ****
-make -j4 all 
-arm-none-eabi-size   inline_assembly_my_solution.elf 
-   text	   data	    bss	    dec	    hex	filename
-    676	      8	   1568	   2252	    8cc	inline_assembly_my_solution.elf
-Finished building: default.size.stdout
- 
-22:29:58 **** Incremental Build of configuration Debug for project inline_assembly_my_solution ****
-make -j4 all 
-arm-none-eabi-size   inline_assembly_my_solution.elf 
-   text	   data	    bss	    dec	    hex	filename
-    676	      8	   1568	   2252	    8cc	inline_assembly_my_solution.elf
-Finished building: default.size.stdout
- 
-22:32:57 **** Incremental Build of configuration Debug for project inline_assembly_my_solution ****
-make -j4 all 
-arm-none-eabi-size   inline_assembly_my_solution.elf 
-   text	   data	    bss	    dec	    hex	filename
-    676	      8	   1568	   2252	    8cc	inline_assembly_my_solution.elf
-Finished building: default.size.stdout
- 
-22:36:31 **** Incremental Build of configuration Debug for project inline_assembly_my_solution ****
-make -j4 all 
-arm-none-eabi-size   inline_assembly_my_solution.elf 
-   text	   data	    bss	    dec	    hex	filename
-    676	      8	   1568	   2252	    8cc	inline_assembly_my_solution.elf
-Finished building: default.size.stdout
- 
-22:48:31 **** Incremental Build of configuration Debug for project inline_assembly_my_solution ****
+17:23:29 **** Incremental Build of configuration Debug for project t-bit ****
 make -j4 all 
 arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F3 -DSTM32F303RETx -DNUCLEO_F303RE -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/main.o"
-arm-none-eabi-gcc -o "inline_assembly_my_solution.elf" @"objects.list"   -mcpu=cortex-m4 -T"/home/patryk/Desktop/course_arm_cortex/inline_assembly_my_solution/STM32F303RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="inline_assembly_my_solution.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: inline_assembly_my_solution.elf
+../Src/main.c: In function 'main':
+../Src/main.c:58:10: warning: assignment to 'void (*)(void)' from 'int' makes pointer from integer without a cast [-Wint-conversion]
+   58 |  fun_ptr = 0x8000209;
+      |          ^
+arm-none-eabi-gcc -o "t-bit.elf" @"objects.list"   -mcpu=cortex-m4 -T"/home/patryk/Desktop/course_arm_cortex/t-bit/STM32F303RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="t-bit.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: t-bit.elf
  
-arm-none-eabi-size   inline_assembly_my_solution.elf 
-arm-none-eabi-objdump -h -S  inline_assembly_my_solution.elf  > "inline_assembly_my_solution.list"
+arm-none-eabi-size   t-bit.elf 
+arm-none-eabi-objdump -h -S  t-bit.elf  > "t-bit.list"
    text	   data	    bss	    dec	    hex	filename
-    664	      8	   1568	   2240	    8c0	inline_assembly_my_solution.elf
+   3776	    108	   1588	   5472	   1560	t-bit.elf
 Finished building: default.size.stdout
  
-Finished building: inline_assembly_my_solution.list
+Finished building: t-bit.list
  
-22:57:24 **** Incremental Build of configuration Debug for project inline_assembly_my_solution ****
+17:24:03 **** Incremental Build of configuration Debug for project t-bit ****
 make -j4 all 
 arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F3 -DSTM32F303RETx -DNUCLEO_F303RE -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/main.o"
-arm-none-eabi-gcc -o "inline_assembly_my_solution.elf" @"objects.list"   -mcpu=cortex-m4 -T"/home/patryk/Desktop/course_arm_cortex/inline_assembly_my_solution/STM32F303RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="inline_assembly_my_solution.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: inline_assembly_my_solution.elf
+../Src/main.c: In function 'main':
+../Src/main.c:58:10: warning: assignment to 'void (*)(void)' from 'int' makes pointer from integer without a cast [-Wint-conversion]
+   58 |  fun_ptr = 0x80001d5;
+      |          ^
+arm-none-eabi-gcc -o "t-bit.elf" @"objects.list"   -mcpu=cortex-m4 -T"/home/patryk/Desktop/course_arm_cortex/t-bit/STM32F303RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="t-bit.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: t-bit.elf
  
-arm-none-eabi-size   inline_assembly_my_solution.elf 
-arm-none-eabi-objdump -h -S  inline_assembly_my_solution.elf  > "inline_assembly_my_solution.list"
+arm-none-eabi-size   t-bit.elf 
+arm-none-eabi-objdump -h -S  t-bit.elf  > "t-bit.list"
    text	   data	    bss	    dec	    hex	filename
-    664	      8	   1568	   2240	    8c0	inline_assembly_my_solution.elf
+   3776	    108	   1588	   5472	   1560	t-bit.elf
 Finished building: default.size.stdout
  
-Finished building: inline_assembly_my_solution.list
+Finished building: t-bit.list
  
-00:16:48 **** Incremental Build of configuration Debug for project inline_assembly_my_solution ****
+17:24:38 **** Incremental Build of configuration Debug for project t-bit ****
+make -j4 all 
+arm-none-eabi-size   t-bit.elf 
+   text	   data	    bss	    dec	    hex	filename
+   3776	    108	   1588	   5472	   1560	t-bit.elf
+Finished building: default.size.stdout
+ 
+17:27:48 **** Incremental Build of configuration Debug for project t-bit ****
+make -j4 all 
+arm-none-eabi-size   t-bit.elf 
+   text	   data	    bss	    dec	    hex	filename
+   3776	    108	   1588	   5472	   1560	t-bit.elf
+Finished building: default.size.stdout
+ 
+17:29:16 **** Incremental Build of configuration Debug for project t-bit ****
+make -j4 all 
+arm-none-eabi-size   t-bit.elf 
+   text	   data	    bss	    dec	    hex	filename
+   3776	    108	   1588	   5472	   1560	t-bit.elf
+Finished building: default.size.stdout
+ 
+17:29:50 **** Incremental Build of configuration Debug for project t-bit ****
 make -j4 all 
 arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F3 -DSTM32F303RETx -DNUCLEO_F303RE -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/main.o"
-arm-none-eabi-gcc -o "inline_assembly_my_solution.elf" @"objects.list"   -mcpu=cortex-m4 -T"/home/patryk/Desktop/course_arm_cortex/inline_assembly_my_solution/STM32F303RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="inline_assembly_my_solution.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: inline_assembly_my_solution.elf
+arm-none-eabi-gcc -o "t-bit.elf" @"objects.list"   -mcpu=cortex-m4 -T"/home/patryk/Desktop/course_arm_cortex/t-bit/STM32F303RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="t-bit.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: t-bit.elf
  
-arm-none-eabi-size   inline_assembly_my_solution.elf 
-arm-none-eabi-objdump -h -S  inline_assembly_my_solution.elf  > "inline_assembly_my_solution.list"
+arm-none-eabi-size   t-bit.elf 
+arm-none-eabi-objdump -h -S  t-bit.elf  > "t-bit.list"
    text	   data	    bss	    dec	    hex	filename
-    704	      8	   1568	   2280	    8e8	inline_assembly_my_solution.elf
+   3820	    108	   1588	   5516	   158c	t-bit.elf
 Finished building: default.size.stdout
  
-Finished building: inline_assembly_my_solution.list
+Finished building: t-bit.list
  
-00:20:15 **** Incremental Build of configuration Debug for project inline_assembly_my_solution ****
+17:31:59 **** Incremental Build of configuration Debug for project t-bit ****
 make -j4 all 
-arm-none-eabi-size   inline_assembly_my_solution.elf 
+arm-none-eabi-size   t-bit.elf 
    text	   data	    bss	    dec	    hex	filename
-    704	      8	   1568	   2280	    8e8	inline_assembly_my_solution.elf
+   3820	    108	   1588	   5516	   158c	t-bit.elf
 Finished building: default.size.stdout
  
-00:24:36 **** Incremental Build of configuration Debug for project inline_assembly_my_solution ****
+17:34:08 **** Build of configuration Debug for project hello_world ****
+make -j4 all 
+arm-none-eabi-size   hello_world.elf 
+   text	   data	    bss	    dec	    hex	filename
+   3772	    108	   1588	   5468	   155c	hello_world.elf
+Finished building: default.size.stdout
+ 
+17:34:35 **** Incremental Build of configuration Debug for project hello_world ****
+make -j4 all 
+arm-none-eabi-size   hello_world.elf 
+   text	   data	    bss	    dec	    hex	filename
+   3772	    108	   1588	   5468	   155c	hello_world.elf
+Finished building: default.size.stdout
+ 
+17:44:20 **** Incremental Build of configuration Debug for project hello_world ****
+make -j4 all 
+arm-none-eabi-size   hello_world.elf 
+   text	   data	    bss	    dec	    hex	filename
+   3772	    108	   1588	   5468	   155c	hello_world.elf
+Finished building: default.size.stdout
+ 
+17:45:36 **** Incremental Build of configuration Debug for project hello_world ****
+make -j4 all 
+arm-none-eabi-size   hello_world.elf 
+   text	   data	    bss	    dec	    hex	filename
+   3772	    108	   1588	   5468	   155c	hello_world.elf
+Finished building: default.size.stdout
+ 
+17:45:51 **** Incremental Build of configuration Debug for project hello_world ****
+make -j4 all 
+arm-none-eabi-size   hello_world.elf 
+   text	   data	    bss	    dec	    hex	filename
+   3772	    108	   1588	   5468	   155c	hello_world.elf
+Finished building: default.size.stdout
+ 
+17:47:10 **** Clean-only build of configuration Debug for project hello_world_semihosting ****
+make -j4 clean 
+rm -rf ./Startup/startup_stm32f303retx.d ./Startup/startup_stm32f303retx.o
+rm -rf ./Src/main.cyclo ./Src/main.d ./Src/main.o ./Src/main.su ./Src/sysmem.cyclo ./Src/sysmem.d ./Src/sysmem.o ./Src/sysmem.su
+rm -rf default.size.stdout hello_world_semihosting.elf hello_world_semihosting.list hello_world_semihosting.map
+ 
+17:47:11 **** Build of configuration Debug for project hello_world_semihosting ****
+make -j4 all 
+arm-none-eabi-gcc -mcpu=cortex-m4 -g3 -DDEBUG -c -x assembler-with-cpp -MMD -MP -MF"Startup/startup_stm32f303retx.d" -MT"Startup/startup_stm32f303retx.o" --specs=nano.specs -mfloat-abi=hard -mthumb -o "Startup/startup_stm32f303retx.o" "../Startup/startup_stm32f303retx.s"
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F3 -DSTM32F303RETx -DNUCLEO_F303RE -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfloat-abi=hard -mthumb -o "Src/main.o"
+arm-none-eabi-gcc "../Src/sysmem.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F3 -DSTM32F303RETx -DNUCLEO_F303RE -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/sysmem.d" -MT"Src/sysmem.o" --specs=nano.specs -mfloat-abi=hard -mthumb -o "Src/sysmem.o"
+arm-none-eabi-gcc -o "hello_world_semihosting.elf" @"objects.list"   -mcpu=cortex-m4 -T"/home/patryk/Desktop/course_arm_cortex/hello_world_semihosting/STM32F303RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="hello_world_semihosting.map" -Wl,--gc-sections -static -specs=rdimon.specs -lc -lrdimon --specs=nano.specs -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: hello_world_semihosting.elf
+ 
+arm-none-eabi-size   hello_world_semihosting.elf 
+arm-none-eabi-objdump -h -S  hello_world_semihosting.elf  > "hello_world_semihosting.list"
+   text	   data	    bss	    dec	    hex	filename
+   4868	    116	   1756	   6740	   1a54	hello_world_semihosting.elf
+Finished building: default.size.stdout
+ 
+Finished building: hello_world_semihosting.list
+ 
+17:47:37 **** Incremental Build of configuration Debug for project t-bit ****
+make -j4 all 
+arm-none-eabi-size   t-bit.elf 
+   text	   data	    bss	    dec	    hex	filename
+   3820	    108	   1588	   5516	   158c	t-bit.elf
+Finished building: default.size.stdout
+ 
+17:51:02 **** Incremental Build of configuration Debug for project t-bit ****
 make -j4 all 
 arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F3 -DSTM32F303RETx -DNUCLEO_F303RE -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/main.o"
-arm-none-eabi-gcc -o "inline_assembly_my_solution.elf" @"objects.list"   -mcpu=cortex-m4 -T"/home/patryk/Desktop/course_arm_cortex/inline_assembly_my_solution/STM32F303RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="inline_assembly_my_solution.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: inline_assembly_my_solution.elf
+../Src/main.c: In function 'main':
+../Src/main.c:59:10: warning: assignment to 'void (*)(void)' from 'int' makes pointer from integer without a cast [-Wint-conversion]
+   59 |  fun_ptr = 0x80001d5;
+      |          ^
+arm-none-eabi-gcc -o "t-bit.elf" @"objects.list"   -mcpu=cortex-m4 -T"/home/patryk/Desktop/course_arm_cortex/t-bit/STM32F303RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="t-bit.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: t-bit.elf
  
-arm-none-eabi-size   inline_assembly_my_solution.elf 
-arm-none-eabi-objdump -h -S  inline_assembly_my_solution.elf  > "inline_assembly_my_solution.list"
+arm-none-eabi-size   t-bit.elf 
+arm-none-eabi-objdump -h -S  t-bit.elf  > "t-bit.list"
    text	   data	    bss	    dec	    hex	filename
-    704	      8	   1568	   2280	    8e8	inline_assembly_my_solution.elf
+   3776	    108	   1588	   5472	   1560	t-bit.elf
 Finished building: default.size.stdout
  
-Finished building: inline_assembly_my_solution.list
+Finished building: t-bit.list
+ 
+17:52:42 **** Incremental Build of configuration Debug for project t-bit ****
+make -j4 all 
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F3 -DSTM32F303RETx -DNUCLEO_F303RE -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/main.o"
+../Src/main.c: In function 'main':
+../Src/main.c:59:10: warning: assignment to 'void (*)(void)' from 'int' makes pointer from integer without a cast [-Wint-conversion]
+   59 |  fun_ptr = 0x80001d4;
+      |          ^
+arm-none-eabi-gcc -o "t-bit.elf" @"objects.list"   -mcpu=cortex-m4 -T"/home/patryk/Desktop/course_arm_cortex/t-bit/STM32F303RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="t-bit.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: t-bit.elf
+ 
+arm-none-eabi-size   t-bit.elf 
+arm-none-eabi-objdump -h -S  t-bit.elf  > "t-bit.list"
+   text	   data	    bss	    dec	    hex	filename
+   3776	    108	   1588	   5472	   1560	t-bit.elf
+Finished building: default.size.stdout
+ 
+Finished building: t-bit.list
+ 
+17:53:18 **** Incremental Build of configuration Debug for project t-bit ****
+make -j4 all 
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F3 -DSTM32F303RETx -DNUCLEO_F303RE -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/main.o"
+arm-none-eabi-gcc -o "t-bit.elf" @"objects.list"   -mcpu=cortex-m4 -T"/home/patryk/Desktop/course_arm_cortex/t-bit/STM32F303RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="t-bit.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: t-bit.elf
+ 
+arm-none-eabi-size   t-bit.elf 
+arm-none-eabi-objdump -h -S  t-bit.elf  > "t-bit.list"
+   text	   data	    bss	    dec	    hex	filename
+   3820	    108	   1588	   5516	   158c	t-bit.elf
+Finished building: default.size.stdout
+ 
+Finished building: t-bit.list
  

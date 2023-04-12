@@ -1,0 +1,4 @@
+main.c:22:6:generate_interrupt	1
+main.c:34:6:change_access_level_unpriv	1
+main.c:52:5:main	1
+main.c:71:6:HardFault_Handler	1

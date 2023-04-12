@@ -1,10 +1,19 @@
-17:43:11 **** Incremental Build of configuration Debug for project hello_world_semihosting ****
+17:47:11 **** Build of configuration Debug for project hello_world_semihosting ****
 make -j4 all 
+arm-none-eabi-gcc -mcpu=cortex-m4 -g3 -DDEBUG -c -x assembler-with-cpp -MMD -MP -MF"Startup/startup_stm32f303retx.d" -MT"Startup/startup_stm32f303retx.o" --specs=nano.specs -mfloat-abi=hard -mthumb -o "Startup/startup_stm32f303retx.o" "../Startup/startup_stm32f303retx.s"
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F3 -DSTM32F303RETx -DNUCLEO_F303RE -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfloat-abi=hard -mthumb -o "Src/main.o"
+arm-none-eabi-gcc "../Src/sysmem.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F3 -DSTM32F303RETx -DNUCLEO_F303RE -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/sysmem.d" -MT"Src/sysmem.o" --specs=nano.specs -mfloat-abi=hard -mthumb -o "Src/sysmem.o"
+arm-none-eabi-gcc -o "hello_world_semihosting.elf" @"objects.list"   -mcpu=cortex-m4 -T"/home/patryk/Desktop/course_arm_cortex/hello_world_semihosting/STM32F303RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="hello_world_semihosting.map" -Wl,--gc-sections -static -specs=rdimon.specs -lc -lrdimon --specs=nano.specs -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: hello_world_semihosting.elf
+ 
 arm-none-eabi-size   hello_world_semihosting.elf 
+arm-none-eabi-objdump -h -S  hello_world_semihosting.elf  > "hello_world_semihosting.list"
    text	   data	    bss	    dec	    hex	filename
    4868	    116	   1756	   6740	   1a54	hello_world_semihosting.elf
 Finished building: default.size.stdout
  
+Finished building: hello_world_semihosting.list
+ 
 
-17:43:12 Build Finished. 0 errors, 0 warnings. (took 1s.90ms)
+17:47:13 Build Finished. 0 errors, 0 warnings. (took 1s.322ms)
 
