@@ -1,0 +1,17 @@
+10:30:44 **** Incremental Build of configuration Debug for project exercise_without_bit_banding ****
+make -j4 all 
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F3 -DSTM32F303RETx -DNUCLEO_F303RE -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/main.o"
+arm-none-eabi-gcc -o "exercise_without_bit_banding.elf" @"objects.list"   -mcpu=cortex-m4 -T"/home/patryk/Desktop/course_arm_cortex/exercise_without_bit_banding/STM32F303RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="exercise_without_bit_banding.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: exercise_without_bit_banding.elf
+ 
+arm-none-eabi-size   exercise_without_bit_banding.elf 
+arm-none-eabi-objdump -h -S  exercise_without_bit_banding.elf  > "exercise_without_bit_banding.list"
+   text	   data	    bss	    dec	    hex	filename
+    696	      8	   1568	   2272	    8e0	exercise_without_bit_banding.elf
+Finished building: default.size.stdout
+ 
+Finished building: exercise_without_bit_banding.list
+ 
+
+10:30:45 Build Finished. 0 errors, 0 warnings. (took 1s.196ms)
+

@@ -57,7 +57,7 @@ int main(void)
 
 
 //	fun_ptr = 0x80001d4;
- fun_ptr = change_access_level_unpriv;
+	fun_ptr = change_access_level_unpriv;
 //	fun_ptr = 0x80001d5;
 
 	fun_ptr();
