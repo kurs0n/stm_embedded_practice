@@ -1,0 +1,10 @@
+17:23:03 **** Incremental Build of configuration Debug for project TIM2_I2C1_interrupt_priorities ****
+make -j4 all 
+arm-none-eabi-size   TIM2_I2C1_interrupt_priorities.elf 
+   text	   data	    bss	    dec	    hex	filename
+   5604	    120	   1584	   7308	   1c8c	TIM2_I2C1_interrupt_priorities.elf
+Finished building: default.size.stdout
+ 
+
+17:23:04 Build Finished. 0 errors, 0 warnings. (took 1s.133ms)
+

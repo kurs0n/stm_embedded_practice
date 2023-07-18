@@ -27,7 +27,7 @@ int main(void)
 //			"STR R1,[R0]"
 //	);
 
-#if 0
+#if
 	__asm volatile("LDR R1,=#0x20001000");
 	__asm volatile("LDR R2,=#0x20001004");
 	__asm volatile("LDR R0,[R1]");

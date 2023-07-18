@@ -1,171 +1,330 @@
-10:16:44 **** Incremental Build of configuration Debug for project exercise_without_bit_banding ****
+17:24:11 **** Incremental Build of configuration Debug for project stack ****
 make -j4 all 
 arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F3 -DSTM32F303RETx -DNUCLEO_F303RE -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/main.o"
-arm-none-eabi-gcc -o "exercise_without_bit_banding.elf" @"objects.list"   -mcpu=cortex-m4 -T"/home/patryk/Desktop/course_arm_cortex/exercise_without_bit_banding/STM32F303RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="exercise_without_bit_banding.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: exercise_without_bit_banding.elf
+arm-none-eabi-gcc -o "stack.elf" @"objects.list"   -mcpu=cortex-m4 -T"/home/patryk/Desktop/course_arm_cortex/stack/STM32F303RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="stack.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: stack.elf
  
-arm-none-eabi-size   exercise_without_bit_banding.elf 
-arm-none-eabi-objdump -h -S  exercise_without_bit_banding.elf  > "exercise_without_bit_banding.list"
-Finished building: exercise_without_bit_banding.list
- 
+arm-none-eabi-size   stack.elf 
+arm-none-eabi-objdump -h -S  stack.elf  > "stack.list"
    text	   data	    bss	    dec	    hex	filename
-    676	      8	   1568	   2252	    8cc	exercise_without_bit_banding.elf
+   5676	    108	   1588	   7372	   1ccc	stack.elf
 Finished building: default.size.stdout
  
-10:17:25 **** Incremental Build of configuration Debug for project exercise_without_bit_banding ****
+Finished building: stack.list
+ 
+17:24:16 **** Incremental Build of configuration Debug for project stack ****
 make -j4 all 
-arm-none-eabi-size   exercise_without_bit_banding.elf 
+arm-none-eabi-size   stack.elf 
    text	   data	    bss	    dec	    hex	filename
-    676	      8	   1568	   2252	    8cc	exercise_without_bit_banding.elf
+   5676	    108	   1588	   7372	   1ccc	stack.elf
 Finished building: default.size.stdout
  
-10:18:49 **** Incremental Build of configuration Debug for project exercise_without_bit_banding ****
-make -j4 all 
-arm-none-eabi-size   exercise_without_bit_banding.elf 
-   text	   data	    bss	    dec	    hex	filename
-    676	      8	   1568	   2252	    8cc	exercise_without_bit_banding.elf
-Finished building: default.size.stdout
- 
-10:21:01 **** Incremental Build of configuration Debug for project exercise_without_bit_banding ****
-make -j4 all 
-arm-none-eabi-size   exercise_without_bit_banding.elf 
-   text	   data	    bss	    dec	    hex	filename
-    676	      8	   1568	   2252	    8cc	exercise_without_bit_banding.elf
-Finished building: default.size.stdout
- 
-10:22:57 **** Incremental Build of configuration Debug for project exercise_without_bit_banding ****
+19:26:33 **** Build of configuration Debug for project access_levels ****
 make -j4 all 
 arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F3 -DSTM32F303RETx -DNUCLEO_F303RE -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/main.o"
-arm-none-eabi-gcc -o "exercise_without_bit_banding.elf" @"objects.list"   -mcpu=cortex-m4 -T"/home/patryk/Desktop/course_arm_cortex/exercise_without_bit_banding/STM32F303RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="exercise_without_bit_banding.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: exercise_without_bit_banding.elf
+arm-none-eabi-gcc "../Src/syscalls.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F3 -DSTM32F303RETx -DNUCLEO_F303RE -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/syscalls.d" -MT"Src/syscalls.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/syscalls.o"
+arm-none-eabi-gcc -o "access_levels.elf" @"objects.list"   -mcpu=cortex-m4 -T"/home/patryk/Desktop/course_arm_cortex/access_levels/STM32F303RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="access_levels.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: access_levels.elf
  
-arm-none-eabi-size   exercise_without_bit_banding.elf 
-arm-none-eabi-objdump -h -S  exercise_without_bit_banding.elf  > "exercise_without_bit_banding.list"
+arm-none-eabi-size   access_levels.elf 
+arm-none-eabi-objdump -h -S  access_levels.elf  > "access_levels.list"
    text	   data	    bss	    dec	    hex	filename
-    696	      8	   1568	   2272	    8e0	exercise_without_bit_banding.elf
+   3888	    108	   1588	   5584	   15d0	access_levels.elf
 Finished building: default.size.stdout
  
-Finished building: exercise_without_bit_banding.list
+Finished building: access_levels.list
  
-10:24:23 **** Incremental Build of configuration Debug for project exercise_without_bit_banding ****
-make -j4 all 
-arm-none-eabi-size   exercise_without_bit_banding.elf 
-   text	   data	    bss	    dec	    hex	filename
-    696	      8	   1568	   2272	    8e0	exercise_without_bit_banding.elf
-Finished building: default.size.stdout
- 
-10:27:57 **** Incremental Build of configuration Debug for project exercise_without_bit_banding ****
-make -j4 all 
-arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F3 -DSTM32F303RETx -DNUCLEO_F303RE -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/main.o"
-arm-none-eabi-gcc -o "exercise_without_bit_banding.elf" @"objects.list"   -mcpu=cortex-m4 -T"/home/patryk/Desktop/course_arm_cortex/exercise_without_bit_banding/STM32F303RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="exercise_without_bit_banding.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: exercise_without_bit_banding.elf
- 
-arm-none-eabi-size   exercise_without_bit_banding.elf 
-arm-none-eabi-objdump -h -S  exercise_without_bit_banding.elf  > "exercise_without_bit_banding.list"
-   text	   data	    bss	    dec	    hex	filename
-    696	      8	   1568	   2272	    8e0	exercise_without_bit_banding.elf
-Finished building: default.size.stdout
- 
-Finished building: exercise_without_bit_banding.list
- 
-10:30:44 **** Incremental Build of configuration Debug for project exercise_without_bit_banding ****
-make -j4 all 
-arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F3 -DSTM32F303RETx -DNUCLEO_F303RE -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/main.o"
-arm-none-eabi-gcc -o "exercise_without_bit_banding.elf" @"objects.list"   -mcpu=cortex-m4 -T"/home/patryk/Desktop/course_arm_cortex/exercise_without_bit_banding/STM32F303RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="exercise_without_bit_banding.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: exercise_without_bit_banding.elf
- 
-arm-none-eabi-size   exercise_without_bit_banding.elf 
-arm-none-eabi-objdump -h -S  exercise_without_bit_banding.elf  > "exercise_without_bit_banding.list"
-   text	   data	    bss	    dec	    hex	filename
-    696	      8	   1568	   2272	    8e0	exercise_without_bit_banding.elf
-Finished building: default.size.stdout
- 
-Finished building: exercise_without_bit_banding.list
- 
-10:56:16 **** Build of configuration Debug for project exercise_with_bit_banding ****
+19:30:06 **** Build of configuration Debug for project USART3_int_pend ****
 make -j4 all 
 arm-none-eabi-gcc -mcpu=cortex-m4 -g3 -DDEBUG -c -x assembler-with-cpp -MMD -MP -MF"Startup/startup_stm32f303retx.d" -MT"Startup/startup_stm32f303retx.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Startup/startup_stm32f303retx.o" "../Startup/startup_stm32f303retx.s"
 arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F3 -DSTM32F303RETx -DNUCLEO_F303RE -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/main.o"
 arm-none-eabi-gcc "../Src/syscalls.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F3 -DSTM32F303RETx -DNUCLEO_F303RE -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/syscalls.d" -MT"Src/syscalls.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/syscalls.o"
 arm-none-eabi-gcc "../Src/sysmem.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F3 -DSTM32F303RETx -DNUCLEO_F303RE -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/sysmem.d" -MT"Src/sysmem.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/sysmem.o"
-arm-none-eabi-gcc -o "exercise_with_bit_banding.elf" @"objects.list"   -mcpu=cortex-m4 -T"/home/patryk/Desktop/course_arm_cortex/exercise_with_bit_banding/STM32F303RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="exercise_with_bit_banding.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: exercise_with_bit_banding.elf
- 
-arm-none-eabi-size   exercise_with_bit_banding.elf 
-arm-none-eabi-objdump -h -S  exercise_with_bit_banding.elf  > "exercise_with_bit_banding.list"
-   text	   data	    bss	    dec	    hex	filename
-    688	      8	   1568	   2264	    8d8	exercise_with_bit_banding.elf
-Finished building: default.size.stdout
- 
-Finished building: exercise_with_bit_banding.list
- 
-10:56:34 **** Incremental Build of configuration Debug for project exercise_with_bit_banding ****
-make -j4 all 
-arm-none-eabi-size   exercise_with_bit_banding.elf 
-   text	   data	    bss	    dec	    hex	filename
-    688	      8	   1568	   2264	    8d8	exercise_with_bit_banding.elf
-Finished building: default.size.stdout
- 
-10:58:19 **** Incremental Build of configuration Debug for project exercise_with_bit_banding ****
-make -j4 all 
-arm-none-eabi-size   exercise_with_bit_banding.elf 
-   text	   data	    bss	    dec	    hex	filename
-    688	      8	   1568	   2264	    8d8	exercise_with_bit_banding.elf
-Finished building: default.size.stdout
- 
-23:49:20 **** Incremental Build of configuration Debug for project exercise_with_bit_banding ****
+../Src/main.c:20:10: fatal error: stdio.h : No such file or directory
+   20 | #include <stdio.h >
+      |          ^~~~~~~~~~
+compilation terminated.
+make: *** [Src/subdir.mk:25: Src/main.o] Error 1
+make: *** Waiting for unfinished jobs....
+../Src/syscalls.c: In function 'ITM_SendChar':
+../Src/syscalls.c:51:2: error: 'DEMCR' undeclared (first use in this function)
+   51 |  DEMCR |= ( 1 << 24);
+      |  ^~~~~
+../Src/syscalls.c:51:2: note: each undeclared identifier is reported only once for each function it appears in
+make: *** [Src/subdir.mk:25: Src/syscalls.o] Error 1
+"make -j4 all" terminated with exit code 2. Build might be incomplete.
+19:31:13 **** Incremental Build of configuration Debug for project USART3_int_pend ****
 make -j4 all 
 arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F3 -DSTM32F303RETx -DNUCLEO_F303RE -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/main.o"
-arm-none-eabi-gcc -o "exercise_with_bit_banding.elf" @"objects.list"   -mcpu=cortex-m4 -T"/home/patryk/Desktop/course_arm_cortex/exercise_with_bit_banding/STM32F303RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="exercise_with_bit_banding.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: exercise_with_bit_banding.elf
- 
-arm-none-eabi-size   exercise_with_bit_banding.elf 
-arm-none-eabi-objdump -h -S  exercise_with_bit_banding.elf  > "exercise_with_bit_banding.list"
-Finished building: exercise_with_bit_banding.list
- 
-   text	   data	    bss	    dec	    hex	filename
-    688	      8	   1568	   2264	    8d8	exercise_with_bit_banding.elf
-Finished building: default.size.stdout
- 
-23:51:03 **** Incremental Build of configuration Debug for project exercise_with_bit_banding ****
+arm-none-eabi-gcc "../Src/syscalls.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F3 -DSTM32F303RETx -DNUCLEO_F303RE -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/syscalls.d" -MT"Src/syscalls.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/syscalls.o"
+../Src/main.c:20:10: fatal error: stdio.h : No such file or directory
+   20 | #include <stdio.h >
+      |          ^~~~~~~~~~
+compilation terminated.
+make: *** [Src/subdir.mk:25: Src/main.o] Error 1
+make: *** Waiting for unfinished jobs....
+"make -j4 all" terminated with exit code 2. Build might be incomplete.
+19:31:37 **** Incremental Build of configuration Debug for project USART3_int_pend ****
 make -j4 all 
 arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F3 -DSTM32F303RETx -DNUCLEO_F303RE -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/main.o"
-arm-none-eabi-gcc -o "exercise_with_bit_banding.elf" @"objects.list"   -mcpu=cortex-m4 -T"/home/patryk/Desktop/course_arm_cortex/exercise_with_bit_banding/STM32F303RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="exercise_with_bit_banding.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: exercise_with_bit_banding.elf
+arm-none-eabi-gcc -o "USART3_int_pend.elf" @"objects.list"   -mcpu=cortex-m4 -T"/home/patryk/Desktop/course_arm_cortex/USART3_int_pend/STM32F303RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="USART3_int_pend.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: USART3_int_pend.elf
  
-arm-none-eabi-size   exercise_with_bit_banding.elf 
-arm-none-eabi-objdump -h -S  exercise_with_bit_banding.elf  > "exercise_with_bit_banding.list"
+arm-none-eabi-size   USART3_int_pend.elf 
+arm-none-eabi-objdump -h -S  USART3_int_pend.elf  > "USART3_int_pend.list"
    text	   data	    bss	    dec	    hex	filename
-    688	      8	   1568	   2264	    8d8	exercise_with_bit_banding.elf
+    696	      8	   1568	   2272	    8e0	USART3_int_pend.elf
 Finished building: default.size.stdout
  
-Finished building: exercise_with_bit_banding.list
+Finished building: USART3_int_pend.list
  
-23:55:26 **** Incremental Build of configuration Debug for project exercise_with_bit_banding ****
+19:32:03 **** Incremental Build of configuration Debug for project USART3_int_pend ****
+make -j4 all 
+arm-none-eabi-size   USART3_int_pend.elf 
+   text	   data	    bss	    dec	    hex	filename
+    696	      8	   1568	   2272	    8e0	USART3_int_pend.elf
+Finished building: default.size.stdout
+ 
+19:32:25 **** Incremental Build of configuration Debug for project USART3_int_pend ****
+make -j4 all 
+arm-none-eabi-size   USART3_int_pend.elf 
+   text	   data	    bss	    dec	    hex	filename
+    696	      8	   1568	   2272	    8e0	USART3_int_pend.elf
+Finished building: default.size.stdout
+ 
+19:32:56 **** Incremental Build of configuration Debug for project USART3_int_pend ****
+make -j4 all 
+arm-none-eabi-size   USART3_int_pend.elf 
+   text	   data	    bss	    dec	    hex	filename
+    696	      8	   1568	   2272	    8e0	USART3_int_pend.elf
+Finished building: default.size.stdout
+ 
+19:34:37 **** Incremental Build of configuration Debug for project USART3_int_pend ****
+make -j4 all 
+arm-none-eabi-size   USART3_int_pend.elf 
+   text	   data	    bss	    dec	    hex	filename
+    696	      8	   1568	   2272	    8e0	USART3_int_pend.elf
+Finished building: default.size.stdout
+ 
+19:34:41 **** Incremental Build of configuration Debug for project USART3_int_pend ****
+make -j4 all 
+arm-none-eabi-size   USART3_int_pend.elf 
+   text	   data	    bss	    dec	    hex	filename
+    696	      8	   1568	   2272	    8e0	USART3_int_pend.elf
+Finished building: default.size.stdout
+ 
+19:39:29 **** Incremental Build of configuration Debug for project USART3_int_pend ****
+make -j4 all 
+arm-none-eabi-size   USART3_int_pend.elf 
+   text	   data	    bss	    dec	    hex	filename
+    696	      8	   1568	   2272	    8e0	USART3_int_pend.elf
+Finished building: default.size.stdout
+ 
+21:33:50 **** Incremental Build of configuration Debug for project USART3_int_pend ****
 make -j4 all 
 arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F3 -DSTM32F303RETx -DNUCLEO_F303RE -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/main.o"
-arm-none-eabi-gcc -o "exercise_with_bit_banding.elf" @"objects.list"   -mcpu=cortex-m4 -T"/home/patryk/Desktop/course_arm_cortex/exercise_with_bit_banding/STM32F303RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="exercise_with_bit_banding.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: exercise_with_bit_banding.elf
+arm-none-eabi-gcc -o "USART3_int_pend.elf" @"objects.list"   -mcpu=cortex-m4 -T"/home/patryk/Desktop/course_arm_cortex/USART3_int_pend/STM32F303RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="USART3_int_pend.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: USART3_int_pend.elf
  
-arm-none-eabi-size   exercise_with_bit_banding.elf 
-arm-none-eabi-objdump -h -S  exercise_with_bit_banding.elf  > "exercise_with_bit_banding.list"
+arm-none-eabi-size   USART3_int_pend.elf 
+arm-none-eabi-objdump -h -S  USART3_int_pend.elf  > "USART3_int_pend.list"
    text	   data	    bss	    dec	    hex	filename
-    692	      8	   1568	   2268	    8dc	exercise_with_bit_banding.elf
+    696	      8	   1568	   2272	    8e0	USART3_int_pend.elf
 Finished building: default.size.stdout
  
-Finished building: exercise_with_bit_banding.list
+Finished building: USART3_int_pend.list
  
-23:55:54 **** Incremental Build of configuration Debug for project exercise_with_bit_banding ****
+21:48:02 **** Incremental Build of configuration Debug for project USART3_int_pend ****
 make -j4 all 
 arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F3 -DSTM32F303RETx -DNUCLEO_F303RE -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/main.o"
-arm-none-eabi-gcc -o "exercise_with_bit_banding.elf" @"objects.list"   -mcpu=cortex-m4 -T"/home/patryk/Desktop/course_arm_cortex/exercise_with_bit_banding/STM32F303RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="exercise_with_bit_banding.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: exercise_with_bit_banding.elf
+arm-none-eabi-gcc -o "USART3_int_pend.elf" @"objects.list"   -mcpu=cortex-m4 -T"/home/patryk/Desktop/course_arm_cortex/USART3_int_pend/STM32F303RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="USART3_int_pend.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: USART3_int_pend.elf
  
-arm-none-eabi-size   exercise_with_bit_banding.elf 
-arm-none-eabi-objdump -h -S  exercise_with_bit_banding.elf  > "exercise_with_bit_banding.list"
+arm-none-eabi-size   USART3_int_pend.elf 
+arm-none-eabi-objdump -h -S  USART3_int_pend.elf  > "USART3_int_pend.list"
    text	   data	    bss	    dec	    hex	filename
-    692	      8	   1568	   2268	    8dc	exercise_with_bit_banding.elf
+   3820	    108	   1588	   5516	   158c	USART3_int_pend.elf
 Finished building: default.size.stdout
  
-Finished building: exercise_with_bit_banding.list
+Finished building: USART3_int_pend.list
+ 
+21:50:18 **** Incremental Build of configuration Debug for project USART3_int_pend ****
+make -j4 all 
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F3 -DSTM32F303RETx -DNUCLEO_F303RE -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/main.o"
+arm-none-eabi-gcc -o "USART3_int_pend.elf" @"objects.list"   -mcpu=cortex-m4 -T"/home/patryk/Desktop/course_arm_cortex/USART3_int_pend/STM32F303RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="USART3_int_pend.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: USART3_int_pend.elf
+ 
+arm-none-eabi-size   USART3_int_pend.elf 
+arm-none-eabi-objdump -h -S  USART3_int_pend.elf  > "USART3_int_pend.list"
+   text	   data	    bss	    dec	    hex	filename
+   3820	    108	   1588	   5516	   158c	USART3_int_pend.elf
+Finished building: default.size.stdout
+ 
+Finished building: USART3_int_pend.list
+ 
+21:55:34 **** Incremental Build of configuration Debug for project USART3_int_pend ****
+make -j4 all 
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F3 -DSTM32F303RETx -DNUCLEO_F303RE -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/main.o"
+arm-none-eabi-gcc -o "USART3_int_pend.elf" @"objects.list"   -mcpu=cortex-m4 -T"/home/patryk/Desktop/course_arm_cortex/USART3_int_pend/STM32F303RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="USART3_int_pend.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: USART3_int_pend.elf
+ 
+arm-none-eabi-size   USART3_int_pend.elf 
+arm-none-eabi-objdump -h -S  USART3_int_pend.elf  > "USART3_int_pend.list"
+   text	   data	    bss	    dec	    hex	filename
+   3820	    108	   1588	   5516	   158c	USART3_int_pend.elf
+Finished building: default.size.stdout
+ 
+Finished building: USART3_int_pend.list
+ 
+22:00:25 **** Incremental Build of configuration Debug for project USART3_int_pend ****
+make -j4 all 
+arm-none-eabi-size   USART3_int_pend.elf 
+   text	   data	    bss	    dec	    hex	filename
+   3820	    108	   1588	   5516	   158c	USART3_int_pend.elf
+Finished building: default.size.stdout
+ 
+22:01:19 **** Incremental Build of configuration Debug for project USART3_int_pend ****
+make -j4 all 
+arm-none-eabi-size   USART3_int_pend.elf 
+   text	   data	    bss	    dec	    hex	filename
+   3820	    108	   1588	   5516	   158c	USART3_int_pend.elf
+Finished building: default.size.stdout
+ 
+22:03:32 **** Incremental Build of configuration Debug for project USART3_int_pend ****
+make -j4 all 
+arm-none-eabi-size   USART3_int_pend.elf 
+   text	   data	    bss	    dec	    hex	filename
+   3820	    108	   1588	   5516	   158c	USART3_int_pend.elf
+Finished building: default.size.stdout
+ 
+15:30:01 **** Build of configuration Debug for project TIM2_I2C1_interrupt_priorities ****
+make -j4 all 
+arm-none-eabi-gcc -mcpu=cortex-m4 -g3 -DDEBUG -c -x assembler-with-cpp -MMD -MP -MF"Startup/startup_stm32f303retx.d" -MT"Startup/startup_stm32f303retx.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Startup/startup_stm32f303retx.o" "../Startup/startup_stm32f303retx.s"
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F3 -DSTM32F303RETx -DNUCLEO_F303RE -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/main.o"
+arm-none-eabi-gcc "../Src/syscalls.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F3 -DSTM32F303RETx -DNUCLEO_F303RE -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/syscalls.d" -MT"Src/syscalls.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/syscalls.o"
+arm-none-eabi-gcc "../Src/sysmem.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F3 -DSTM32F303RETx -DNUCLEO_F303RE -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/sysmem.d" -MT"Src/sysmem.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/sysmem.o"
+../Src/main.c:25:4: warning: #warning "FPU is not initialized, but the project is compiling for an FPU. Please initialize the FPU before use." [-Wcpp]
+   25 |   #warning "FPU is not initialized, but the project is compiling for an FPU. Please initialize the FPU before use."
+      |    ^~~~~~~
+../Src/main.c: In function 'main':
+../Src/main.c:49:10: warning: unused variable 'bytes_offset' [-Wunused-variable]
+   49 |  uint8_t bytes_offset = TIM2 / 32;
+      |          ^~~~~~~~~~~~
+arm-none-eabi-gcc -o "TIM2_I2C1_interrupt_priorities.elf" @"objects.list"   -mcpu=cortex-m4 -T"/home/patryk/Desktop/course_arm_cortex/TIM2_I2C1_interrupt_priorities/STM32F303RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="TIM2_I2C1_interrupt_priorities.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: TIM2_I2C1_interrupt_priorities.elf
+ 
+arm-none-eabi-size   TIM2_I2C1_interrupt_priorities.elf 
+arm-none-eabi-objdump -h -S  TIM2_I2C1_interrupt_priorities.elf  > "TIM2_I2C1_interrupt_priorities.list"
+Finished building: TIM2_I2C1_interrupt_priorities.list
+ 
+   text	   data	    bss	    dec	    hex	filename
+    776	     12	   1564	   2352	    930	TIM2_I2C1_interrupt_priorities.elf
+Finished building: default.size.stdout
+ 
+15:30:17 **** Incremental Build of configuration Debug for project TIM2_I2C1_interrupt_priorities ****
+make -j4 all 
+arm-none-eabi-size   TIM2_I2C1_interrupt_priorities.elf 
+   text	   data	    bss	    dec	    hex	filename
+    776	     12	   1564	   2352	    930	TIM2_I2C1_interrupt_priorities.elf
+Finished building: default.size.stdout
+ 
+15:31:11 **** Incremental Build of configuration Debug for project TIM2_I2C1_interrupt_priorities ****
+make -j4 all 
+arm-none-eabi-size   TIM2_I2C1_interrupt_priorities.elf 
+   text	   data	    bss	    dec	    hex	filename
+    776	     12	   1564	   2352	    930	TIM2_I2C1_interrupt_priorities.elf
+Finished building: default.size.stdout
+ 
+15:31:47 **** Incremental Build of configuration Debug for project TIM2_I2C1_interrupt_priorities ****
+make -j4 all 
+arm-none-eabi-size   TIM2_I2C1_interrupt_priorities.elf 
+   text	   data	    bss	    dec	    hex	filename
+    776	     12	   1564	   2352	    930	TIM2_I2C1_interrupt_priorities.elf
+Finished building: default.size.stdout
+ 
+15:31:52 **** Incremental Build of configuration Debug for project TIM2_I2C1_interrupt_priorities ****
+make -j4 all 
+arm-none-eabi-size   TIM2_I2C1_interrupt_priorities.elf 
+   text	   data	    bss	    dec	    hex	filename
+    776	     12	   1564	   2352	    930	TIM2_I2C1_interrupt_priorities.elf
+Finished building: default.size.stdout
+ 
+15:33:50 **** Incremental Build of configuration Debug for project TIM2_I2C1_interrupt_priorities ****
+make -j4 all 
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F3 -DSTM32F303RETx -DNUCLEO_F303RE -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/main.o"
+../Src/main.c:25:4: warning: #warning "FPU is not initialized, but the project is compiling for an FPU. Please initialize the FPU before use." [-Wcpp]
+   25 |   #warning "FPU is not initialized, but the project is compiling for an FPU. Please initialize the FPU before use."
+      |    ^~~~~~~
+../Src/main.c: In function 'main':
+../Src/main.c:49:10: warning: unused variable 'bytes_offset' [-Wunused-variable]
+   49 |  uint8_t bytes_offset = TIM2 / 32;
+      |          ^~~~~~~~~~~~
+arm-none-eabi-gcc -o "TIM2_I2C1_interrupt_priorities.elf" @"objects.list"   -mcpu=cortex-m4 -T"/home/patryk/Desktop/course_arm_cortex/TIM2_I2C1_interrupt_priorities/STM32F303RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="TIM2_I2C1_interrupt_priorities.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: TIM2_I2C1_interrupt_priorities.elf
+ 
+arm-none-eabi-size   TIM2_I2C1_interrupt_priorities.elf 
+arm-none-eabi-objdump -h -S  TIM2_I2C1_interrupt_priorities.elf  > "TIM2_I2C1_interrupt_priorities.list"
+   text	   data	    bss	    dec	    hex	filename
+    776	     12	   1564	   2352	    930	TIM2_I2C1_interrupt_priorities.elf
+Finished building: default.size.stdout
+ 
+Finished building: TIM2_I2C1_interrupt_priorities.list
+ 
+17:15:53 **** Incremental Build of configuration Debug for project TIM2_I2C1_interrupt_priorities ****
+make -j4 all 
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F3 -DSTM32F303RETx -DNUCLEO_F303RE -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/main.o"
+../Src/main.c: In function 'set_pending_irq':
+../Src/main.c:64:14: warning: assignment to 'uint32_t' {aka 'long unsigned int'} from 'uint32_t *' {aka 'long unsigned int *'} makes integer from pointer without a cast [-Wint-conversion]
+   64 |  *pNVIC_ISPR = (uint32_t*)(1<<(irq_no%32));
+      |              ^
+../Src/main.c: In function 'set_enable_irq':
+../Src/main.c:71:14: warning: assignment to 'uint32_t' {aka 'long unsigned int'} from 'uint32_t *' {aka 'long unsigned int *'} makes integer from pointer without a cast [-Wint-conversion]
+   71 |  *pNVIC_ISER = (uint32_t*)(1<<(irq_no%32));
+      |              ^
+arm-none-eabi-gcc -o "TIM2_I2C1_interrupt_priorities.elf" @"objects.list"   -mcpu=cortex-m4 -T"/home/patryk/Desktop/course_arm_cortex/TIM2_I2C1_interrupt_priorities/STM32F303RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="TIM2_I2C1_interrupt_priorities.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: TIM2_I2C1_interrupt_priorities.elf
+ 
+arm-none-eabi-size   TIM2_I2C1_interrupt_priorities.elf 
+arm-none-eabi-objdump -h -S  TIM2_I2C1_interrupt_priorities.elf  > "TIM2_I2C1_interrupt_priorities.list"
+   text	   data	    bss	    dec	    hex	filename
+    848	     16	   1568	   2432	    980	TIM2_I2C1_interrupt_priorities.elf
+Finished building: default.size.stdout
+Finished building: TIM2_I2C1_interrupt_priorities.list
+ 
+ 
+17:16:00 **** Incremental Build of configuration Debug for project TIM2_I2C1_interrupt_priorities ****
+make -j4 all 
+arm-none-eabi-size   TIM2_I2C1_interrupt_priorities.elf 
+   text	   data	    bss	    dec	    hex	filename
+    848	     16	   1568	   2432	    980	TIM2_I2C1_interrupt_priorities.elf
+Finished building: default.size.stdout
+ 
+17:22:00 **** Incremental Build of configuration Debug for project TIM2_I2C1_interrupt_priorities ****
+make -j4 all 
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F3 -DSTM32F303RETx -DNUCLEO_F303RE -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/main.o"
+../Src/main.c: In function 'set_pending_irq':
+../Src/main.c:77:14: warning: assignment to 'uint32_t' {aka 'long unsigned int'} from 'uint32_t *' {aka 'long unsigned int *'} makes integer from pointer without a cast [-Wint-conversion]
+   77 |  *pNVIC_ISPR = (uint32_t*)(1<<(irq_no%32));
+      |              ^
+../Src/main.c: In function 'set_enable_irq':
+../Src/main.c:84:14: warning: assignment to 'uint32_t' {aka 'long unsigned int'} from 'uint32_t *' {aka 'long unsigned int *'} makes integer from pointer without a cast [-Wint-conversion]
+   84 |  *pNVIC_ISER = (uint32_t*)(1<<(irq_no%32));
+      |              ^
+arm-none-eabi-gcc -o "TIM2_I2C1_interrupt_priorities.elf" @"objects.list"   -mcpu=cortex-m4 -T"/home/patryk/Desktop/course_arm_cortex/TIM2_I2C1_interrupt_priorities/STM32F303RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="TIM2_I2C1_interrupt_priorities.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: TIM2_I2C1_interrupt_priorities.elf
+ 
+arm-none-eabi-size   TIM2_I2C1_interrupt_priorities.elf 
+arm-none-eabi-objdump -h -S  TIM2_I2C1_interrupt_priorities.elf  > "TIM2_I2C1_interrupt_priorities.list"
+   text	   data	    bss	    dec	    hex	filename
+   5604	    120	   1584	   7308	   1c8c	TIM2_I2C1_interrupt_priorities.elf
+Finished building: default.size.stdout
+ 
+Finished building: TIM2_I2C1_interrupt_priorities.list
+ 
+17:23:03 **** Incremental Build of configuration Debug for project TIM2_I2C1_interrupt_priorities ****
+make -j4 all 
+arm-none-eabi-size   TIM2_I2C1_interrupt_priorities.elf 
+   text	   data	    bss	    dec	    hex	filename
+   5604	    120	   1584	   7308	   1c8c	TIM2_I2C1_interrupt_priorities.elf
+Finished building: default.size.stdout
  
