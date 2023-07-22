@@ -1,0 +1,9 @@
+main.c:22:6:enable_all_faults	1
+main.c:26:5:illegal_instruction_execution	1
+main.c:31:6:divide_by_0	1
+main.c:36:5:executing_instruction_from_peripherial_region	1
+main.c:41:5:main	1
+main.c:58:6:HardFault_Handler	1
+main.c:62:6:MemManage_Handler	1
+main.c:67:6:BusFault_Handler	1
+main.c:71:6:UsageFault_Handler	1

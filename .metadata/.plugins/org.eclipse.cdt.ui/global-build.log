@@ -605,3 +605,272 @@ arm-none-eabi-size   exception_entry_and_exit.elf
    3772	    108	   1588	   5468	   155c	exception_entry_and_exit.elf
 Finished building: default.size.stdout
  
+23:13:24 **** Build of configuration Debug for project fault_handling_exercise1 ****
+make -j4 all 
+arm-none-eabi-gcc -mcpu=cortex-m4 -g3 -DDEBUG -c -x assembler-with-cpp -MMD -MP -MF"Startup/startup_stm32f303retx.d" -MT"Startup/startup_stm32f303retx.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Startup/startup_stm32f303retx.o" "../Startup/startup_stm32f303retx.s"
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F3 -DSTM32F303RETx -DNUCLEO_F303RE -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/main.o"
+arm-none-eabi-gcc "../Src/syscalls.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F3 -DSTM32F303RETx -DNUCLEO_F303RE -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/syscalls.d" -MT"Src/syscalls.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/syscalls.o"
+arm-none-eabi-gcc "../Src/sysmem.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F3 -DSTM32F303RETx -DNUCLEO_F303RE -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/sysmem.d" -MT"Src/sysmem.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/sysmem.o"
+../Src/main.c:22:4: warning: #warning "FPU is not initialized, but the project is compiling for an FPU. Please initialize the FPU before use." [-Wcpp]
+   22 |   #warning "FPU is not initialized, but the project is compiling for an FPU. Please initialize the FPU before use."
+      |    ^~~~~~~
+../Src/main.c: In function 'main':
+../Src/main.c:28:12: warning: unused variable 'shcrs' [-Wunused-variable]
+   28 |  uint32_t *shcrs = (uint32_t*)0xE000ED24;
+      |            ^~~~~
+arm-none-eabi-gcc -o "fault_handling_exercise1.elf" @"objects.list"   -mcpu=cortex-m4 -T"/home/patryk/Desktop/course_arm_cortex/fault_handling_exercise1/STM32F303RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="fault_handling_exercise1.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: fault_handling_exercise1.elf
+ 
+arm-none-eabi-size   fault_handling_exercise1.elf 
+arm-none-eabi-objdump -h -S  fault_handling_exercise1.elf  > "fault_handling_exercise1.list"
+   text	   data	    bss	    dec	    hex	filename
+    664	      8	   1568	   2240	    8c0	fault_handling_exercise1.elf
+Finished building: default.size.stdout
+ 
+Finished building: fault_handling_exercise1.list
+ 
+23:14:39 **** Incremental Build of configuration Debug for project fault_handling_exercise1 ****
+make -j4 all 
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F3 -DSTM32F303RETx -DNUCLEO_F303RE -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/main.o"
+../Src/main.c:22:4: warning: #warning "FPU is not initialized, but the project is compiling for an FPU. Please initialize the FPU before use." [-Wcpp]
+   22 |   #warning "FPU is not initialized, but the project is compiling for an FPU. Please initialize the FPU before use."
+      |    ^~~~~~~
+arm-none-eabi-gcc -o "fault_handling_exercise1.elf" @"objects.list"   -mcpu=cortex-m4 -T"/home/patryk/Desktop/course_arm_cortex/fault_handling_exercise1/STM32F303RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="fault_handling_exercise1.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: fault_handling_exercise1.elf
+ 
+arm-none-eabi-size   fault_handling_exercise1.elf 
+arm-none-eabi-objdump -h -S  fault_handling_exercise1.elf  > "fault_handling_exercise1.list"
+   text	   data	    bss	    dec	    hex	filename
+    688	      8	   1568	   2264	    8d8	fault_handling_exercise1.elf
+Finished building: default.size.stdout
+ 
+Finished building: fault_handling_exercise1.list
+ 
+23:17:31 **** Incremental Build of configuration Debug for project fault_handling_exercise1 ****
+make -j4 all 
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F3 -DSTM32F303RETx -DNUCLEO_F303RE -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/main.o"
+../Src/main.c:22:4: warning: #warning "FPU is not initialized, but the project is compiling for an FPU. Please initialize the FPU before use." [-Wcpp]
+   22 |   #warning "FPU is not initialized, but the project is compiling for an FPU. Please initialize the FPU before use."
+      |    ^~~~~~~
+arm-none-eabi-gcc -o "fault_handling_exercise1.elf" @"objects.list"   -mcpu=cortex-m4 -T"/home/patryk/Desktop/course_arm_cortex/fault_handling_exercise1/STM32F303RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="fault_handling_exercise1.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: fault_handling_exercise1.elf
+ 
+arm-none-eabi-size   fault_handling_exercise1.elf 
+arm-none-eabi-objdump -h -S  fault_handling_exercise1.elf  > "fault_handling_exercise1.list"
+   text	   data	    bss	    dec	    hex	filename
+    700	      8	   1568	   2276	    8e4	fault_handling_exercise1.elf
+Finished building: default.size.stdout
+ 
+Finished building: fault_handling_exercise1.list
+ 
+23:22:45 **** Incremental Build of configuration Debug for project fault_handling_exercise1 ****
+make -j4 all 
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F3 -DSTM32F303RETx -DNUCLEO_F303RE -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/main.o"
+arm-none-eabi-gcc "../Src/syscalls.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F3 -DSTM32F303RETx -DNUCLEO_F303RE -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/syscalls.d" -MT"Src/syscalls.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/syscalls.o"
+/tmp/cc8YLQM6.s: Assembler messages:
+/tmp/cc8YLQM6.s:104: Error: bad instruction `niggalamp'
+make: *** [Src/subdir.mk:25: Src/main.o] Error 1
+make: *** Waiting for unfinished jobs....
+"make -j4 all" terminated with exit code 2. Build might be incomplete.
+23:25:06 **** Incremental Build of configuration Debug for project fault_handling_exercise1 ****
+make -j4 all 
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F3 -DSTM32F303RETx -DNUCLEO_F303RE -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/main.o"
+arm-none-eabi-gcc -o "fault_handling_exercise1.elf" @"objects.list"   -mcpu=cortex-m4 -T"/home/patryk/Desktop/course_arm_cortex/fault_handling_exercise1/STM32F303RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="fault_handling_exercise1.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: fault_handling_exercise1.elf
+ 
+arm-none-eabi-size   fault_handling_exercise1.elf 
+arm-none-eabi-objdump -h -S  fault_handling_exercise1.elf  > "fault_handling_exercise1.list"
+   text	   data	    bss	    dec	    hex	filename
+   5464	    108	   1588	   7160	   1bf8	fault_handling_exercise1.elf
+Finished building: default.size.stdout
+ 
+Finished building: fault_handling_exercise1.list
+ 
+23:25:57 **** Incremental Build of configuration Debug for project fault_handling_exercise1 ****
+make -j4 all 
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F3 -DSTM32F303RETx -DNUCLEO_F303RE -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/main.o"
+arm-none-eabi-gcc -o "fault_handling_exercise1.elf" @"objects.list"   -mcpu=cortex-m4 -T"/home/patryk/Desktop/course_arm_cortex/fault_handling_exercise1/STM32F303RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="fault_handling_exercise1.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: fault_handling_exercise1.elf
+ 
+arm-none-eabi-size   fault_handling_exercise1.elf 
+arm-none-eabi-objdump -h -S  fault_handling_exercise1.elf  > "fault_handling_exercise1.list"
+   text	   data	    bss	    dec	    hex	filename
+   5452	    108	   1588	   7148	   1bec	fault_handling_exercise1.elf
+Finished building: default.size.stdout
+ 
+Finished building: fault_handling_exercise1.list
+ 
+23:26:04 **** Incremental Build of configuration Debug for project fault_handling_exercise1 ****
+make -j4 all 
+arm-none-eabi-size   fault_handling_exercise1.elf 
+   text	   data	    bss	    dec	    hex	filename
+   5452	    108	   1588	   7148	   1bec	fault_handling_exercise1.elf
+Finished building: default.size.stdout
+ 
+23:30:25 **** Incremental Build of configuration Debug for project fault_handling_exercise1 ****
+make -j4 all 
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F3 -DSTM32F303RETx -DNUCLEO_F303RE -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/main.o"
+../Src/main.c: In function 'MemManage_Handler':
+../Src/main.c:53:18: warning: initialization of 'uint8_t *' {aka 'unsigned char *'} from 'unsigned int' makes pointer from integer without a cast [-Wint-conversion]
+   53 |  uint8_t* MMSR = 0xE000ED28;
+      |                  ^~~~~~~~~~
+arm-none-eabi-gcc -o "fault_handling_exercise1.elf" @"objects.list"   -mcpu=cortex-m4 -T"/home/patryk/Desktop/course_arm_cortex/fault_handling_exercise1/STM32F303RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="fault_handling_exercise1.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: fault_handling_exercise1.elf
+ 
+arm-none-eabi-size   fault_handling_exercise1.elf 
+arm-none-eabi-objdump -h -S  fault_handling_exercise1.elf  > "fault_handling_exercise1.list"
+   text	   data	    bss	    dec	    hex	filename
+   5504	    108	   1588	   7200	   1c20	fault_handling_exercise1.elf
+Finished building: default.size.stdout
+ 
+Finished building: fault_handling_exercise1.list
+ 
+23:32:47 **** Incremental Build of configuration Debug for project fault_handling_exercise1 ****
+make -j4 all 
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F3 -DSTM32F303RETx -DNUCLEO_F303RE -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/main.o"
+../Src/main.c: In function 'MemManage_Handler':
+../Src/main.c:53:18: warning: initialization of 'uint8_t *' {aka 'unsigned char *'} from 'unsigned int' makes pointer from integer without a cast [-Wint-conversion]
+   53 |  uint8_t* MMSR = 0xE000ED28;
+      |                  ^~~~~~~~~~
+arm-none-eabi-gcc -o "fault_handling_exercise1.elf" @"objects.list"   -mcpu=cortex-m4 -T"/home/patryk/Desktop/course_arm_cortex/fault_handling_exercise1/STM32F303RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="fault_handling_exercise1.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: fault_handling_exercise1.elf
+ 
+arm-none-eabi-size   fault_handling_exercise1.elf 
+arm-none-eabi-objdump -h -S  fault_handling_exercise1.elf  > "fault_handling_exercise1.list"
+   text	   data	    bss	    dec	    hex	filename
+   5504	    108	   1588	   7200	   1c20	fault_handling_exercise1.elf
+Finished building: default.size.stdout
+ 
+Finished building: fault_handling_exercise1.list
+ 
+23:38:10 **** Incremental Build of configuration Debug for project fault_handling_exercise1 ****
+make -j4 all 
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F3 -DSTM32F303RETx -DNUCLEO_F303RE -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/main.o"
+../Src/main.c: In function 'divide_by_0':
+../Src/main.c:32:11: warning: division by zero [-Wdiv-by-zero]
+   32 |  return 12/0;
+      |           ^
+../Src/main.c:32:11: warning: 'return' with a value, in function returning void [-Wreturn-type]
+   32 |  return 12/0;
+      |         ~~^~
+../Src/main.c:31:6: note: declared here
+   31 | void divide_by_0(void){
+      |      ^~~~~~~~~~~
+arm-none-eabi-gcc -o "fault_handling_exercise1.elf" @"objects.list"   -mcpu=cortex-m4 -T"/home/patryk/Desktop/course_arm_cortex/fault_handling_exercise1/STM32F303RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="fault_handling_exercise1.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: fault_handling_exercise1.elf
+ 
+arm-none-eabi-size   fault_handling_exercise1.elf 
+arm-none-eabi-objdump -h -S  fault_handling_exercise1.elf  > "fault_handling_exercise1.list"
+   text	   data	    bss	    dec	    hex	filename
+   5480	    108	   1588	   7176	   1c08	fault_handling_exercise1.elf
+Finished building: default.size.stdout
+ 
+Finished building: fault_handling_exercise1.list
+ 
+23:40:28 **** Incremental Build of configuration Debug for project fault_handling_exercise1 ****
+make -j4 all 
+arm-none-eabi-size   fault_handling_exercise1.elf 
+   text	   data	    bss	    dec	    hex	filename
+   5480	    108	   1588	   7176	   1c08	fault_handling_exercise1.elf
+Finished building: default.size.stdout
+ 
+23:42:18 **** Incremental Build of configuration Debug for project fault_handling_exercise1 ****
+make -j4 all 
+arm-none-eabi-size   fault_handling_exercise1.elf 
+   text	   data	    bss	    dec	    hex	filename
+   5480	    108	   1588	   7176	   1c08	fault_handling_exercise1.elf
+Finished building: default.size.stdout
+ 
+23:44:16 **** Incremental Build of configuration Debug for project fault_handling_exercise1 ****
+make -j4 all 
+arm-none-eabi-size   fault_handling_exercise1.elf 
+   text	   data	    bss	    dec	    hex	filename
+   5480	    108	   1588	   7176	   1c08	fault_handling_exercise1.elf
+Finished building: default.size.stdout
+ 
+23:44:20 **** Incremental Build of configuration Debug for project fault_handling_exercise1 ****
+make -j4 all 
+arm-none-eabi-size   fault_handling_exercise1.elf 
+   text	   data	    bss	    dec	    hex	filename
+   5480	    108	   1588	   7176	   1c08	fault_handling_exercise1.elf
+Finished building: default.size.stdout
+ 
+23:44:25 **** Incremental Build of configuration Debug for project fault_handling_exercise1 ****
+make -j4 all 
+arm-none-eabi-size   fault_handling_exercise1.elf 
+   text	   data	    bss	    dec	    hex	filename
+   5480	    108	   1588	   7176	   1c08	fault_handling_exercise1.elf
+Finished building: default.size.stdout
+ 
+23:46:03 **** Incremental Build of configuration Debug for project fault_handling_exercise1 ****
+make -j4 all 
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F3 -DSTM32F303RETx -DNUCLEO_F303RE -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/main.o"
+../Src/main.c: In function 'divide_by_0':
+../Src/main.c:32:11: warning: division by zero [-Wdiv-by-zero]
+   32 |  return 12/0;
+      |           ^
+../Src/main.c:32:11: warning: 'return' with a value, in function returning void [-Wreturn-type]
+   32 |  return 12/0;
+      |         ~~^~
+../Src/main.c:31:6: note: declared here
+   31 | void divide_by_0(void){
+      |      ^~~~~~~~~~~
+arm-none-eabi-gcc -o "fault_handling_exercise1.elf" @"objects.list"   -mcpu=cortex-m4 -T"/home/patryk/Desktop/course_arm_cortex/fault_handling_exercise1/STM32F303RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="fault_handling_exercise1.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: fault_handling_exercise1.elf
+ 
+arm-none-eabi-size   fault_handling_exercise1.elf 
+arm-none-eabi-objdump -h -S  fault_handling_exercise1.elf  > "fault_handling_exercise1.list"
+   text	   data	    bss	    dec	    hex	filename
+   5452	    108	   1588	   7148	   1bec	fault_handling_exercise1.elf
+Finished building: default.size.stdout
+ 
+Finished building: fault_handling_exercise1.list
+ 
+23:46:53 **** Incremental Build of configuration Debug for project fault_handling_exercise1 ****
+make -j4 all 
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F3 -DSTM32F303RETx -DNUCLEO_F303RE -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/main.o"
+../Src/main.c: In function 'divide_by_0':
+../Src/main.c:32:19: warning: division by zero [-Wdiv-by-zero]
+   32 |  uint8_t test = 12/0;
+      |                   ^
+../Src/main.c:33:9: warning: 'return' with a value, in function returning void [-Wreturn-type]
+   33 |  return test;
+      |         ^~~~
+../Src/main.c:31:6: note: declared here
+   31 | void divide_by_0(void){
+      |      ^~~~~~~~~~~
+arm-none-eabi-gcc -o "fault_handling_exercise1.elf" @"objects.list"   -mcpu=cortex-m4 -T"/home/patryk/Desktop/course_arm_cortex/fault_handling_exercise1/STM32F303RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="fault_handling_exercise1.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: fault_handling_exercise1.elf
+ 
+arm-none-eabi-size   fault_handling_exercise1.elf 
+arm-none-eabi-objdump -h -S  fault_handling_exercise1.elf  > "fault_handling_exercise1.list"
+   text	   data	    bss	    dec	    hex	filename
+   5468	    108	   1588	   7164	   1bfc	fault_handling_exercise1.elf
+Finished building: default.size.stdout
+ 
+Finished building: fault_handling_exercise1.list
+ 
+23:52:31 **** Incremental Build of configuration Debug for project fault_handling_exercise1 ****
+make -j4 all 
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F3 -DSTM32F303RETx -DNUCLEO_F303RE -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/main.o"
+../Src/main.c: In function 'divide_by_0':
+../Src/main.c:32:19: warning: division by zero [-Wdiv-by-zero]
+   32 |  uint8_t test = 12/0;
+      |                   ^
+../Src/main.c:33:9: warning: 'return' with a value, in function returning void [-Wreturn-type]
+   33 |  return test;
+      |         ^~~~
+../Src/main.c:31:6: note: declared here
+   31 | void divide_by_0(void){
+      |      ^~~~~~~~~~~
+arm-none-eabi-gcc -o "fault_handling_exercise1.elf" @"objects.list"   -mcpu=cortex-m4 -T"/home/patryk/Desktop/course_arm_cortex/fault_handling_exercise1/STM32F303RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="fault_handling_exercise1.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: fault_handling_exercise1.elf
+ 
+arm-none-eabi-size   fault_handling_exercise1.elf 
+arm-none-eabi-objdump -h -S  fault_handling_exercise1.elf  > "fault_handling_exercise1.list"
+   text	   data	    bss	    dec	    hex	filename
+   5464	    108	   1588	   7160	   1bf8	fault_handling_exercise1.elf
+Finished building: default.size.stdout
+ 
+Finished building: fault_handling_exercise1.list
+ 
