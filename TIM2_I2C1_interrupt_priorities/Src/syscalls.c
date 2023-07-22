@@ -95,8 +95,7 @@ __attribute__((weak)) int _read(int file, char *ptr, int len)
 
   for (DataIdx = 0; DataIdx < len; DataIdx++)
   {
-	  ITM_SendChar(*ptr++);
-   // *ptr++ = __io_getchar();
+    *ptr++ = __io_getchar();
   }
 
   return len;
@@ -109,7 +108,8 @@ __attribute__((weak)) int _write(int file, char *ptr, int len)
 
   for (DataIdx = 0; DataIdx < len; DataIdx++)
   {
-    __io_putchar(*ptr++);
+	  ITM_SendChar(*ptr++);
+	  //		__io_putchar(*ptr++);
   }
   return len;
 }

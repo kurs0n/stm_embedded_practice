@@ -46,7 +46,7 @@ void set_enable_irq(uint8_t irq_no);
 int main(void)
 {
 	configure_priority_for_irqs(TIM2,0x80);
- 	configure_priority_for_irqs(I2C1_EV,0x80);
+ 	configure_priority_for_irqs(I2C1_EV,0x70);
 
 	// setting pending registers
 
@@ -56,7 +56,7 @@ int main(void)
 	// setting enable registers
 
 	set_enable_irq(TIM2);
-	set_enable_irq(I2C1_EV);
+
 
     /* Loop forever */
 	for(;;);
@@ -64,6 +64,9 @@ int main(void)
 
 void TIM2_IRQHandler(){
 	printf("TIM2 HANDLING LOL");
+	set_enable_irq(I2C1_EV); // priority higher so it will invoke
+	// if priority the same it won't fire
+	while(1);
 }
 
 void I2C1_EV_EXTI23_IRQHandler(){

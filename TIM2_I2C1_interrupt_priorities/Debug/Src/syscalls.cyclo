@@ -4,7 +4,7 @@ syscalls.c:72:5:_getpid	1
 syscalls.c:77:5:_kill	1
 syscalls.c:85:6:_exit	1
 syscalls.c:91:27:_read	2
-syscalls.c:105:27:_write	2
+syscalls.c:104:27:_write	2
 syscalls.c:117:5:_close	1
 syscalls.c:124:5:_fstat	1
 syscalls.c:131:5:_isatty	1

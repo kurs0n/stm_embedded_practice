@@ -1,0 +1,10 @@
+22:08:28 **** Incremental Build of configuration Debug for project exception_entry_and_exit ****
+make -j4 all 
+arm-none-eabi-size   exception_entry_and_exit.elf 
+   text	   data	    bss	    dec	    hex	filename
+   3772	    108	   1588	   5468	   155c	exception_entry_and_exit.elf
+Finished building: default.size.stdout
+ 
+
+22:08:29 Build Finished. 0 errors, 0 warnings. (took 1s.68ms)
+

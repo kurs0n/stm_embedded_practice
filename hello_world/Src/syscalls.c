@@ -29,6 +29,7 @@
 #include <time.h>
 #include <sys/time.h>
 #include <sys/times.h>
+
 //Debug Exception and Monitor Control Register base address
 #define DEMCR        			*((volatile uint32_t*) 0xE000EDFCU )
 
@@ -106,7 +107,6 @@ __attribute__((weak)) int _write(int file, char *ptr, int len) // printf use thi
   for (DataIdx = 0; DataIdx < len; DataIdx++)
   {
 	  ITM_SendChar(*ptr++);
-//    __io_putchar(*ptr++);
   }
   return len;
 }

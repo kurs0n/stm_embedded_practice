@@ -4,7 +4,7 @@
 ../Src/syscalls.c:77:5:_kill	16	static
 ../Src/syscalls.c:85:6:_exit	16	static
 ../Src/syscalls.c:91:27:_read	32	static
-../Src/syscalls.c:105:27:_write	32	static
+../Src/syscalls.c:104:27:_write	32	static
 ../Src/syscalls.c:117:5:_close	16	static
 ../Src/syscalls.c:124:5:_fstat	16	static
 ../Src/syscalls.c:131:5:_isatty	16	static
