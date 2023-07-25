@@ -38,8 +38,6 @@ int executing_instruction_from_peripherial_region(void){
 	return region();
 }
 
-
-
 int main(void)
 {
 	// enable all configurable exceptions like usage fault, mem manage fault and bus fault
@@ -49,8 +47,8 @@ int main(void)
 	// done below lol
 	// lets force the processor to execute some undefined instruction
 //	illegal_instruction_execution(); // usage fault
-//	divide_by_0(); //
-	executing_instruction_from_peripherial_region();
+	divide_by_0(); //
+//	executing_instruction_from_peripherial_region();
 	// analyze the fault
 
     /* Loop forever */
@@ -63,15 +61,37 @@ void HardFault_Handler(void){
 
 void MemManage_Handler(void){
 	uint8_t* MMSR = (uint8_t*)0xE000ED28;
-	printf("status: %x",*MMSR);
+	printf("MEM_MANAGE_FAULT status: %x",(*MMSR)&0xFF);
+	while(1);
 }
 
 void BusFault_Handler(void){
 
 }
 
-void UsageFault_Handler(void){
+__attribute__ ((naked)) void UsageFault_Handler(void){
+	// here we extractred the value of MSP which happerns to be the base
+	// address fo the stack frame which got saved during the exception entry
+	// from the thread mode to handler mode
+	__asm("MRS r0,MSP"); // r0 as a first argument
+	__asm("B UsageFault_Handler_c");
+}
+
+void UsageFault_Handler_c(uint32_t *pBaseStackFrame){ // here r0 =
+
+
 	uint16_t* UFSR = (uint16_t*)0xE000ED2A;
-	printf("status: %x",*UFSR);
+	printf("USAGE_FAULT status: %x\n",(*UFSR)&0xFF);
+	printf("MSP= %p\n",pBaseStackFrame);
+	printf("Value of R0 = %x\n",pBaseStackFrame[0]);
+	printf("Value of R1 = %x\n",pBaseStackFrame[1]);
+	printf("Value of R2 = %x\n",pBaseStackFrame[2]);
+	printf("Value of R3 = %x\n",pBaseStackFrame[3]);
+	printf("Value of R12 = %x\n",pBaseStackFrame[4]);
+	printf("Value of LR = %x\n",pBaseStackFrame[5]); //
+	printf("Value of PC = %x\n",pBaseStackFrame[6]); // where the problem is appear
+	printf("Value of XPSR = %x\n",pBaseStackFrame[7]);
+
+	while(1);
 }
 

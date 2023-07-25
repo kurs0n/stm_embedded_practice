@@ -1,0 +1,25 @@
+13:47:14 **** Incremental Build of configuration Debug for project svc_number ****
+make -j4 all 
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F3 -DSTM32F303RETx -DNUCLEO_F303RE -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/main.o"
+../Src/main.c: In function 'main':
+../Src/main.c:26:22: warning: format '%ld' expects argument of type 'long int', but argument 2 has type 'int' [-Wformat=]
+   26 |  printf("svc_data: %ld \n",svc_data);
+      |                    ~~^     ~~~~~~~~
+      |                      |     |
+      |                      |     int
+      |                      long int
+      |                    %d
+arm-none-eabi-gcc -o "svc_number.elf" @"objects.list"   -mcpu=cortex-m4 -T"/home/patryk/Desktop/course_arm_cortex/svc_number/STM32F303RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="svc_number.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: svc_number.elf
+ 
+arm-none-eabi-size   svc_number.elf 
+arm-none-eabi-objdump -h -S  svc_number.elf  > "svc_number.list"
+   text	   data	    bss	    dec	    hex	filename
+   5668	    108	   1588	   7364	   1cc4	svc_number.elf
+Finished building: default.size.stdout
+ 
+Finished building: svc_number.list
+ 
+
+13:47:15 Build Finished. 0 errors, 1 warnings. (took 1s.188ms)
+
