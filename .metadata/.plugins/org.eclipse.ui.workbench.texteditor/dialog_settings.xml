@@ -8,6 +8,7 @@
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
 		<list key="findhistory">
+			<item value="s"/>
 			<item value="tim2"/>
 			<item value="USART3"/>
 			<item value="write"/>

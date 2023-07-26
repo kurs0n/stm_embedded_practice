@@ -1,0 +1,10 @@
+09:10:17 **** Incremental Build of configuration Debug for project svc_exercise_course ****
+make -j4 all 
+arm-none-eabi-size   svc_exercise_course.elf 
+   text	   data	    bss	    dec	    hex	filename
+   5708	    108	   1588	   7404	   1cec	svc_exercise_course.elf
+Finished building: default.size.stdout
+ 
+
+09:10:18 Build Finished. 0 errors, 0 warnings. (took 1s.96ms)
+
