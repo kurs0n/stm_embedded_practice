@@ -1571,3 +1571,110 @@ arm-none-eabi-size   svc_exercise_course.elf
    5708	    108	   1588	   7404	   1cec	svc_exercise_course.elf
 Finished building: default.size.stdout
  
+17:49:55 **** Build of configuration Debug for project task_scheduler ****
+make -j4 all 
+arm-none-eabi-gcc -mcpu=cortex-m4 -g3 -DDEBUG -c -x assembler-with-cpp -MMD -MP -MF"Startup/startup_stm32f303retx.d" -MT"Startup/startup_stm32f303retx.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Startup/startup_stm32f303retx.o" "../Startup/startup_stm32f303retx.s"
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F3 -DSTM32F303RETx -DNUCLEO_F303RE -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/main.o"
+arm-none-eabi-gcc "../Src/syscalls.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F3 -DSTM32F303RETx -DNUCLEO_F303RE -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/syscalls.d" -MT"Src/syscalls.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/syscalls.o"
+arm-none-eabi-gcc "../Src/sysmem.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F3 -DSTM32F303RETx -DNUCLEO_F303RE -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/sysmem.d" -MT"Src/sysmem.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/sysmem.o"
+../Src/main.c: In function 'task2_handler':
+../Src/main.c:45:3: warning: implicit declaration of function 'pritnf'; did you mean 'printf'? [-Wimplicit-function-declaration]
+   45 |   pritnf("Task2 \n");
+      |   ^~~~~~
+      |   printf
+arm-none-eabi-gcc -o "task_scheduler.elf" @"objects.list"   -mcpu=cortex-m4 -T"/home/patryk/Desktop/course_arm_cortex/task_scheduler/STM32F303RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="task_scheduler.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: task_scheduler.elf
+ 
+arm-none-eabi-size   task_scheduler.elf 
+arm-none-eabi-objdump -h -S  task_scheduler.elf  > "task_scheduler.list"
+Finished building: task_scheduler.list
+ 
+   text	   data	    bss	    dec	    hex	filename
+    656	      8	   1568	   2232	    8b8	task_scheduler.elf
+Finished building: default.size.stdout
+ 
+17:21:37 **** Incremental Build of configuration Debug for project task_scheduler ****
+make -j4 all 
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F3 -DSTM32F303RETx -DNUCLEO_F303RE -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/main.o"
+../Src/main.c: In function 'task2_handler':
+../Src/main.c:60:3: warning: implicit declaration of function 'pritnf'; did you mean 'printf'? [-Wimplicit-function-declaration]
+   60 |   pritnf("Task2 \n");
+      |   ^~~~~~
+      |   printf
+arm-none-eabi-gcc -o "task_scheduler.elf" @"objects.list"   -mcpu=cortex-m4 -T"/home/patryk/Desktop/course_arm_cortex/task_scheduler/STM32F303RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="task_scheduler.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: task_scheduler.elf
+ 
+arm-none-eabi-size   task_scheduler.elf 
+arm-none-eabi-objdump -h -S  task_scheduler.elf  > "task_scheduler.list"
+   text	   data	    bss	    dec	    hex	filename
+   5464	    108	   1588	   7160	   1bf8	task_scheduler.elf
+Finished building: default.size.stdout
+ 
+Finished building: task_scheduler.list
+ 
+17:23:43 **** Incremental Build of configuration Debug for project task_scheduler ****
+make -j4 all 
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F3 -DSTM32F303RETx -DNUCLEO_F303RE -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/main.o"
+../Src/main.c: In function 'task2_handler':
+../Src/main.c:60:3: warning: implicit declaration of function 'pritnf'; did you mean 'printf'? [-Wimplicit-function-declaration]
+   60 |   pritnf("Task2 \n");
+      |   ^~~~~~
+      |   printf
+arm-none-eabi-gcc -o "task_scheduler.elf" @"objects.list"   -mcpu=cortex-m4 -T"/home/patryk/Desktop/course_arm_cortex/task_scheduler/STM32F303RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="task_scheduler.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: task_scheduler.elf
+ 
+arm-none-eabi-size   task_scheduler.elf 
+arm-none-eabi-objdump -h -S  task_scheduler.elf  > "task_scheduler.list"
+   text	   data	    bss	    dec	    hex	filename
+   5464	    108	   1588	   7160	   1bf8	task_scheduler.elf
+Finished building: default.size.stdout
+ 
+Finished building: task_scheduler.list
+ 
+17:24:33 **** Incremental Build of configuration Debug for project task_scheduler ****
+make -j4 all 
+arm-none-eabi-size   task_scheduler.elf 
+   text	   data	    bss	    dec	    hex	filename
+   5464	    108	   1588	   7160	   1bf8	task_scheduler.elf
+Finished building: default.size.stdout
+ 
+17:24:56 **** Incremental Build of configuration Debug for project task_scheduler ****
+make -j4 all 
+arm-none-eabi-size   task_scheduler.elf 
+   text	   data	    bss	    dec	    hex	filename
+   5464	    108	   1588	   7160	   1bf8	task_scheduler.elf
+Finished building: default.size.stdout
+ 
+17:26:07 **** Incremental Build of configuration Debug for project task_scheduler ****
+make -j4 all 
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F3 -DSTM32F303RETx -DNUCLEO_F303RE -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/main.o"
+../Src/main.c: In function 'task2_handler':
+../Src/main.c:60:3: warning: implicit declaration of function 'pritnf'; did you mean 'printf'? [-Wimplicit-function-declaration]
+   60 |   pritnf("Task2 \n");
+      |   ^~~~~~
+      |   printf
+arm-none-eabi-gcc -o "task_scheduler.elf" @"objects.list"   -mcpu=cortex-m4 -T"/home/patryk/Desktop/course_arm_cortex/task_scheduler/STM32F303RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="task_scheduler.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: task_scheduler.elf
+ 
+arm-none-eabi-size   task_scheduler.elf 
+arm-none-eabi-objdump -h -S  task_scheduler.elf  > "task_scheduler.list"
+   text	   data	    bss	    dec	    hex	filename
+   5464	    108	   1588	   7160	   1bf8	task_scheduler.elf
+Finished building: default.size.stdout
+ 
+Finished building: task_scheduler.list
+ 
+17:26:48 **** Incremental Build of configuration Debug for project task_scheduler ****
+make -j4 all 
+arm-none-eabi-size   task_scheduler.elf 
+   text	   data	    bss	    dec	    hex	filename
+   5464	    108	   1588	   7160	   1bf8	task_scheduler.elf
+Finished building: default.size.stdout
+ 
+17:28:28 **** Incremental Build of configuration Debug for project task_scheduler ****
+make -j4 all 
+arm-none-eabi-size   task_scheduler.elf 
+   text	   data	    bss	    dec	    hex	filename
+   5464	    108	   1588	   7160	   1bf8	task_scheduler.elf
+Finished building: default.size.stdout
+ 
