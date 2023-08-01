@@ -1,0 +1,17 @@
+main.c:38:5:main	1
+main.c:55:6:save_psp_value	1
+main.c:59:6:update_next_task	1
+main.c:64:10:get_psp_value	1
+main.c:68:29:switch_sp_to_psp	1
+main.c:80:29:init_scheduler_stack	1
+main.c:85:6:enable_processor_faults	1
+main.c:90:6:init_tasks_stack	3
+main.c:109:6:init_systick_timer	1
+main.c:123:29:task1	1
+main.c:128:29:task2	1
+main.c:133:29:task3	1
+main.c:138:29:task4	1
+main.c:144:29:SysTick_Handler	1
+main.c:159:6:MemManage_Handler	1
+main.c:163:6:BusFault_Handler	1
+main.c:167:6:UsageFault_Handler	1
