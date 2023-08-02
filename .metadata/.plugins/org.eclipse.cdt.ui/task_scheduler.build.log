@@ -1,17 +1,10 @@
-11:00:28 **** Incremental Build of configuration Debug for project task_scheduler ****
+10:23:41 **** Incremental Build of configuration Debug for project task_scheduler ****
 make -j4 all 
-arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F3 -DSTM32F303RETx -DNUCLEO_F303RE -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/main.o"
-arm-none-eabi-gcc -o "task_scheduler.elf" @"objects.list"   -mcpu=cortex-m4 -T"/home/patryk/Desktop/course_arm_cortex/task_scheduler/STM32F303RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="task_scheduler.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: task_scheduler.elf
- 
 arm-none-eabi-size   task_scheduler.elf 
-arm-none-eabi-objdump -h -S  task_scheduler.elf  > "task_scheduler.list"
    text	   data	    bss	    dec	    hex	filename
-   4408	    124	   1604	   6136	   17f8	task_scheduler.elf
-Finished building: task_scheduler.list
+   4544	    124	   1604	   6272	   1880	task_scheduler.elf
 Finished building: default.size.stdout
  
- 
 
-11:00:29 Build Finished. 0 errors, 0 warnings. (took 1s.136ms)
+10:23:42 Build Finished. 0 errors, 0 warnings. (took 1s.206ms)
 

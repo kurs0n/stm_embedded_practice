@@ -1,187 +1,21 @@
-16:50:52 **** Incremental Build of configuration Debug for project task_scheduler_my_approach ****
+10:23:38 **** Incremental Build of configuration Debug for project task_scheduler ****
 make -j4 all 
 arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F3 -DSTM32F303RETx -DNUCLEO_F303RE -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/main.o"
-../Src/main.c: In function 'init_tasks_stack':
-../Src/main.c:94:7: warning: assignment to 'uint32_t *' {aka 'long unsigned int *'} from 'long unsigned int' makes pointer from integer without a cast [-Wint-conversion]
-   94 |   pPSP=(uint32_t) psp_of_tasks[i];
-      |       ^
-../Src/main.c: At top level:
-../Src/main.c:123:24: warning: return type defaults to 'int' [-Wimplicit-int]
-  123 | __attribute__((naked)) task1(void){
-      |                        ^~~~~
-../Src/main.c:123:24: warning: conflicting types for 'task1'
-../Src/main.c:29:6: note: previous declaration of 'task1' was here
-   29 | void task1(void);
-      |      ^~~~~
-arm-none-eabi-gcc -o "task_scheduler_my_approach.elf" @"objects.list"   -mcpu=cortex-m4 -T"/home/patryk/Desktop/course_arm_cortex/task_scheduler_my_approach/STM32F303RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="task_scheduler_my_approach.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: task_scheduler_my_approach.elf
+arm-none-eabi-gcc -o "task_scheduler.elf" @"objects.list"   -mcpu=cortex-m4 -T"/home/patryk/Desktop/course_arm_cortex/task_scheduler/STM32F303RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="task_scheduler.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: task_scheduler.elf
  
-arm-none-eabi-size   task_scheduler_my_approach.elf 
-arm-none-eabi-objdump -h -S  task_scheduler_my_approach.elf  > "task_scheduler_my_approach.list"
+arm-none-eabi-size   task_scheduler.elf 
+arm-none-eabi-objdump -h -S  task_scheduler.elf  > "task_scheduler.list"
    text	   data	    bss	    dec	    hex	filename
-   4524	    124	   1604	   6252	   186c	task_scheduler_my_approach.elf
+   4544	    124	   1604	   6272	   1880	task_scheduler.elf
 Finished building: default.size.stdout
  
-Finished building: task_scheduler_my_approach.list
+Finished building: task_scheduler.list
  
-16:50:55 **** Incremental Build of configuration Debug for project task_scheduler_my_approach ****
+10:23:41 **** Incremental Build of configuration Debug for project task_scheduler ****
 make -j4 all 
-arm-none-eabi-size   task_scheduler_my_approach.elf 
+arm-none-eabi-size   task_scheduler.elf 
    text	   data	    bss	    dec	    hex	filename
-   4524	    124	   1604	   6252	   186c	task_scheduler_my_approach.elf
-Finished building: default.size.stdout
- 
-16:52:32 **** Incremental Build of configuration Debug for project task_scheduler_my_approach ****
-make -j4 all 
-arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F3 -DSTM32F303RETx -DNUCLEO_F303RE -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/main.o"
-../Src/main.c: In function 'init_tasks_stack':
-../Src/main.c:94:7: warning: assignment to 'uint32_t *' {aka 'long unsigned int *'} from 'long unsigned int' makes pointer from integer without a cast [-Wint-conversion]
-   94 |   pPSP=(uint32_t) psp_of_tasks[i];
-      |       ^
-../Src/main.c: At top level:
-../Src/main.c:123:24: warning: return type defaults to 'int' [-Wimplicit-int]
-  123 | __attribute__((naked)) task1(void){
-      |                        ^~~~~
-../Src/main.c:123:24: warning: conflicting types for 'task1'
-../Src/main.c:29:6: note: previous declaration of 'task1' was here
-   29 | void task1(void);
-      |      ^~~~~
-arm-none-eabi-gcc -o "task_scheduler_my_approach.elf" @"objects.list"   -mcpu=cortex-m4 -T"/home/patryk/Desktop/course_arm_cortex/task_scheduler_my_approach/STM32F303RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="task_scheduler_my_approach.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: task_scheduler_my_approach.elf
- 
-arm-none-eabi-size   task_scheduler_my_approach.elf 
-arm-none-eabi-objdump -h -S  task_scheduler_my_approach.elf  > "task_scheduler_my_approach.list"
-   text	   data	    bss	    dec	    hex	filename
-   4520	    124	   1604	   6248	   1868	task_scheduler_my_approach.elf
-Finished building: default.size.stdout
- 
-Finished building: task_scheduler_my_approach.list
- 
-16:54:02 **** Incremental Build of configuration Debug for project task_scheduler_my_approach ****
-make -j4 all 
-arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F3 -DSTM32F303RETx -DNUCLEO_F303RE -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/main.o"
-../Src/main.c: In function 'init_tasks_stack':
-../Src/main.c:94:7: warning: assignment to 'uint32_t *' {aka 'long unsigned int *'} from 'long unsigned int' makes pointer from integer without a cast [-Wint-conversion]
-   94 |   pPSP=(uint32_t) psp_of_tasks[i];
-      |       ^
-../Src/main.c: At top level:
-../Src/main.c:123:24: warning: return type defaults to 'int' [-Wimplicit-int]
-  123 | __attribute__((naked)) task1(void){
-      |                        ^~~~~
-../Src/main.c:123:24: warning: conflicting types for 'task1'
-../Src/main.c:29:6: note: previous declaration of 'task1' was here
-   29 | void task1(void);
-      |      ^~~~~
-arm-none-eabi-gcc -o "task_scheduler_my_approach.elf" @"objects.list"   -mcpu=cortex-m4 -T"/home/patryk/Desktop/course_arm_cortex/task_scheduler_my_approach/STM32F303RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="task_scheduler_my_approach.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: task_scheduler_my_approach.elf
- 
-arm-none-eabi-size   task_scheduler_my_approach.elf 
-arm-none-eabi-objdump -h -S  task_scheduler_my_approach.elf  > "task_scheduler_my_approach.list"
-   text	   data	    bss	    dec	    hex	filename
-   4520	    124	   1604	   6248	   1868	task_scheduler_my_approach.elf
-Finished building: default.size.stdout
- 
-Finished building: task_scheduler_my_approach.list
- 
-16:56:06 **** Incremental Build of configuration Debug for project task_scheduler_my_approach ****
-make -j4 all 
-arm-none-eabi-size   task_scheduler_my_approach.elf 
-   text	   data	    bss	    dec	    hex	filename
-   4520	    124	   1604	   6248	   1868	task_scheduler_my_approach.elf
-Finished building: default.size.stdout
- 
-16:57:20 **** Incremental Build of configuration Debug for project task_scheduler_my_approach ****
-make -j4 all 
-arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F3 -DSTM32F303RETx -DNUCLEO_F303RE -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/main.o"
-../Src/main.c: In function 'init_tasks_stack':
-../Src/main.c:94:7: warning: assignment to 'uint32_t *' {aka 'long unsigned int *'} from 'long unsigned int' makes pointer from integer without a cast [-Wint-conversion]
-   94 |   pPSP=(uint32_t) psp_of_tasks[i];
-      |       ^
-../Src/main.c: At top level:
-../Src/main.c:123:24: warning: return type defaults to 'int' [-Wimplicit-int]
-  123 | __attribute__((naked)) task1(void){
-      |                        ^~~~~
-../Src/main.c:123:24: warning: conflicting types for 'task1'
-../Src/main.c:29:6: note: previous declaration of 'task1' was here
-   29 | void task1(void);
-      |      ^~~~~
-arm-none-eabi-gcc -o "task_scheduler_my_approach.elf" @"objects.list"   -mcpu=cortex-m4 -T"/home/patryk/Desktop/course_arm_cortex/task_scheduler_my_approach/STM32F303RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="task_scheduler_my_approach.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: task_scheduler_my_approach.elf
- 
-arm-none-eabi-size   task_scheduler_my_approach.elf 
-arm-none-eabi-objdump -h -S  task_scheduler_my_approach.elf  > "task_scheduler_my_approach.list"
-   text	   data	    bss	    dec	    hex	filename
-   4520	    124	   1604	   6248	   1868	task_scheduler_my_approach.elf
-Finished building: default.size.stdout
- 
-Finished building: task_scheduler_my_approach.list
- 
-16:57:50 **** Incremental Build of configuration Debug for project task_scheduler_my_approach ****
-make -j4 all 
-arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F3 -DSTM32F303RETx -DNUCLEO_F303RE -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/main.o"
-../Src/main.c: In function 'init_tasks_stack':
-../Src/main.c:94:7: warning: assignment to 'uint32_t *' {aka 'long unsigned int *'} from 'long unsigned int' makes pointer from integer without a cast [-Wint-conversion]
-   94 |   pPSP=(uint32_t) psp_of_tasks[i];
-      |       ^
-../Src/main.c: At top level:
-../Src/main.c:123:24: warning: return type defaults to 'int' [-Wimplicit-int]
-  123 | __attribute__((naked)) task1(void){
-      |                        ^~~~~
-../Src/main.c:123:24: warning: conflicting types for 'task1'
-../Src/main.c:29:6: note: previous declaration of 'task1' was here
-   29 | void task1(void);
-      |      ^~~~~
-arm-none-eabi-gcc -o "task_scheduler_my_approach.elf" @"objects.list"   -mcpu=cortex-m4 -T"/home/patryk/Desktop/course_arm_cortex/task_scheduler_my_approach/STM32F303RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="task_scheduler_my_approach.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: task_scheduler_my_approach.elf
- 
-arm-none-eabi-size   task_scheduler_my_approach.elf 
-arm-none-eabi-objdump -h -S  task_scheduler_my_approach.elf  > "task_scheduler_my_approach.list"
-   text	   data	    bss	    dec	    hex	filename
-   4520	    124	   1604	   6248	   1868	task_scheduler_my_approach.elf
-Finished building: default.size.stdout
- 
-Finished building: task_scheduler_my_approach.list
- 
-17:28:05 **** Incremental Build of configuration Debug for project task_scheduler_my_approach ****
-make -j4 all 
-arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F3 -DSTM32F303RETx -DNUCLEO_F303RE -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/main.o"
-../Src/main.c: In function 'init_tasks_stack':
-../Src/main.c:94:7: warning: assignment to 'uint32_t *' {aka 'long unsigned int *'} from 'long unsigned int' makes pointer from integer without a cast [-Wint-conversion]
-   94 |   pPSP=(uint32_t) psp_of_tasks[i];
-      |       ^
-arm-none-eabi-gcc -o "task_scheduler_my_approach.elf" @"objects.list"   -mcpu=cortex-m4 -T"/home/patryk/Desktop/course_arm_cortex/task_scheduler_my_approach/STM32F303RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="task_scheduler_my_approach.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: task_scheduler_my_approach.elf
- 
-arm-none-eabi-size   task_scheduler_my_approach.elf 
-arm-none-eabi-objdump -h -S  task_scheduler_my_approach.elf  > "task_scheduler_my_approach.list"
-   text	   data	    bss	    dec	    hex	filename
-   4520	    124	   1604	   6248	   1868	task_scheduler_my_approach.elf
-Finished building: default.size.stdout
- 
-Finished building: task_scheduler_my_approach.list
- 
-17:31:27 **** Incremental Build of configuration Debug for project task_scheduler_my_approach ****
-make -j4 all 
-arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F3 -DSTM32F303RETx -DNUCLEO_F303RE -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/main.o"
-../Src/main.c: In function 'init_tasks_stack':
-../Src/main.c:94:7: warning: assignment to 'uint32_t *' {aka 'long unsigned int *'} from 'long unsigned int' makes pointer from integer without a cast [-Wint-conversion]
-   94 |   pPSP=(uint32_t) psp_of_tasks[i];
-      |       ^
-arm-none-eabi-gcc -o "task_scheduler_my_approach.elf" @"objects.list"   -mcpu=cortex-m4 -T"/home/patryk/Desktop/course_arm_cortex/task_scheduler_my_approach/STM32F303RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="task_scheduler_my_approach.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: task_scheduler_my_approach.elf
- 
-arm-none-eabi-size   task_scheduler_my_approach.elf 
-arm-none-eabi-objdump -h -S  task_scheduler_my_approach.elf  > "task_scheduler_my_approach.list"
-   text	   data	    bss	    dec	    hex	filename
-   4516	    124	   1604	   6244	   1864	task_scheduler_my_approach.elf
-Finished building: default.size.stdout
- 
-Finished building: task_scheduler_my_approach.list
- 
-17:33:06 **** Incremental Build of configuration Debug for project task_scheduler_my_approach ****
-make -j4 all 
-arm-none-eabi-size   task_scheduler_my_approach.elf 
-   text	   data	    bss	    dec	    hex	filename
-   4516	    124	   1604	   6244	   1864	task_scheduler_my_approach.elf
+   4544	    124	   1604	   6272	   1880	task_scheduler.elf
 Finished building: default.size.stdout
  
