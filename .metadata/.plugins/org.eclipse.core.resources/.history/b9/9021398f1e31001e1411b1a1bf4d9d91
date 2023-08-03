@@ -1,0 +1,32 @@
+/*
+ * main.h
+ *
+ *  Created on: Jul 30, 2023
+ *      Author: patryk
+ */
+
+#ifndef MAIN_H_
+#define MAIN_H_
+
+#define MAX_TASKS 4
+
+#define SRAM_START 0x20000000U
+#define SRAM_SIZE (64 * 1024)
+#define SRAM_END ((SRAM_START)+(SRAM_SIZE))
+
+#define STACK_SIZE_TASK 1024U // one kilobyte because one kilobyte have 1024 bytes
+#define STACK_SIZE_SCHEDULER 1024U
+
+#define STACK_TASK1_START SRAM_END
+#define STACK_TASK2_START ((SRAM_END)-(STACK_SIZE_TASK * 1))
+#define STACK_TASK3_START ((SRAM_END)-(STACK_SIZE_TASK * 2))
+#define STACK_TASK4_START ((SRAM_END)-(STACK_SIZE_TASK * 3))
+#define STACK_SCHEDULER_START ((SRAM_END)-(STACK_SIZE_SCHEDULER * 4))
+
+#define TICK_HZ 1000U
+#define PROCESSOR_CLOCK_FREQUENCY 8000000U
+
+#define DUMMY_XPSR 0x01000000
+#define LR_EXC_RET 0xFFFFFFFD
+
+#endif /* MAIN_H_ */

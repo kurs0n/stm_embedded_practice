@@ -15,6 +15,6 @@ org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:hello_world/activeLaunchMode=de
 org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:hello_world/activeLaunchTarget=null\:---
 org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:hello_world_semihosting/activeLaunchTarget=null\:---
 org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:t-bit/activeLaunchMode=debug
-org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:task_scheduler\ Debug/activeLaunchMode=debug
+org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:task_scheduler\ Debug/activeLaunchMode=run
 org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:task_scheduler_my_approach\ Debug/activeLaunchMode=debug
 org.eclipse.launchbar.core.descriptorType.default\:hello_world_semihosting\ Debug/activeLaunchTarget=org.eclipse.launchbar.core.launchTargetType.local\:Local
