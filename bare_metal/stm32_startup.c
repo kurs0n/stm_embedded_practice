@@ -5,7 +5,7 @@
 
 #define STACK_START SRAM_END 
 
-void Reset_handler                  (void) __attribute__ ((weak, alias("Default_Handler")));
+void Reset_handler                  (void);
 void NMI_handler                    (void) __attribute__ ((weak,alias("Default_Handler"))); // by giving weak attribut we are allowing programmer to override this function with same function name in main application. There programmer can implement real implementation of handling that exception
 void HardFault_Handler              (void) __attribute__ ((weak,alias("Default_Handler")));
 void MemManage_Handler 				(void) __attribute__ ((weak, alias("Default_Handler")));
@@ -198,9 +198,6 @@ void Default_Handler(void){
     while(1);
 }
 
-void Reset_handler(void){ 
- // copy .data section to SRAM
-// Initialize .bss sectionto zero in SRAM
-// call init function of std. library 
-// call main()
+void Reset_handler(void){
+    
 }

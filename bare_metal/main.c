@@ -39,6 +39,10 @@ void task4_handler(void);
 uint8_t current_task = 1; //task1 is running
 uint32_t g_tick_count = 0;
 
+const uint32_t constv1_elo = 100; 
+const uint32_t constv2_elo = 200;
+const uint8_t constv3_elo = 100;
+
 typedef struct
 {
 	uint32_t psp_value;
@@ -268,16 +272,16 @@ void task_delay(uint32_t tick_count){
 }
 
 void HardFault_Handler(void){
-	printf("Exception: Hardfault \n");
-//	while(1);
+	// printf("Exception: Hardfault \n");
+	while(1);
 }
 
 void MemManage_Handler(void){
-	printf("Exception: MemManage \n");
-//	while(1);
+	// printf("Exception: MemManage \n");
+	while(1);
 }
 
 void BusFault_Handler(void){
-	printf("Exception: BusFault \n");
-//	while(1);
+	// printf("Exception: BusFault \n");
+	while(1);
 }
