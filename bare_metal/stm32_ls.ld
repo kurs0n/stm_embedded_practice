@@ -2,8 +2,9 @@ ENTRY(Reset_handler)
 
 MEMORY
 {
+    CCMRAM    (xrw)    : ORIGIN = 0x10000000,   LENGTH = 16K
     FLASH(rx):ORIGIN =0x08000000,LENGTH =512K
-    SRAM(rwx):ORIGIN =0x20000000,LENGTH =64K 
+    SRAM(xrw):ORIGIN =0x20000000,LENGTH =64K 
 }
 
 SECTIONS 
@@ -15,7 +16,7 @@ SECTIONS
         *(.rodata)
         . = ALIGN(4);
         _etext = . ; 
-    } > FLASH
+    } >FLASH
 
     .data : /* location counter always trakcs vma of the section in which it is being used*/
     {
@@ -23,7 +24,7 @@ SECTIONS
         *(.data)
         . = ALIGN(4); 
         _edata = .;
-    } > SRAM AT>FLASH 
+    } >SRAM AT>FLASH 
     
     .bss : 
     {
@@ -32,5 +33,5 @@ SECTIONS
         *(COMMON)
         . = ALIGN(4);
         _ebss = .;
-    }>SRAM
+    } >SRAM
 }

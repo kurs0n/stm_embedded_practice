@@ -1,6 +1,6 @@
 CC=arm-none-eabi-gcc
 MACH=cortex-m4
-CFLAGS= -c -mcpu=$(MACH) -mthumb -Wall -std=gnu11 -O0
+CFLAGS= -c -g -mcpu=$(MACH) -mthumb -Wall -std=gnu11 -O0
 LDFLAGS= -nostdlib -T stm32_ls.ld -Wl,-Map=final.map
 
 all:main.o led.o stm32_startup.o final.elf
@@ -18,4 +18,7 @@ final.elf: main.o led.o stm32_startup.o
 	$(CC) $(LDFLAGS) -o $@ $^
 
 clean: 
-	rm -rf *.o *.elf
+	rm -rf *.o *.elf *.map
+
+load: 
+	openocd -f board/st_nucleo_f3.cfg

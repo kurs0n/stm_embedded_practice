@@ -1,0 +1,6 @@
+
+https://elinux.org/GDB_Debugger
+
+https://forums.codeblocks.org/index.php?topic=19849.0
+
+https://sourceware.org/binutils/docs/ld/Output-Section-LMA.html

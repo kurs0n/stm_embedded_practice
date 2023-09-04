@@ -4,6 +4,14 @@
 #define SRAM_END ((SRAM_START) + (SRAM_SIZE))
 
 #define STACK_START SRAM_END 
+ // arm-none-eabi-nm final.elf all symbols could be checked by this command
+extern uint32_t _etext; // getting a values from linkerscript sth like that
+extern uint32_t _sdata; 
+extern uint32_t _edata;
+extern uint32_t _sbss; 
+extern uint32_t _ebss;
+
+int main(void);
 
 void Reset_handler                  (void);
 void NMI_handler                    (void) __attribute__ ((weak,alias("Default_Handler"))); // by giving weak attribut we are allowing programmer to override this function with same function name in main application. There programmer can implement real implementation of handling that exception
@@ -195,9 +203,21 @@ uint32_t vectors[] __attribute__((section (".isr_vector"))) = {
 };
 
 void Default_Handler(void){ 
-    while(1);
+    // while(1);
 }
 
-void Reset_handler(void){
-    
+void Reset_handler(void){ 
+    // copy .data section to SRAM 
+    uint32_t size = &_edata - &_sdata; // getting addresses not values
+    uint8_t *pDst = (uint8_t*)&_sdata; // sram
+    uint8_t *pSrc = (uint8_t*)&_etext; // flash
+    for(uint32_t i=0; i<size; i++){
+        *pDst++ = *pSrc++;
+    }
+    pDst = (uint8_t*)&_sbss;
+    size = &_ebss - &_sbss;
+    for(uint32_t i=0;i<size; i++){
+        *pDst++=0;
+    }
+    main();
 }

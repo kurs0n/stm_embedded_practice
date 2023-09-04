@@ -1,8 +1,5 @@
-
 #include<stdint.h>
 #include "led.h"
-
-
 
 void delay(uint32_t count)
 {
@@ -52,20 +49,16 @@ void led_init(){ // we have only one led on board which we can manipulate i gues
     uint32_t modereg = *pPortAModeReg & ~(3<<(2*5));
     modereg |= (1<<(2*5));
     *pPortAModeReg = modereg;
-
-
 }
 
 void led_on()
 {
 	uint32_t *pPortABsrReg = (uint32_t*)0x48000018;
-    *pPortABsrReg = (1<<5);
-
+  *pPortABsrReg = (1<<5);
 }
 
 void led_off()
 {
 	uint32_t *pPortABsrReg = (uint32_t*)0x48000018;
 	*pPortABsrReg = (1<<(5+16));
-
 }
