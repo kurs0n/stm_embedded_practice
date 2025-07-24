@@ -1,0 +1,4 @@
+../Src/main.c:35:6:setup_RCC_control_MCO	1
+../Src/main.c:41:6:setup_ADC_ALIGN	1
+../Src/main.c:46:6:setup_AHB_PeripherialClock	1
+../Src/main.c:51:5:main	1
