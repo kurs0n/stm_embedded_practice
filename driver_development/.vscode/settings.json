@@ -1,0 +1,6 @@
+{
+    "files.associations": {
+        "smt32f303rex.h": "c",
+        "stdint.h": "c"
+    }
+}

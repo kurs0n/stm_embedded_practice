@@ -1,0 +1,3 @@
+/Users/patryk/Desktop/stm_embedded_practice/driver_development/CMakeFiles/driver_development.dir
+/Users/patryk/Desktop/stm_embedded_practice/driver_development/CMakeFiles/edit_cache.dir
+/Users/patryk/Desktop/stm_embedded_practice/driver_development/CMakeFiles/rebuild_cache.dir
