@@ -16,12 +16,12 @@
  ******************************************************************************
  */
 
-#include <stdint.h>
-#include "SMT32F303REx.h"
+#include "STM32F303REx.h"
 
 int main(void)
 {
 
+    
     /* Loop forever */
 	for(;;);
 }
