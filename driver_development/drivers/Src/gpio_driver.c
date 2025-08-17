@@ -4,77 +4,128 @@ void GPIO_PeriClockControl(GPIO_RegDef_t *pGPIOx, uint8_t EnableOrDisable)
 {
     switch (EnableOrDisable)
     {
-        case ENABLE:
+    case ENABLE:
+    {
+        if (pGPIOx == GPIOA)
         {
-            if (pGPIOx == GPIOA)
-            {
-                GPIOA_PERI_CLOCK_ENABLE();
-            }
-            else if (
-                pGPIOx == GPIOB)
-            {
-                GPIOB_PERI_CLOCK_ENABLE();
-            }
-            else if (pGPIOx == GPIOC)
-            {
-                GPIOC_PERI_CLOCK_ENABLE();
-            }
-            else if (pGPIOx == GPIOD)
-            {
-                GPIOD_PERI_CLOCK_ENABLE();
-            }
-            else if (
-                pGPIOx == GPIOE)
-            {
-                GPIOE_PERI_CLOCK_ENABLE();
-            }
-            else if (
-                pGPIOx == GPIOF)
-            {
-                GPIOF_PERI_CLOCK_ENABLE();
-            }
-            else if (
-                pGPIOx == GPIOG)
-            {
-                GPIOG_PERI_CLOCK_ENABLE();
-            }
-            break;
+            GPIOA_PERI_CLOCK_ENABLE();
         }
-        case DISABLE:
+        else if (
+            pGPIOx == GPIOB)
         {
-            if (pGPIOx == GPIOA)
-            {
-                GPIOA_PERI_CLOCK_DISABLE();
-            }
-            else if (
-                pGPIOx == GPIOB)
-            {
-                GPIOB_PERI_CLOCK_DISABLE();
-            }
-            else if (pGPIOx == GPIOC)
-            {
-                GPIOC_PERI_CLOCK_DISABLE();
-            }
-            else if (pGPIOx == GPIOD)
-            {
-                GPIOD_PERI_CLOCK_DISABLE();
-            }
-            else if (
-                pGPIOx == GPIOE)
-            {
-                GPIOE_PERI_CLOCK_DISABLE();
-            }
-            else if (
-                pGPIOx == GPIOF)
-            {
-                GPIOF_PERI_CLOCK_DISABLE();
-            }
-            else if (
-                pGPIOx == GPIOG)
-            {
-                GPIOG_PERI_CLOCK_DISABLE();
-            }
-            break;
+            GPIOB_PERI_CLOCK_ENABLE();
+        }
+        else if (pGPIOx == GPIOC)
+        {
+            GPIOC_PERI_CLOCK_ENABLE();
+        }
+        else if (pGPIOx == GPIOD)
+        {
+            GPIOD_PERI_CLOCK_ENABLE();
+        }
+        else if (
+            pGPIOx == GPIOE)
+        {
+            GPIOE_PERI_CLOCK_ENABLE();
+        }
+        else if (
+            pGPIOx == GPIOF)
+        {
+            GPIOF_PERI_CLOCK_ENABLE();
+        }
+        else if (
+            pGPIOx == GPIOG)
+        {
+            GPIOG_PERI_CLOCK_ENABLE();
+        }
+        break;
+    }
+    case DISABLE:
+    {
+        if (pGPIOx == GPIOA)
+        {
+            GPIOA_PERI_CLOCK_DISABLE();
+        }
+        else if (
+            pGPIOx == GPIOB)
+        {
+            GPIOB_PERI_CLOCK_DISABLE();
+        }
+        else if (pGPIOx == GPIOC)
+        {
+            GPIOC_PERI_CLOCK_DISABLE();
+        }
+        else if (pGPIOx == GPIOD)
+        {
+            GPIOD_PERI_CLOCK_DISABLE();
+        }
+        else if (
+            pGPIOx == GPIOE)
+        {
+            GPIOE_PERI_CLOCK_DISABLE();
+        }
+        else if (
+            pGPIOx == GPIOF)
+        {
+            GPIOF_PERI_CLOCK_DISABLE();
+        }
+        else if (
+            pGPIOx == GPIOG)
+        {
+            GPIOG_PERI_CLOCK_DISABLE();
+        }
+        break;
+    }
+    }
+}
+
+// usually use OR instead of = in embedded programming due to sometimes we dont want to touch registers which have some values reserved
+void GPIO_Init(GPIO_Handle_t *pGPIOHandle)
+{
+    uint32_t temp = 0;
+
+    if (pGPIOHandle->GPIO_PinConfig.GPIO_PinMode != GPIO_MODE_ALTERNATE)
+    {
+        temp = (pGPIOHandle->GPIO_PinConfig.PinMode << (2 * pGPIOHandle->GPIO_PinConfig.GPIO_PinNumber)); // correct offset calculated
+        pGPIOHandle->pGPIOx->MODER &= ~(0x3 << (2 * pGPIOHandle->GPIO_PinConfig.GPIO_PinNumber));         // clearing
+        pGPIOHandle->pGPIOx->MODER |= temp;                                                               // OR to not touch other places in register setting stuff
+    }
+    else
+    {
+        // code for interrupts but later!
+    }
+
+    // configure speed for GPIO pin
+    temp = (pGPIOHandle->GPIO_PinConfig.PinSpeed << (2 * pGPIOHandle->GPIO_PinConfig.GPIO_PinNumber));
+    pGPIOHandle->pGPIOx->OSPEEDR &= ~(0x3 << (2 * pGPIOHandle->GPIO_PinConfig.GPIO_PinNumber)); // clearing
+    pGPIOHandle->pGPIOx->OSPEEDR |= temp;
+
+    // configure pull up pull down settings
+
+    temp = (pGPIOHandle->GPIO_PinConfig.GPIO_PinPuPdControl << (2 * pGPIOHandle->GPIO_PinConfig.GPIO_PinNumber));
+    pGPIOHandle->pGPIOx->PUPDR &= ~(0x3 << (2 * pGPIOHandle->GPIO_PinConfig.GPIO_PinNumber)); // clearing
+    pGPIOHandle->pGPIOx->PUPDR |= temp;
+
+    // configure output type
+
+    temp = (pGPIOHandle->GPIO_PinConfig.GPIO_PinOPType << pGPIOHandle->GPIO_PinConfig.GPIO_PinNumber);
+    pGPIOHandle->pGPIOx->OTYPER &= ~(0x1 << pGPIOHandle->GPIO_PinConfig.GPIO_PinNumber); // clearing
+    pGPIOHandle->pGPIOx->OTYPER |= temp;
+
+    // configure alternate function stuff.
+    if (pGPIOHandle->GPIO_PinConfig.GPIO_PinMode == GPIO_MODE_ALTERNATE)
+    {
+        if (pGPIOHandle->GPIO_PinConfig.GPIO_PinNumber < 8)
+        {
+            temp = (pGPIOHandle->GPIO_PinConfig.GPIO_PinAltFunMode << (4 * pGPIOHandle->GPIO_PinConfig.GPIO_PinNumber));
+            pGPIOHandle->pGPIOx->AFR[0] &= ~(0xF << (4 * pGPIOHandle->GPIO_PinConfig.GPIO_PinNumber)); // clearing bits
+            pGPIOHandle->pGPIOx->AFR[0] |= temp;
+        }
+        else
+        {
+            temp = (pGPIOHandle->GPIO_PinConfig.GPIO_PinAltFunMode << (4 * (pGPIOHandle->GPIO_PinConfig.GPIO_PinNumber % 8)));
+            pGPIOHandle->pGPIOx->AFR[1] &= ~(0xF << (4 * pGPIOHandle->GPIO_PinConfig.GPIO_PinNumber)); // clearing bits
+            pGPIOHandle->pGPIOx->AFR[1] |= temp;
         }
     }
 }

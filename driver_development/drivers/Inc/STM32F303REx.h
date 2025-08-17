@@ -115,8 +115,6 @@ typedef struct
     _vo uint32_t BRR;    // GPIO port bit reset register
 } GPIO_RegDef_t;
 
-
-
 typedef struct{
     _vo uint32_t CR; // RCC clock control register
     _vo uint32_t CFGR; // RCC clock configuration register
