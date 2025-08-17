@@ -142,6 +142,17 @@ typedef struct{
 
 #define RCC ((RCC_RegDef_t *)RCC_BASEADDR)
 
+/* Reset GPIOx peripherials */
+
+#define GPIOA_REG_RESET() do{GPIOA->BSRR |= (0xFFFF << 16); GPIOA->BSRR &= ~(0xFFFF << 16);}while(0)
+#define GPIOB_REG_RESET() do{GPIOB->BSRR |= (0xFFFF << 16); GPIOB->BSRR &= ~(0xFFFF << 16);}while(0)
+#define GPIOC_REG_RESET() do{GPIOC->BSRR |= (0xFFFF << 16); GPIOC->BSRR &= ~(0xFFFF << 16);}while(0)
+#define GPIOD_REG_RESET() do{GPIOD->BSRR |= (0xFFFF << 16); GPIOD->BSRR &= ~(0xFFFF << 16);}while(0)
+#define GPIOE_REG_RESET() do{GPIOE->BSRR |= (0xFFFF << 16); GPIOE->BSRR &= ~(0xFFFF << 16);}while(0)
+#define GPIOF_REG_RESET() do{GPIOF->BSRR |= (0xFFFF << 16); GPIOF->BSRR &= ~(0xFFFF << 16);}while(0)
+
+/* Reset GPIOx peripherials end */
+
 /* Clock Enable Macros for GPIOx peripherials */
 
 #define GPIOA_PERI_CLOCK_ENABLE()   ( RCC->AHBENR |= (1<<17))
@@ -150,7 +161,6 @@ typedef struct{
 #define GPIOD_PERI_CLOCK_ENABLE()   ( RCC->AHBENR |= (1<<20))
 #define GPIOE_PERI_CLOCK_ENABLE()   ( RCC->AHBENR |= (1<<21))
 #define GPIOF_PERI_CLOCK_ENABLE()   ( RCC->AHBENR |= (1<<22))
-#define GPIOG_PERI_CLOCK_ENABLE()   ( RCC->AHBENR |= (1<<23))
 
 /* Clock Enable Macros for GPIOx peripherials end */
 
@@ -197,7 +207,6 @@ typedef struct{
 #define GPIOD_PERI_CLOCK_DISABLE()   ( RCC->AHBENR &= ~(1<<20))
 #define GPIOE_PERI_CLOCK_DISABLE()   ( RCC->AHBENR &= ~(1<<21))
 #define GPIOF_PERI_CLOCK_DISABLE()   ( RCC->AHBENR &= ~(1<<22))
-#define GPIOG_PERI_CLOCK_DISABLE()   ( RCC->AHBENR &= ~(1<<23))
 
 /* Clock Disable Macros for GPIOx peripherials end */
 

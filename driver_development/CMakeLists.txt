@@ -31,7 +31,7 @@ set(cpu_PARAMS
 )
 
 # Sources
-set(sources_SRCS)
+set(sources_SRCS ./drivers/Src/gpio_driver.c)
 
 # Include directories for all compilers
 set(include_DIRS ./drivers/Inc)
@@ -66,6 +66,15 @@ set(linker_OPTS)
 # This will add script generated
 # information to the project
 include("cmake/vscode_generated.cmake")
+
+
+# 1. REMOVE the original main.c from the list of sources.
+#    (You need to provide the correct path as it appears in the generated file)
+list(REMOVE_ITEM sources_SRCS ${CMAKE_CURRENT_SOURCE_DIR}/Src/main.c)
+
+# 2. ADD your new file containing the main function.
+#    (Make sure this path is correct relative to your CMakeLists.txt)
+list(APPEND sources_SRCS ${CMAKE_CURRENT_SOURCE_DIR}/Src/led_push_pull_output.c) # Or whatever the correct path is
 
 # Link directories setup
 # Must be before executable is added
