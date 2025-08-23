@@ -74,7 +74,7 @@ list(REMOVE_ITEM sources_SRCS ${CMAKE_CURRENT_SOURCE_DIR}/Src/main.c)
 
 # 2. ADD your new file containing the main function.
 #    (Make sure this path is correct relative to your CMakeLists.txt)
-list(APPEND sources_SRCS ${CMAKE_CURRENT_SOURCE_DIR}/Src/led_push_pull_output.c) # Or whatever the correct path is
+list(APPEND sources_SRCS ${CMAKE_CURRENT_SOURCE_DIR}/Src/external_button_and_external_led.c) # Or whatever the correct path is
 
 # Link directories setup
 # Must be before executable is added
