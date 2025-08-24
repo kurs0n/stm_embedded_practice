@@ -5,6 +5,20 @@
 
 #define _vo volatile
 
+#define NO_PRIORITY_BITS_IMPLEMENTED 4
+
+#define NVIC_ISER0 ((_vo uint32_t*) 0xE000E100UL)
+#define NVIC_ISER1 ((_vo uint32_t*) 0xE000E104UL)
+#define NVIC_ISER2 ((_vo uint32_t*) 0xE000E108UL)
+#define NVIC_ISER3 ((_vo uint32_t*) 0xE000E10CUL)
+
+#define NVIC_ICER0 ((_vo uint32_t*) 0xE000E180UL)
+#define NVIC_ICER1 ((_vo uint32_t*) 0xE000E184UL)
+#define NVIC_ICER2 ((_vo uint32_t*) 0xE000E188UL)
+#define NVIC_ICER3 ((_vo uint32_t*) 0xE000E18CUL)
+
+#define NVIC_PR_BASE_ADDR ((_vo uint32_t*) 0xE000E400UL)
+
 #define FLASH_BASEADDR 0x08000000U
 #define SRAM_BASEADDR 0x20000000UL
 #define ROM_BASEADDR 0x1FFFD800UL
@@ -38,6 +52,8 @@
 #define GPIOD_BASEADDR (AHB2PERIPH_BASE + 0x0C00UL)
 #define GPIOE_BASEADDR (AHB2PERIPH_BASE + 0x1000UL)
 #define GPIOF_BASEADDR (AHB2PERIPH_BASE + 0x1400UL)
+#define GPIOG_BASEADDR (AHB2PERIPH_BASE + 0x1800UL)
+#define GPIOH_BASEADDR (AHB2PERIPH_BASE + 0x1C00UL)
 
 /* Base addresses of peripherials which are hanging on AHB2 BUS end*/
 
@@ -131,6 +147,25 @@ typedef struct{
     _vo uint32_t CFGR3;  // RCC clock configuration register 3
 } RCC_RegDef_t;
 
+typedef struct {
+    _vo uint32_t CFGR1;        // SYSCFG configuration register 1,          offset: 0x00
+    _vo uint32_t RCR;          // SYSCFG CCM SRAM control register,         offset: 0x04
+    _vo uint32_t EXTICR[4];    // SYSCFG external interrupt configuration,  offset: 0x08-0x14
+    _vo uint32_t CFGR2;        // SYSCFG configuration register 2,          offset: 0x18
+    uint32_t RESERVED[14]; // Reserved,                                
+    _vo uint32_t CFGR3;       // SYSCFG configuration register 3,          offset: 0x50
+    _vo uint32_t CFGR4;      // SYSCFG configuration register 4,          offset: 0x54
+} SYSCFG_RegDef_t;
+
+typedef struct{
+    _vo uint32_t IMR;   // Interrupt mask register
+    _vo uint32_t EMR;   // Event mask register
+    _vo uint32_t RTSR;  // Rising trigger selection register
+    _vo uint32_t FTSR;  // Falling trigger selection register
+    _vo uint32_t SWIER; // Software interrupt event register
+    _vo uint32_t PR;    // Pending register
+} EXTI_RegDef_t;
+
 /* Peripherial Definitions */
 
 #define GPIOA ((GPIO_RegDef_t *)GPIOA_BASEADDR)
@@ -139,8 +174,14 @@ typedef struct{
 #define GPIOD ((GPIO_RegDef_t *)GPIOD_BASEADDR)
 #define GPIOE ((GPIO_RegDef_t *)GPIOE_BASEADDR)
 #define GPIOF ((GPIO_RegDef_t *)GPIOF_BASEADDR)
+#define GPIOG ((GPIO_RegDef_t *)GPIOG_BASEADDR)
+#define GPIOH ((GPIO_RegDef_t *)GPIOH_BASEADDR)
 
 #define RCC ((RCC_RegDef_t *)RCC_BASEADDR)
+
+#define EXTI ((EXTI_RegDef_t *)EXTI_BASEADDR)
+
+#define SYSCFG ((SYSCFG_RegDef_t *)SYSCFG_COMP_OPAMP_BASEADDR)
 
 /* Reset GPIOx peripherials */
 
@@ -208,6 +249,14 @@ typedef struct{
 #define GPIOE_PERI_CLOCK_DISABLE()   ( RCC->AHBENR &= ~(1<<21))
 #define GPIOF_PERI_CLOCK_DISABLE()   ( RCC->AHBENR &= ~(1<<22))
 
+#define GPIO_BASEADDR_TO_CODE(x)    ((x == GPIOA) ? 0 : \
+                                    (x == GPIOB) ? 1 : \
+                                    (x == GPIOC) ? 2 : \
+                                    (x == GPIOD) ? 3 : \
+                                   (x == GPIOE)? 4 : \
+                                    (x == GPIOF) ? 5 : \
+                                    (x == GPIOG) ? 6 : 0) 
+
 /* Clock Disable Macros for GPIOx peripherials end */
 
 /* Clock Disable Macros for I2Cx peripherials */
@@ -245,5 +294,18 @@ typedef struct{
 
 /* Clock Disable Macros for SYSCFG peripherial end*/
 
+
+/*  IRQ numbers
+*/
+
+#define IRQ_NO_EXTI0 6
+#define IRQ_NO_EXTI1 7
+#define IRQ_NO_EXTI2 8
+#define IRQ_NO_EXTI3 9
+#define IRQ_NO_EXTI4 10
+#define IRQ_NO_EXTI5_9 23
+#define IRQ_NO_EXTI10_15 40
+
+/* IRQ numbers end*/
 
 #endif

@@ -28,6 +28,9 @@ GPIO PIN possible modes
 #define GPIO_MODE_OUTPUT 1
 #define GPIO_MODE_ALTERNATE 2
 #define GPIO_MODE_ANALOG 3
+#define GPIO_MODE_IT_FT 4 // interrupt falling edge trigger
+#define GPIO_MODE_IT_RT 5 // interrupt rising edge trigger
+#define GPIO_MODE_IT_RFT 6 // interrupt rising falling edge trigger
 
 /* GPIO PIN possible output types */
 #define GPIO_OP_TYPE_PP 0 // push-pull
@@ -79,7 +82,8 @@ void GPIO_ToggleOutputPin(GPIO_RegDef_t *pGPIOx, uint8_t PinNumber);
 // IRQ ISR Handling
 
 void GPIO_IRQConfig(uint8_t IRQNumber, uint8_t IRQPriority, uint8_t EnOrDis);
-void GPIO_IRQHandling(uint8_t PinNumber);
+void GPIO_IRQHandling(uint8_t PinNumber );
+void GPIO_IRQPriorityConfig(uint8_t IRQNumber,uint8_t IRQPriority);
 
 // generic macros
 
