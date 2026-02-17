@@ -41,8 +41,7 @@ void GPIO_PeriClockControl(GPIO_RegDef_t *pGPIOx, uint8_t EnableOrDisable)
         {
             GPIOA_PERI_CLOCK_DISABLE();
         }
-        else if (
-            pGPIOx == GPIOB)
+        else if (pGPIOx == GPIOB)
         {
             GPIOB_PERI_CLOCK_DISABLE();
         }

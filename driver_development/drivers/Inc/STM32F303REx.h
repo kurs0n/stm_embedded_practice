@@ -107,6 +107,7 @@
 #define SPI1_BASEADDR (APB2PERIPH_BASE + 0x3000UL)
 #define TIM8_BASEADDR (APB2PERIPH_BASE + 0x3400UL)
 #define USART1_BASEADDR (APB2PERIPH_BASE + 0x3800UL)
+#define SPI4_BASEADDR (APB2PERIPH_BASE + 0x3C00UL)
 #define TIM15_BASEADDR (APB2PERIPH_BASE + 0x4000UL)
 #define TIM16_BASEADDR (APB2PERIPH_BASE + 0x4400UL)
 #define TIM17_BASEADDR (APB2PERIPH_BASE + 0x4800UL)
@@ -130,6 +131,19 @@ typedef struct
     _vo uint32_t AFR[2];    // GPIO alternate function registers (AFR[0] and AFR[1])
     _vo uint32_t BRR;    // GPIO port bit reset register
 } GPIO_RegDef_t;
+
+typedef struct 
+{
+    _vo uint32_t CR1; // SPI control register 1
+    _vo uint32_t CR2; // SPI control register 2
+    _vo uint32_t SR; // SPI status register
+    _vo uint32_t DR; // SPI data register
+    _vo uint32_t CRCPR; // SPI CRC polynomial register
+    _vo uint32_t RXCRCR; // SPI Rx CRC register
+    _vo uint32_t TXCRCR; // SPI Tx CRC register 
+    _vo uint32_t I2SCFGR; // I2S configuration register
+    _vo uint32_t I2SPR;
+} SPI_RegDef_t;
 
 typedef struct{
     _vo uint32_t CR; // RCC clock control register
@@ -294,6 +308,19 @@ typedef struct{
 
 /* Clock Disable Macros for SYSCFG peripherial end*/
 
+ 
+/* SPI Base Addresses */
+
+#define SPI1 ((SPI_RegDef_t *)SPI1_BASEADDR)
+#define SPI2 ((SPI_RegDef_t *)SPI2_I2S2_BASEADDR)
+#define SPI3 ((SPI_RegDef_t *)SPI3_I2S3_BASEADDR)
+#define SPI4 ((SPI_RegDef_t *)SPI4_BASEADDR)
+
+/* Reset SPIx peripherials */
+#define SPI1_REG_RESET() do{RCC->APB2RSTR |= (1<<12); RCC->APB2RSTR &= ~(1<<12);}while(0)
+#define SPI2_REG_RESET() do{RCC->APB1RSTR |= (1<<14); RCC->APB1RSTR &= ~(1<<14);}while(0)
+#define SPI3_REG_RESET() do{RCC->APB1RSTR |= (1<<15); RCC->APB1RSTR &= ~(1<<15);}while(0)
+#define SPI4_REG_RESET() do{RCC->APB2RSTR |= (1<<15); RCC->APB2RSTR &= ~(1<<15);}while(0)
 
 /*  IRQ numbers
 */

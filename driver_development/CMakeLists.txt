@@ -31,7 +31,10 @@ set(cpu_PARAMS
 )
 
 # Sources
-set(sources_SRCS ./drivers/Src/gpio_driver.c)
+set(sources_SRCS 
+./drivers/Src/gpio_driver.c 
+./drivers/Src/spi_driver.c
+)
 
 # Include directories for all compilers
 set(include_DIRS ./drivers/Inc)
@@ -74,7 +77,7 @@ list(REMOVE_ITEM sources_SRCS ${CMAKE_CURRENT_SOURCE_DIR}/Src/main.c)
 
 # 2. ADD your new file containing the main function.
 #    (Make sure this path is correct relative to your CMakeLists.txt)
-list(APPEND sources_SRCS ${CMAKE_CURRENT_SOURCE_DIR}/Src/irq_main.c) # Or whatever the correct path is
+list(APPEND sources_SRCS ${CMAKE_CURRENT_SOURCE_DIR}/Src/spi_main.c) # Or whatever the correct path is
 
 # Link directories setup
 # Must be before executable is added
