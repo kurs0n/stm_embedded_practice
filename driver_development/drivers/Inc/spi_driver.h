@@ -31,8 +31,8 @@
 /*
 * @SPI_DFF
 */
-#define SPI_DFF_8BITS 0
-#define SPI_DFF_16BITS 1
+#define SPI_DFF_8BITS  7
+#define SPI_DFF_16BITS 15
 
 /*
 * @SPI_CPOL
