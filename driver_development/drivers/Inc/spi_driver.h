@@ -1,5 +1,5 @@
-#ifndef STM32F303REx_H
-#define STM32F303REx_HL
+#ifndef INC_SPI_DRIVER_H 
+#define INC_SPI_DRIVER_H
 
 #include "STM32F303REx.h"
 
@@ -52,6 +52,12 @@
 #define SPI_SSM_EN 1
 #define SPI_SSM_DI 0
 
+/*
+* @SPI_SSI
+*/
+#define SPI_SSI_EN 1  
+#define SPI_SSM_DI 0
+
 typedef struct 
 {
     uint8_t SPI_DeviceMode;
@@ -61,6 +67,7 @@ typedef struct
     uint8_t SPI_CPOL; 
     uint8_t SPI_CPHA;
     uint8_t SPI_SSM;
+    uint8_t SPI_SSI;
 } SPI_Config_t;
 
 typedef struct 
@@ -73,6 +80,8 @@ void SPI_PeriClockControl(SPI_RegDef_t *pSPIx, uint8_t EnorDi); // peripherial c
  
 void SPI_Init(SPI_Handle_t *pSPIHandle); // init and deinitialization
 void SPI_DeInit(SPI_RegDef_t *pSPIx);
+
+void SPI_Enable(SPI_Handle_t *pSPIHandle);
 
 // read and write data
 void SPI_SendData(SPI_RegDef_t *pSPIx, uint8_t *pTxBuffer, uint32_t Len);

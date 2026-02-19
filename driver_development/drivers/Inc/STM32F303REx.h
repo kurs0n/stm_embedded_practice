@@ -1,5 +1,5 @@
 #ifndef STM32F303REx_H
-#define STM32F303REx_HL
+#define STM32F303REx_H
 
 #include <stdint.h>
 

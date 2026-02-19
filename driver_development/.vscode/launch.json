@@ -8,7 +8,7 @@
             "name": "Build & Debug Microcontroller - ST-Link",
             "cwd": "${workspaceFolder}",
             "type": "cortex-debug",
-            "executable": "${workspaceFolder}/build/debug/driver_development.elf",
+            "executable": "${command:cmake.launchTargetPath}",
             // Let CMake extension decide executable: "${command:cmake.launchTargetPath}"
             // Or fixed file path: "${workspaceFolder}/path/to/filename.elf"
             "request": "launch",
