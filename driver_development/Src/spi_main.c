@@ -45,6 +45,6 @@ int main(void){
     char test[] = "hello world1";
     for(int i=0; i<100000; i++){
         SPI_SendData(spi1.pSPIx,(uint8_t *)test, strlen(test));
-        delay(100000);
+        delay(10000);
     }
 }

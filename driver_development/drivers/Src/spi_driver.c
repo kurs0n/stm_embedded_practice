@@ -76,8 +76,7 @@ void SPI_DeInit(SPI_RegDef_t *pSPIx){
 void SPI_SendData(SPI_RegDef_t *pSPIx, uint8_t *pTxBuffer, uint32_t Len){
     while( Len > 0) {
         while(!(pSPIx->SR & (1 << SPI_SR_TXE)));
-        
-        pSPIx->DR = *pTxBuffer; 
+        *(volatile uint8_t *)&pSPIx->DR = *pTxBuffer;   // this approach work for setting DS to just 8 bits
         Len--;
         pTxBuffer++;
     }
