@@ -55,10 +55,10 @@ void SPI_Init(SPI_Handle_t *pSPIHandle){
     control_register1 |= pSPIHandle->SPIConfig.SPI_CPHA << SPI_CR1_CPHA;
     control_register1 |= pSPIHandle->SPIConfig.SPI_SSM << SPI_CR1_SSM;
     control_register1 |= pSPIHandle->SPIConfig.SPI_BIDIOE << SPI_CR1_BIDIOE;
+    control_register1 |= (pSPIHandle->SPIConfig.SPI_SSI << SPI_CR1_SSI);
     control_register2 |= (pSPIHandle->SPIConfig.SPI_DFF << SPI_CR2_DS);
     control_register2 |= (pSPIHandle->SPIConfig.SPI_SSOE << SPI_CR2_SSOE);
     control_register2 |= (pSPIHandle->SPIConfig.SPI_FRXTH << SPI_CR2_FRXTH); 
-    control_register1 |= (pSPIHandle->SPIConfig.SPI_SSI << SPI_CR1_SSI);
     pSPIHandle->pSPIx->CR2 = control_register2;
     pSPIHandle->pSPIx->CR1 = control_register1;
 }
