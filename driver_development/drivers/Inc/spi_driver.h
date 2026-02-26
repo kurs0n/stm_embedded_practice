@@ -58,6 +58,24 @@
 #define SPI_SSI_EN 1  
 #define SPI_SSM_DI 0
 
+/*
+* @SPI_SSOE
+*/
+#define SPI_SSOE_EN 1
+#define SPI_SSOE_DI 0 
+
+/*
+* @SPI_FRXTH
+*/
+#define SPI_FRXTH_EN 1
+#define SPI_FRXTH_DI 0
+
+/*
+* @SPI_BIDIOE
+*/
+#define SPI_BIDIOE_EN 1 
+#define SPI_BIDIOE_DI 0
+
 typedef struct 
 {
     uint8_t SPI_DeviceMode;
@@ -68,6 +86,9 @@ typedef struct
     uint8_t SPI_CPHA;
     uint8_t SPI_SSM;
     uint8_t SPI_SSI;
+    uint8_t SPI_SSOE;
+    uint8_t SPI_FRXTH;
+    uint8_t SPI_BIDIOE;
 } SPI_Config_t;
 
 typedef struct 
@@ -81,7 +102,7 @@ void SPI_PeriClockControl(SPI_RegDef_t *pSPIx, uint8_t EnorDi); // peripherial c
 void SPI_Init(SPI_Handle_t *pSPIHandle); // init and deinitialization
 void SPI_DeInit(SPI_RegDef_t *pSPIx);
 
-void SPI_Enable(SPI_Handle_t *pSPIHandle);
+void SPI_Enable(SPI_Handle_t *pSPIHandle, uint8_t enOrDis);
 
 // read and write data
 void SPI_SendData(SPI_RegDef_t *pSPIx, uint8_t *pTxBuffer, uint32_t Len);
