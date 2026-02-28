@@ -22,6 +22,7 @@ int main(void){
     GPIO_Init(&gpioA); 
 
     configGPIO.GPIO_PinNumber = GPIO_PIN_NO_7;
+    configGPIO.GPIO_PinPuPdControl = GPIO_NO_PUPD;
     gpioA.GPIO_PinConfig = configGPIO;
     GPIO_Init(&gpioA);
     
@@ -37,25 +38,27 @@ int main(void){
     spi1.pSPIx = SPI1;
     SPI_Config_t configspi1;
     configspi1.SPI_DeviceMode = SPI_DEVICE_MODE_MASTER;
-    configspi1.SPI_BusConfig = SPI_BUS_CONFIG_HD;
-    configspi1.SPI_SclkSpeed = SPI_SCLK_SPEED_DIV256;
+    configspi1.SPI_BusConfig = SPI_BUS_CONFIG_FD;
+    configspi1.SPI_SclkSpeed = SPI_SCLK_SPEED_DIV128;
     configspi1.SPI_DFF = SPI_DFF_8BITS;
     configspi1.SPI_CPOL = SPI_CPOL_LOW;
-    configspi1.SPI_CPHA = SPI_CPHA_LOW;
-    configspi1.SPI_SSM = SPI_SSM_DI; 
+    configspi1.SPI_CPHA = SPI_CPHA_HIGH;
+    configspi1.SPI_SSM = SPI_SSM_DI;
+    configspi1.SPI_SSI = SPI_SSI_DI; 
     configspi1.SPI_SSOE = SPI_SSOE_EN;
     configspi1.SPI_FRXTH = SPI_FRXTH_EN;
-    configspi1.SPI_BIDIOE = SPI_BIDIOE_EN;
+    configspi1.SPI_BIDIOE = SPI_BIDIOE_DI;
 
     spi1.SPIConfig = configspi1; 
     SPI_Init(&spi1);
 
     char test[] = "hello world1";
-    for(int i=0; i<100000; i++){
+    for(;;){
         SPI_Enable(&spi1,ENABLE);
         SPI_SendData(spi1.pSPIx,(uint8_t *)test, strlen(test));
         while(spi1.pSPIx->SR & (1<<SPI_SR_BSY)){}
         SPI_Enable(&spi1,DISABLE);
-        delay(10000);
-    }
+        for(uint32_t i = 0; i < 500000; i++); 
+    }    
+
 }

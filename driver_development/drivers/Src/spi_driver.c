@@ -1,5 +1,10 @@
 #include "spi_driver.h"
 
+void inline __attribute__((always_inline)) delay(uint32_t delay)
+{
+   while(delay--) __asm("");
+}
+
 void SPI_PeriClockControl(SPI_RegDef_t *pSPIx, uint8_t EnorDi){
     switch(EnorDi){
         case ENABLE:{
@@ -50,15 +55,16 @@ void SPI_Init(SPI_Handle_t *pSPIHandle){
     }
     
     control_register1 |= (pSPIHandle->SPIConfig.SPI_SclkSpeed << SPI_CR1_BR);
-// RX_ONLY AND CRC REGISTERS ARE BEING SET IN CODE!!! Critical bug solve it
     control_register1 |= pSPIHandle->SPIConfig.SPI_CPOL << SPI_CR1_CPOL;
     control_register1 |= pSPIHandle->SPIConfig.SPI_CPHA << SPI_CR1_CPHA;
     control_register1 |= pSPIHandle->SPIConfig.SPI_SSM << SPI_CR1_SSM;
     control_register1 |= pSPIHandle->SPIConfig.SPI_BIDIOE << SPI_CR1_BIDIOE;
     control_register1 |= (pSPIHandle->SPIConfig.SPI_SSI << SPI_CR1_SSI);
+
     control_register2 |= (pSPIHandle->SPIConfig.SPI_DFF << SPI_CR2_DS);
     control_register2 |= (pSPIHandle->SPIConfig.SPI_SSOE << SPI_CR2_SSOE);
     control_register2 |= (pSPIHandle->SPIConfig.SPI_FRXTH << SPI_CR2_FRXTH); 
+    
     pSPIHandle->pSPIx->CR2 = control_register2;
     pSPIHandle->pSPIx->CR1 = control_register1;
 }

@@ -56,7 +56,7 @@
 * @SPI_SSI
 */
 #define SPI_SSI_EN 1  
-#define SPI_SSM_DI 0
+#define SPI_SSI_DI 0
 
 /*
 * @SPI_SSOE
