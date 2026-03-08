@@ -14,13 +14,15 @@ int main() {
                       // some reason CPHA_0 is getting only the first byte
 
   gpio_set_function(2, GPIO_FUNC_SPI);
+  gpio_set_function(3, GPIO_FUNC_SPI);
   gpio_set_function(4, GPIO_FUNC_SPI);
   gpio_set_function(5, GPIO_FUNC_SPI);
 
   uint8_t howManyBytes = 0;
   uint8_t buf[12];
-
+  uint8_t buf_to_send[12] = "raspberry pi1";
   while (true) {
+    howManyBytes = 0;
     spi_read_blocking(spi0, 0x00, &howManyBytes, 1);
 
     spi_read_blocking(spi0, 0x00, buf, howManyBytes);
@@ -28,5 +30,8 @@ int main() {
       printf("%02X ", buf[i]);
     }
     printf("\n");
+    if(howManyBytes){
+      spi_write_blocking(spi0, buf_to_send, 12);
+    }
   }
 }

@@ -34,6 +34,11 @@ int main(void) {
   gpioA.GPIO_PinConfig = configGPIO;
   GPIO_Init(&gpioA);
 
+  configGPIO.GPIO_PinNumber = GPIO_PIN_NO_6;
+  configGPIO.GPIO_PinPuPdControl = GPIO_NO_PUPD;
+  gpioA.GPIO_PinConfig = configGPIO;
+  GPIO_Init(&gpioA);
+
   configGPIO.GPIO_PinNumber = GPIO_PIN_NO_7;
   configGPIO.GPIO_PinPuPdControl = GPIO_NO_PUPD;
   gpioA.GPIO_PinConfig = configGPIO;

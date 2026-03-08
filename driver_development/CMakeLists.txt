@@ -77,7 +77,17 @@ list(REMOVE_ITEM sources_SRCS ${CMAKE_CURRENT_SOURCE_DIR}/Src/main.c)
 
 # 2. ADD your new file containing the main function.
 #    (Make sure this path is correct relative to your CMakeLists.txt)
-list(APPEND sources_SRCS ${CMAKE_CURRENT_SOURCE_DIR}/Src/spi_main.c) # Or whatever the correct path is
+if(DEFINED ENV{MAIN_SOURCE})
+    set(MAIN_SOURCE $ENV{MAIN_SOURCE})
+endif()
+
+if(NOT DEFINED MAIN_SOURCE)
+    set(MAIN_SOURCE spi_send_main.c)
+endif()
+
+message(STATUS "Building source: ${MAIN_SOURCE}")
+
+list(APPEND sources_SRCS ${CMAKE_CURRENT_SOURCE_DIR}/Src/${MAIN_SOURCE})
 
 # Link directories setup
 # Must be before executable is added

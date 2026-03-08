@@ -10,53 +10,76 @@
     },
     "tasks": [
         {
-            "type": "shell",
-            "label": "CubeProg: Flash project (SWD)",
-            "command": "STM32_Programmer_CLI",
-            "args": [
-                "--connect",
-                "port=swd",
-                "--download",
-                "${command:cmake.launchTargetPath}",
-                // Let CMake extension decide executable: "${command:cmake.launchTargetPath}",
-                "-hardRst", // Hardware reset - if rst pin is connected
-                "-rst", // Software reset (backup)
-                "--start" // Start execution
-            ],
-            "options": {
-                "cwd": "${workspaceFolder}"
-            },
-            "problemMatcher": []
-        },
-        {
             "label": "Build + Flash",
             "dependsOrder": "sequence",
             "dependsOn": [
+                "CMake: configure with source",
                 "CMake: clean rebuild",
-                "CubeProg: Flash project (SWD)",
-            ]
-        },
-                {
-            "type": "cmake",
-            "label": "CMake: clean rebuild",
-            "command": "cleanRebuild",
-            "targets": [
-                "all"
+                "CubeProg: Flash project (SWD)"
             ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        },
+        {
+            "label": "CMake: configure with source",
+            "type": "shell",
+            "command": "cmake",
+            "args": [
+                "-B",
+                "${workspaceFolder}/build/debug",
+                "-DMAIN_SOURCE=${input:mainSourceFile}"
+            ],
+            "problemMatcher": []
+        },
+        {
+            "label": "CMake: clean rebuild",
+            "type": "cmake",
+            "command": "cleanRebuild",
+            "targets": ["all"],
             "preset": "${command:cmake.activeBuildPresetName}",
             "group": "build",
             "problemMatcher": [],
             "detail": "CMake template clean rebuild task"
         },
         {
+            "label": "CubeProg: Flash project (SWD)",
             "type": "shell",
+            "command": "STM32_Programmer_CLI",
+            "args": [
+                "--connect", "port=swd",
+                "--download", "${command:cmake.launchTargetPath}",
+                "-hardRst",
+                "-rst",
+                "--start"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "problemMatcher": []
+        },
+        {
             "label": "CubeProg: List all available communication interfaces",
+            "type": "shell",
             "command": "STM32_Programmer_CLI",
             "args": ["--list"],
             "options": {
                 "cwd": "${workspaceFolder}"
             },
             "problemMatcher": []
+        }
+    ],
+    "inputs": [
+        {
+            "id": "mainSourceFile",
+            "type": "pickString",
+            "description": "Select source file to compile",
+            "options": [
+                "spi_send_main.c",
+                "spi_send_and_receive_main.c"
+            ],
+            "default": "spi_send_main.c"
         }
     ]
 }

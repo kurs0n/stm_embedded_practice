@@ -1,4 +1,5 @@
-#include "spi_driver.h"
+#include "spi_driver.h" 
+#define DUMMY_BYTES 2
 void inline __attribute__((always_inline)) delay(uint32_t delay) {
   while (delay--)
     __asm("");
@@ -94,9 +95,26 @@ void SPI_SendData(SPI_RegDef_t *pSPIx, uint8_t *pTxBuffer, uint32_t Len) {
       ;
     *(volatile uint8_t *)&pSPIx->DR =
         *pTxBuffer; // this approach work for setting DS to just 8 bits
+    while (!(pSPIx->SR & (1 << SPI_SR_RXNE)))
+      ;
+    volatile uint8_t temp = *(volatile uint8_t *)&pSPIx->DR;
+    (void)temp;
+
     Len--;
     pTxBuffer++;
   }
   while (pSPIx->SR & (1 << SPI_SR_BSY)) {
+  }
+}
+
+void SPI_ReceiveData(SPI_RegDef_t *pSPIx, uint8_t *pRxBuffer, uint32_t Len) {
+  for (int i = 0; i < Len + DUMMY_BYTES; i++) {
+    while (!(pSPIx->SR & (1 << SPI_SR_TXE)))
+      ;
+    *(volatile uint8_t *)&pSPIx->DR = 0xff;
+    while (!(pSPIx->SR & (1 << SPI_SR_RXNE)))
+      ;
+    uint8_t data = *(volatile uint8_t *)&pSPIx->DR;
+    *(pRxBuffer + i) = data;
   }
 }
