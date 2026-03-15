@@ -102,8 +102,8 @@ void SPI_PeriClockControl(SPI_RegDef_t *pSPIx, uint8_t EnorDi); // peripherial c
 void SPI_Init(SPI_Handle_t *pSPIHandle); // init and deinitialization
 void SPI_DeInit(SPI_RegDef_t *pSPIx);
 
-void SPI_Enable(SPI_Handle_t *pSPIHandle, uint8_t enOrDis);
-
+void SPI_Enable(SPI_Handle_t *pSPIHandle);
+void SPI_Disable(SPI_Handle_t *pSPIHandle);
 // read and write data
 void SPI_SendData(SPI_RegDef_t *pSPIx, uint8_t *pTxBuffer, uint32_t Len);
 void SPI_ReceiveData(SPI_RegDef_t *pSPIx, uint8_t *pRxBuffer, uint32_t Len);

@@ -81,7 +81,7 @@ int main(void) {
     
     if (GPIO_ReadFromInputPin(gpioButton.pGPIOx,
                               gpioButton.GPIO_PinConfig.GPIO_PinNumber)) {
-      SPI_Enable(&spi1, ENABLE);
+      SPI_Enable(&spi1);
     switch(commandNumber){
       case CMD_LED_CTRL:{
         uint8_t commandToSend = CMD_LED_CTRL;
@@ -90,13 +90,13 @@ int main(void) {
         uint8_t responseData = 0x00;
         SPI_SendData(spi1.pSPIx, &commandToSend, 1);
         SPI_ReceiveData(spi1.pSPIx, &ackData, 1);
-        SPI_Enable(&spi1, DISABLE);
+        SPI_Disable(&spi1);
         delay(1000);
         if(ackData == ACK){ 
-            SPI_Enable(&spi1, ENABLE);
+            SPI_Enable(&spi1);
             SPI_SendData(spi1.pSPIx, commandArgs, 2);
             SPI_ReceiveData(spi1.pSPIx, &responseData, 1); 
-            SPI_Enable(&spi1, DISABLE);
+            SPI_Disable(&spi1);
         } 
         break;
       }
@@ -118,7 +118,7 @@ int main(void) {
 
       while (spi1.pSPIx->SR & (1 << SPI_SR_BSY)) {
       }
-      SPI_Enable(&spi1, DISABLE);
+      SPI_Disable(&spi1);
       delay(500000);
 
       if(!(commandNumber % 5)){
