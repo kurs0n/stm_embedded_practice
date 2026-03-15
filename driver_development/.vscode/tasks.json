@@ -77,7 +77,8 @@
             "description": "Select source file to compile",
             "options": [
                 "spi_send_main.c",
-                "spi_send_and_receive_main.c"
+                "spi_send_and_receive_main.c",
+                "spi_commands_main.c"
             ],
             "default": "spi_send_main.c"
         }

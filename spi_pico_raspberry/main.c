@@ -2,6 +2,13 @@
 #include "hardware/spi.h"
 #include "pico/stdlib.h"
 #include <stdio.h>
+#define CMD_ID_READ 5
+#define CMD_PRINT 4
+#define CMD_LED_READ 3
+#define CMD_SENSOR_READ 2
+#define CMD_LED_CTRL 1  
+#define ACK 0xF5 
+#define NACK 0xA5 
 
 int main() {
   stdio_init_all();
@@ -18,20 +25,35 @@ int main() {
   gpio_set_function(4, GPIO_FUNC_SPI);
   gpio_set_function(5, GPIO_FUNC_SPI);
 
-  uint8_t howManyBytes = 0;
-  uint8_t buf[12];
-  uint8_t buf_to_send[12] = "raspberry pi1";
   while (true) {
-    howManyBytes = 0;
-    spi_read_blocking(spi0, 0x00, &howManyBytes, 1);
+    uint8_t command = 0x0;
+    uint8_t ackToSend = ACK;
+    spi_read_blocking(spi0, 0x00, &command, 1);
 
-    spi_read_blocking(spi0, 0x00, buf, howManyBytes);
-    for (int i = 0; i < howManyBytes; i++) {
-      printf("%02X ", buf[i]);
-    }
-    printf("\n");
-    if(howManyBytes){
-      spi_write_blocking(spi0, buf_to_send, 12);
+    switch(command){
+      case CMD_LED_CTRL: {
+    
+        spi_write_blocking(spi0, &ackToSend, 1);
+        uint8_t response = 0xff;
+        uint8_t commandArgs[] = {0x0, 0x0}; 
+        spi_read_blocking(spi0, 0x00, commandArgs, 2); 
+        if(commandArgs[0] && commandArgs[1]){
+          spi_write_blocking(spi0, &response,1);
+        } 
+        break;
+      }
+      case CMD_SENSOR_READ: {
+        break;
+      }
+      case CMD_LED_READ: {
+        break;
+      }
+      case CMD_PRINT: {
+        break;
+      }
+      case CMD_ID_READ: {
+        break;
+      }
     }
   }
 }

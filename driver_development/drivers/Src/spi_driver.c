@@ -108,7 +108,7 @@ void SPI_SendData(SPI_RegDef_t *pSPIx, uint8_t *pTxBuffer, uint32_t Len) {
 }
 
 void SPI_ReceiveData(SPI_RegDef_t *pSPIx, uint8_t *pRxBuffer, uint32_t Len) {
-  for (int i = 0; i < Len + DUMMY_BYTES; i++) {
+  for (int i = 0; i < Len ; i++) {
     while (!(pSPIx->SR & (1 << SPI_SR_TXE)))
       ;
     *(volatile uint8_t *)&pSPIx->DR = 0xff;

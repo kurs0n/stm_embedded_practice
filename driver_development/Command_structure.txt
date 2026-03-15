@@ -1,0 +1,5 @@
+1) CMD_LED_CTRL <pin no(1)> <value(1)>
+2) CMD_SENSOR_READ <analog pin number(1)>
+3) CMD_LED_READ <pin no(1)>
+4) CMD_PRINT <len(2)> <message(len)>
+5) CMD_ID_READ
