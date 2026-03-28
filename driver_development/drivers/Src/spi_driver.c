@@ -119,3 +119,40 @@ void SPI_ReceiveData(SPI_RegDef_t *pSPIx, uint8_t *pRxBuffer, uint32_t Len) {
     *(pRxBuffer + i) = data;
   }
 }
+
+void SPI_SendDataIT(SPI_Handle_t *pSPIHandle, uint8_t *pTxBuffer, uint32_t Len) {
+  uint8_t state = pSPIHandle->TxState;
+
+  if(state != SPI_BUSY_IN_TX){
+    // save tx buffer in global variable
+    pSPIHandle->pTxBuffer = pTxBuffer;
+    pSPIHandle->TxLen = Len; 
+    
+    // save state in global variable
+    pSPIHandle->TxState = SPI_BUSY_IN_TX;
+  
+    // enable the txeie control bit in order to generate a interrupt when TXE flag is set
+    pSPIHandle->pSPIx->CR2 |= (ENABLE << SPI_CR2_TXEIE);
+  }
+  
+  return state;
+}
+
+void SPI_ReceiveDataIT(SPI_Handle_t *pSPIHandle, uint8_t *pRxBuffer, uint32_t Len) {
+  uint8_t state = pSPIHandle->RxState;
+  
+  if(state != SPI_BUSY_IN_RX){
+
+    // save rx buffer in global variable
+    pSPIHandle->pRxBuffer = pRxBuffer;
+    pSPIHandle->RxLen = Len;
+
+    // save state in global variable
+    pSPIHandle->RxState = SPI_BUSY_IN_RX;
+    
+    // enable rxneie control bit in order to generate a interrupt when RXNE flag is set
+    pSPIHandle->pSPIx->CR2 |= (ENABLE << SPI_CR2_RXNEIE); 
+  }
+
+  return state;
+}

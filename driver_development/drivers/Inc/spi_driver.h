@@ -94,7 +94,13 @@ typedef struct
 typedef struct 
 {
     SPI_RegDef_t *pSPIx; 
-    SPI_Config_t SPIConfig;
+    SPI_Config_t SPIConfig; 
+    uint8_t *pTxBuffer; 
+    uint8_t *pRxBuffer;
+    uint32_t TxLen;
+    uint32_t RxLen;
+    uint8_t TxState;
+    uint8_t RxState;
 } SPI_Handle_t;
 
 void SPI_PeriClockControl(SPI_RegDef_t *pSPIx, uint8_t EnorDi); // peripherial clock setup
@@ -113,6 +119,16 @@ void SPI_ReceiveData(SPI_RegDef_t *pSPIx, uint8_t *pRxBuffer, uint32_t Len);
 void SPI_IRQConfig(uint8_t IRQNumber, uint8_t IRQPriority, uint8_t EnOrDis);
 void SPI_IRQHandling(SPI_Handle_t *pSPIHandle);
 void SPI_IRQPriorityConfig(uint8_t IRQNumber, uint8_t IRQPriority);
+
+void SPI_SendDataIT(SPI_Handle_t *pSPIHandle, uint8_t *pTxBuffer, uint32_t Len);
+void SPI_ReceiveDataIT(SPI_Handle_t *pSPIHandle, uint8_t *pRxBuffer, uint32_t Len);
+
+// SPI specific macros 
+#define SPI_READY 0
+#define SPI_BUSY_IN_RX 1
+#define SPI_BUSY_IN_TX 2
+
+// generic macros
 
 #define ENABLE 1
 #define DISABLE 0

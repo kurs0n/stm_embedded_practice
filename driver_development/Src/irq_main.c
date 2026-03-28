@@ -52,7 +52,7 @@ int main(void)
     memset(&gpioButton,0,sizeof(gpioButton));
     config_gpio_onboard_led(&gpioLed);
     config_gpio_onboard_button(&gpioButton);
-    GPIO_IRQConfig(IRQ_NO_EXTI10_15,5, ENABLE);
+    GPIO_IRQConfig(IRQ_NO_EXTI10_15, 5, ENABLE);
 
     /* Loop forever */
     while(1){
