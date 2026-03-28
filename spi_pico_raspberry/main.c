@@ -32,26 +32,51 @@ int main() {
 
     switch(command){
       case CMD_LED_CTRL: {
-    
         spi_write_blocking(spi0, &ackToSend, 1);
         uint8_t response = 0xff;
         uint8_t commandArgs[] = {0x0, 0x0}; 
         spi_read_blocking(spi0, 0x00, commandArgs, 2); 
         if(commandArgs[0] && commandArgs[1]){
-          spi_write_blocking(spi0, &response,1);
+          spi_write_blocking(spi0, &response, 1);
         } 
         break;
       }
       case CMD_SENSOR_READ: {
+        spi_write_blocking(spi0, &ackToSend, 1);
+        uint8_t response = 0x12;
+        uint8_t commandArg = 0x00;
+        spi_read_blocking(spi0, 0x00, &commandArg, 1);
+        if(commandArg){
+          spi_write_blocking(spi0, &response, 1);
+        }
         break;
       }
       case CMD_LED_READ: {
+        spi_write_blocking(spi0, &ackToSend, 1);
+        uint8_t ledResponse = 0x32;
+        uint8_t commandArg = 0x00;
+        spi_read_blocking(spi0, 0x00, &commandArg, 1);
+        if(commandArg){
+          spi_write_blocking(spi0, &ledResponse, 1);
+        }
         break;
       }
       case CMD_PRINT: {
+        spi_write_blocking(spi0, &ackToSend, 1);
+        uint8_t messageLen = 0x00;
+        char* message;
+        uint8_t printAck = 0x10;
+        spi_read_blocking(spi0, 0x00, &messageLen, 1);
+        if(messageLen){
+          spi_read_blocking(spi0, 0x00, (uint8_t *)message, messageLen);
+          spi_write_blocking(spi0, &printAck, 1);
+        }
         break;
       }
       case CMD_ID_READ: {
+        spi_write_blocking(spi0, &ackToSend, 1);
+        uint8_t responseData = 0x1;
+        spi_write_blocking(spi0, &responseData,1); 
         break;
       }
     }

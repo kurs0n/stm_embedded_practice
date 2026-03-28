@@ -101,18 +101,73 @@ int main(void) {
         break;
       }
       case CMD_SENSOR_READ: {
+        uint8_t commandToSend = CMD_SENSOR_READ;
+        uint8_t commandArg = 0x1;
+        uint8_t ackData = 0x00; 
+        uint8_t responseData = 0x00; 
+        SPI_SendData(spi1.pSPIx, &commandToSend, 1); 
+        SPI_ReceiveData(spi1.pSPIx, &ackData, 1);
+        SPI_Disable(&spi1);
+        delay(1000);
+        if (ackData == ACK) {
+          SPI_Enable(&spi1);
+          SPI_SendData(spi1.pSPIx, &commandArg, 1);
+          SPI_ReceiveData(spi1.pSPIx, &responseData, 1);
+          SPI_Disable(&spi1);
+        }
         break;    
       }
       case CMD_LED_READ: {
+        uint8_t commandToSend = CMD_LED_READ;
+        uint8_t commandArg = 0x1;
+        uint8_t ackData = 0x00; 
+        uint8_t responseData = 0x00; 
+        SPI_SendData(spi1.pSPIx, &commandToSend, 1); 
+        SPI_ReceiveData(spi1.pSPIx, &ackData, 1);
+        SPI_Disable(&spi1);
+        delay(1000);
+        if (ackData == ACK) {
+          SPI_Enable(&spi1);
+          SPI_SendData(spi1.pSPIx, &commandArg, 1);
+          SPI_ReceiveData(spi1.pSPIx, &responseData, 1);
+          SPI_Disable(&spi1);
+        }
         break;
       }
       case CMD_PRINT:{
+        uint8_t commandToSend = CMD_PRINT;
+        const char *message = "Hello From STM32";
+        uint8_t messageLen = strlen(message);
+        uint8_t ackData = 0x00; 
+        uint8_t responseData = 0x00; 
+        SPI_SendData(spi1.pSPIx, &commandToSend, 1); 
+        SPI_ReceiveData(spi1.pSPIx, &ackData, 1);
+        SPI_Disable(&spi1);
+        delay(1000);
+        if (ackData == ACK) {
+          SPI_Enable(&spi1);
+          SPI_SendData(spi1.pSPIx, &messageLen, 1);
+          SPI_SendData(spi1.pSPIx, (uint8_t *)message, messageLen);
+          SPI_ReceiveData(spi1.pSPIx, &responseData, 1);
+          SPI_Disable(&spi1);
+        }
         break;
       }
       case CMD_ID_READ:{
+        uint8_t commandToSend = CMD_ID_READ;
+        uint8_t ackData = 0x00; 
+        uint8_t responseData = 0x00; 
+        SPI_SendData(spi1.pSPIx, &commandToSend, 1); 
+        SPI_ReceiveData(spi1.pSPIx, &ackData, 1);
+        SPI_Disable(&spi1);
+        delay(1000);
+        if (ackData == ACK) {
+          SPI_Enable(&spi1);
+          SPI_ReceiveData(spi1.pSPIx, &responseData, 1);
+          SPI_Disable(&spi1);
+        }
         break;
       }
-    
     }
   
 
