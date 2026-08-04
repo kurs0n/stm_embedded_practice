@@ -104,7 +104,7 @@ typedef struct
 } SPI_Handle_t;
 
 void SPI_PeriClockControl(SPI_RegDef_t *pSPIx, uint8_t EnorDi); // peripherial clock setup
- 
+
 void SPI_Init(SPI_Handle_t *pSPIHandle); // init and deinitialization
 void SPI_DeInit(SPI_RegDef_t *pSPIx);
 
@@ -114,19 +114,30 @@ void SPI_Disable(SPI_Handle_t *pSPIHandle);
 void SPI_SendData(SPI_RegDef_t *pSPIx, uint8_t *pTxBuffer, uint32_t Len);
 void SPI_ReceiveData(SPI_RegDef_t *pSPIx, uint8_t *pRxBuffer, uint32_t Len);
 
-
 // IRQ ISR Handling
 void SPI_IRQConfig(uint8_t IRQNumber, uint8_t IRQPriority, uint8_t EnOrDis);
 void SPI_IRQHandling(SPI_Handle_t *pSPIHandle);
 void SPI_IRQPriorityConfig(uint8_t IRQNumber, uint8_t IRQPriority);
 
-void SPI_SendDataIT(SPI_Handle_t *pSPIHandle, uint8_t *pTxBuffer, uint32_t Len);
-void SPI_ReceiveDataIT(SPI_Handle_t *pSPIHandle, uint8_t *pRxBuffer, uint32_t Len);
+uint8_t SPI_SendDataIT(SPI_Handle_t *pSPIHandle, uint8_t *pTxBuffer, uint32_t Len);
+uint8_t SPI_ReceiveDataIT(SPI_Handle_t *pSPIHandle, uint8_t *pRxBuffer, uint32_t Len);
+
+void SPI_ClearOVRFlag(SPI_Handle_t *pSPIHandle);
+void SPI_CloseTransmission(SPI_Handle_t *pSPIHandle);
+void SPI_CloseReception(SPI_Handle_t *pSPIHandle);
+
+// APPLICATION CALLBACK
+void SPI_ApplicationEventCallback(SPI_Handle_t *pSPIHandle, uint8_t AppEv);
 
 // SPI specific macros 
 #define SPI_READY 0
 #define SPI_BUSY_IN_RX 1
 #define SPI_BUSY_IN_TX 2
+
+// SPI possible application events (for interrupts)
+#define SPI_EVENT_TX_CMPLT 1
+#define SPI_EVENT_RX_CMPLT 2
+#define SPI_EVENT_OVR_CMPLT 3
 
 // generic macros
 

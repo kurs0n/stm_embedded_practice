@@ -1,9 +1,14 @@
 #include "spi_driver.h" 
-#define DUMMY_BYTES 2
 void inline __attribute__((always_inline)) delay(uint32_t delay) {
   while (delay--)
     __asm("");
 }
+
+static void spi_txe_interrupt_handler(SPI_Handle_t *pSPIHandle);
+
+static void spi_rxne_interrupt_handler(SPI_Handle_t *pSPIHandle);
+
+static void spi_ovr_interrupt_handler(SPI_Handle_t *pSPIHandle);
 
 void SPI_PeriClockControl(SPI_RegDef_t *pSPIx, uint8_t EnorDi) {
   switch (EnorDi) {
@@ -92,8 +97,7 @@ void SPI_DeInit(SPI_RegDef_t *pSPIx) {
 
 void SPI_SendData(SPI_RegDef_t *pSPIx, uint8_t *pTxBuffer, uint32_t Len) {
   while (Len > 0) {
-    while (!(pSPIx->SR & (1 << SPI_SR_TXE)))
-      ;
+    while (!(pSPIx->SR & (1 << SPI_SR_TXE)));
     *(volatile uint8_t *)&pSPIx->DR =
         *pTxBuffer; // this approach work for setting DS to just 8 bits
     while (!(pSPIx->SR & (1 << SPI_SR_RXNE)))
@@ -113,14 +117,13 @@ void SPI_ReceiveData(SPI_RegDef_t *pSPIx, uint8_t *pRxBuffer, uint32_t Len) {
     while (!(pSPIx->SR & (1 << SPI_SR_TXE)))
       ;
     *(volatile uint8_t *)&pSPIx->DR = 0xff;
-    while (!(pSPIx->SR & (1 << SPI_SR_RXNE)))
-      ;
+    while (!(pSPIx->SR & (1 << SPI_SR_RXNE)));
     uint8_t data = *(volatile uint8_t *)&pSPIx->DR;
     *(pRxBuffer + i) = data;
   }
 }
 
-void SPI_SendDataIT(SPI_Handle_t *pSPIHandle, uint8_t *pTxBuffer, uint32_t Len) {
+uint8_t SPI_SendDataIT(SPI_Handle_t *pSPIHandle, uint8_t *pTxBuffer, uint32_t Len) {
   uint8_t state = pSPIHandle->TxState;
 
   if(state != SPI_BUSY_IN_TX){
@@ -138,7 +141,7 @@ void SPI_SendDataIT(SPI_Handle_t *pSPIHandle, uint8_t *pTxBuffer, uint32_t Len) 
   return state;
 }
 
-void SPI_ReceiveDataIT(SPI_Handle_t *pSPIHandle, uint8_t *pRxBuffer, uint32_t Len) {
+uint8_t SPI_ReceiveDataIT(SPI_Handle_t *pSPIHandle, uint8_t *pRxBuffer, uint32_t Len) {
   uint8_t state = pSPIHandle->RxState;
   
   if(state != SPI_BUSY_IN_RX){
@@ -155,4 +158,94 @@ void SPI_ReceiveDataIT(SPI_Handle_t *pSPIHandle, uint8_t *pRxBuffer, uint32_t Le
   }
 
   return state;
+}
+
+void SPI_IRQHandling(SPI_Handle_t *pSPIHandle){
+  uint8_t temp1, temp2;
+
+  // check for TXE
+  temp1 = pSPIHandle->pSPIx->SR & (1 << SPI_SR_TXE);
+  temp2 = pSPIHandle->pSPIx->CR2 & (1 << SPI_CR2_TXEIE);
+  if (temp1 && temp2){
+    spi_txe_interrupt_handler(pSPIHandle);
+    // handler of TXE
+  }
+  
+  // check for RXNE
+  temp1 = pSPIHandle->pSPIx->SR & (1 << SPI_SR_RXNE);
+  temp2 = pSPIHandle->pSPIx->CR2 & (1 << SPI_CR2_RXNEIE);
+  if (temp1 && temp2){
+    spi_rxne_interrupt_handler(pSPIHandle);
+    // handler for RXNE
+  }
+
+  // check for overrun flag
+  temp1 = pSPIHandle->pSPIx->SR & (1 << SPI_SR_OVR);
+  temp2 = pSPIHandle->pSPIx->CR2 & (1 << SPI_CR2_ERRIE);
+  if(temp1 && temp2){
+    spi_ovr_interrupt_handler(pSPIHandle);
+    // handler for ERROR
+  }
+}
+
+static void spi_txe_interrupt_handler(SPI_Handle_t *pSPIHandle){
+  // send data
+  *(volatile uint8_t *)&pSPIHandle->pSPIx->DR = *pSPIHandle->pTxBuffer;
+  pSPIHandle->TxLen--;
+  pSPIHandle->pTxBuffer++;
+
+
+  if( !pSPIHandle->TxLen ){
+   // if txLen is 0
+   // TX is over
+   // prevent interrupts from setting up txe flag
+   SPI_CloseTransmission(pSPIHandle); 
+   // callback?
+  }
+}
+
+static void spi_rxne_interrupt_handler(SPI_Handle_t *pSPIHandle){
+  *pSPIHandle->pRxBuffer = *(volatile uint8_t *)&pSPIHandle->pSPIx->DR;
+  pSPIHandle->RxLen--;
+  pSPIHandle->pRxBuffer++;
+  
+ if( !pSPIHandle->RxLen ){
+  SPI_CloseReception(pSPIHandle);
+  // callback
+ } 
+}
+
+static void spi_ovr_interrupt_handler(SPI_Handle_t *pSPIHandle){
+  SPI_ClearOVRFlag(pSPIHandle);
+
+  // inform application by callback 
+}
+
+void SPI_CloseTransmission(SPI_Handle_t *pSPIHandle){
+  pSPIHandle->pSPIx->CR2 = ~(1 << SPI_CR2_TXEIE);
+  pSPIHandle->pTxBuffer = NULL;
+  pSPIHandle->TxLen = 0;
+  pSPIHandle->TxState = SPI_READY;
+}
+
+void SPI_CloseReception(SPI_Handle_t *pSPIHandle){
+  pSPIHandle->pSPIx->CR2 = ~(1 << SPI_CR2_RXNEIE);
+  pSPIHandle->pRxBuffer = NULL; 
+  pSPIHandle->RxLen = 0;
+  pSPIHandle->RxState = SPI_READY;
+}
+
+void SPI_ClearOVRFlag(SPI_Handle_t *pSPIHandle){
+  uint8_t temp;
+  if(pSPIHandle->TxState != SPI_BUSY_IN_TX){
+    temp = pSPIHandle->pSPIx->DR;
+    temp = pSPIHandle->pSPIx->SR;
+  }
+  (void)temp;
+}
+
+
+__attribute__((weak)) void SPI_ApplicationEventCallback(SPI_Handle_t *pSPIHandle, uint8_t AppEv)
+{
+
 }

@@ -2,7 +2,7 @@
 #define STM32F303REx_H
 
 #include <stdint.h>
-
+#include <stddef.h>
 #define _vo volatile
 
 #define NO_PRIORITY_BITS_IMPLEMENTED 4

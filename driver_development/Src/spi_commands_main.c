@@ -3,8 +3,7 @@
 #include <stdint.h>
 #include <string.h>
 int delay(int delayTime ) {
-  for (volatile uint32_t i = 0; i < delayTime; i++)
-    ;
+  for (volatile uint32_t i = 0; i < delayTime; i++);
 }
 #define CMD_ID_READ 5
 #define CMD_PRINT 4
