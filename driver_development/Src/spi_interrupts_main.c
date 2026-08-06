@@ -14,14 +14,27 @@ void config_gpio_interrupt_slave(GPIO_Handle_t *pGPIOHandle){
     GPIO_Init(pGPIOHandle);
 }
 
+void config_spi_interrupt_mode(SPI_Handle_t *spiHandle){
+    
+}
+
+SPI_Handle_t SPI1Handle;
+
 int main(void){
+    //config gpio interrupt
     GPIO_Handle_t gpio_interrupt_slave;
     memset(&gpio_interrupt_slave, 0, sizeof(gpio_interrupt_slave));     
     config_gpio_interrupt_slave(&gpio_interrupt_slave);
     GPIO_IRQConfig(IRQ_NO_EXTI3, 5, ENABLE);
+
+    //configure spi interrupts
+    memset(&SPI1Handle, 0, sizeof(SPI1Handle));
+
+
     while(1){
         while(slave_interruption){
             __asm("nop");
+            slave_interruption = 0;
         }
     }
 }
@@ -30,4 +43,8 @@ int main(void){
 void EXTI3_IRQHandler(void){ 
     slave_interruption = 1;
     GPIO_IRQHandling(GPIO_PIN_NO_3);
+}
+
+void SPI1_IRQHandler(void){
+    // handle
 }

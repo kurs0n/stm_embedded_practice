@@ -24,7 +24,6 @@ int main() {
   gpio_set_function(2, GPIO_FUNC_SPI);
   gpio_set_function(3, GPIO_FUNC_SPI);
   gpio_set_function(4, GPIO_FUNC_SPI);
-  gpio_set_function(5, GPIO_FUNC_SPI);
 
   while (true) {
     uint8_t command = 0x0;
