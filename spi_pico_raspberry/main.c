@@ -31,15 +31,17 @@ int main(){
   const char test_data[] = "hello worlddd";
   const int len = strlen(test_data);
   int i = 0;
-  while(i<len){
+  while(true){
     gpio_put(GPIO_OUT_PIN, 1);
-    sleep_ms(500);// not sure if this needs to be there.
-    
-    spi_write_blocking(spi0, (uint8_t *)test_data[i], 1);
+    sleep_ms(500);
+    //spi_write_blocking(spi0, (uint8_t *)&test_data[i], 1);
 
     gpio_put(GPIO_OUT_PIN, 0);
     sleep_ms(500);
-    i++;
+    if (i >= len) {
+        i = 0;
+    }
   }
+
  
 }
