@@ -1,0 +1,5 @@
+Czym właściwie jest SSM i SSI?
+Bity SSM (Software Slave Management) i SSI (Internal Slave Select) służą do zarządzania pinem NSS (Chip Select), ale tylko wewnątrz samego STM32. One nie generują żadnego sygnału na zewnątrz dla drugiego urządzenia!
+SSM = 1: Oznacza, że odłączasz fizyczny pin NSS od sprzętu SPI w STM32. Od tego momentu sprzęt SPI w STM32 nie patrzy na to, co się dzieje na nóżce procesora, ale patrzy na bit SSI w rejestrze.
+SSI = 1: Mówi wewnętrznej logice STM32: "Hej, traktuj to tak, jakby pin NSS był w stanie wysokim". (Dzięki temu STM32 może poprawnie działać jako Master i nie wywala błędu "Mode Fault").
+Problem: Skoro odłączyłeś fizyczny pin (SSM = 1), to na tym pinie nic się nie zmienia. STM32 jest "szczęśliwy", ale Raspberry Pi Pico nadal czeka na fizyczny spadek napięcia (High -> Low) na swoim pinie CS, którego STM32 nie wysyła.

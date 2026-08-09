@@ -86,9 +86,11 @@ int main(void){
     GPIO_Init(&slave_CSS_pin);
     GPIO_WriteToOutputPin(slave_CSS_pin.pGPIOx, GPIO_PIN_NO_5, 1);
     //configure spi interrupts
+    
     SPI_PeriClockControl(SPI1, ENABLE);
     memset(&SPI1Handle, 0, sizeof(SPI1Handle));
     config_spi_interrupt_mode(&SPI1Handle);
+    
     // nvic setup
     GPIO_IRQConfig(IRQ_NO_SPI1, 5, ENABLE);
     // end nvic setup
