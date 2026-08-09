@@ -1,0 +1,2 @@
+# overall notes about GPIO
+

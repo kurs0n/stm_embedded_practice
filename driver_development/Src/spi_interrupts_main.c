@@ -8,7 +8,7 @@ volatile uint8_t slave_interruption = 0;
 void config_gpio_interrupt_slave(GPIO_Handle_t *pGPIOHandle){
     pGPIOHandle->pGPIOx = GPIOC;
     pGPIOHandle->GPIO_PinConfig.GPIO_PinNumber=GPIO_PIN_NO_3;
-    pGPIOHandle->GPIO_PinConfig.GPIO_PinMode=GPIO_MODE_IT_RT;
+    pGPIOHandle->GPIO_PinConfig.GPIO_PinMode=GPIO_MODE_IT_RT; // gpio mode interrupt for rising trigger
     pGPIOHandle->GPIO_PinConfig.GPIO_PinSpeed=GPIO_SPEED_HIGH;
     pGPIOHandle->GPIO_PinConfig.GPIO_PinPuPdControl = GPIO_PD;
 
@@ -22,7 +22,7 @@ void config_gpio_into_spi(GPIO_Handle_t *gpioHandle, GPIO_PinConfig_t *configGPI
     GPIO_Init(gpioHandle);
 }
 
-void config_spi_interrupt_mode(SPI_Handle_t *spiHandle){
+void config_spi(SPI_Handle_t *spiHandle){
     spiHandle->pSPIx = SPI1;
     SPI_Config_t config_spi1;
     config_spi1.SPI_DeviceMode = SPI_DEVICE_MODE_MASTER;
@@ -89,7 +89,7 @@ int main(void){
     
     SPI_PeriClockControl(SPI1, ENABLE);
     memset(&SPI1Handle, 0, sizeof(SPI1Handle));
-    config_spi_interrupt_mode(&SPI1Handle);
+    config_spi(&SPI1Handle);
     
     // nvic setup
     GPIO_IRQConfig(IRQ_NO_SPI1, 5, ENABLE);

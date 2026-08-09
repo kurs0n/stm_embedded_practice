@@ -1,3 +1,4 @@
+// basic code for testing spi interrupts code my approach for stm32 
 #include "hardware/gpio.h"
 #include "hardware/spi.h"
 #include "pico/stdlib.h"
@@ -33,7 +34,7 @@ int main(){
   int i = 0;
   while(true){
     gpio_put(GPIO_OUT_PIN, 1);
-    spi_write_blocking(spi0, (uint8_t *)&test_data[i], 1);
+    spi_write_blocking(spi0, (uint8_t *)&test_data[i], 1); 
     i++;
     sleep_ms(500);
     gpio_put(GPIO_OUT_PIN, 0);
