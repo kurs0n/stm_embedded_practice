@@ -1,6 +1,7 @@
 #include "gpio_driver.h"
 #include "spi_driver.h"
 #include "string.h"
+#include <string.h>
 
 volatile uint8_t slave_interruption = 0;
 
@@ -10,6 +11,7 @@ void config_gpio_interrupt_slave(GPIO_Handle_t *pGPIOHandle){
     pGPIOHandle->GPIO_PinConfig.GPIO_PinMode=GPIO_MODE_IT_RT;
     pGPIOHandle->GPIO_PinConfig.GPIO_PinSpeed=GPIO_SPEED_HIGH;
     pGPIOHandle->GPIO_PinConfig.GPIO_PinPuPdControl = GPIO_PD;
+
     GPIO_PeriClockControl(GPIOC,ENABLE);
     GPIO_Init(pGPIOHandle);
 }
@@ -72,7 +74,17 @@ int main(void){
     gpioA.GPIO_PinConfig = configGPIO;
     config_gpio_into_spi(&gpioA, &configGPIO);
 
-
+    // RASPBERRY PI PICO NEEDS TO HAVE CSS pin configured. It can be done by regular GPIO pin.
+    GPIO_Handle_t slave_CSS_pin; // PC5
+    memset(&slave_CSS_pin, 0, sizeof(slave_CSS_pin));
+    slave_CSS_pin.pGPIOx = GPIOC;
+    slave_CSS_pin.GPIO_PinConfig.GPIO_PinNumber=GPIO_PIN_NO_5;
+    slave_CSS_pin.GPIO_PinConfig.GPIO_PinMode=GPIO_MODE_OUTPUT;
+    slave_CSS_pin.GPIO_PinConfig.GPIO_PinSpeed=GPIO_SPEED_HIGH;
+    slave_CSS_pin.GPIO_PinConfig.GPIO_PinOPType=GPIO_OP_TYPE_PP;
+    slave_CSS_pin.GPIO_PinConfig.GPIO_PinPuPdControl = GPIO_PU;
+    GPIO_Init(&slave_CSS_pin);
+    GPIO_WriteToOutputPin(slave_CSS_pin.pGPIOx, GPIO_PIN_NO_5, 1);
     //configure spi interrupts
     SPI_PeriClockControl(SPI1, ENABLE);
     memset(&SPI1Handle, 0, sizeof(SPI1Handle));
@@ -80,15 +92,18 @@ int main(void){
     // nvic setup
     GPIO_IRQConfig(IRQ_NO_SPI1, 5, ENABLE);
     // end nvic setup
+
     SPI_Enable(&SPI1Handle);
 
     int i=0;
 
     while(1){
         while(slave_interruption){
-            char byte = 0x00;
+            char byte = 0x00;    
+            GPIO_WriteToOutputPin(slave_CSS_pin.pGPIOx, GPIO_PIN_NO_5, 0);
             while( SPI_SendDataIT(&SPI1Handle, &dummyByte, 1) == SPI_BUSY_IN_TX);
             while( SPI_ReceiveDataIT(&SPI1Handle, (uint8_t *)&byte, 1) == SPI_BUSY_IN_RX);
+            GPIO_WriteToOutputPin(slave_CSS_pin.pGPIOx, GPIO_PIN_NO_5, 1);
             buffer[i] = byte;
             i++;
             slave_interruption = 0;

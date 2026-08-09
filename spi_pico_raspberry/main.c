@@ -33,9 +33,9 @@ int main(){
   int i = 0;
   while(true){
     gpio_put(GPIO_OUT_PIN, 1);
+    spi_write_blocking(spi0, (uint8_t *)&test_data[i], 1);
+    i++;
     sleep_ms(500);
-    //spi_write_blocking(spi0, (uint8_t *)&test_data[i], 1);
-
     gpio_put(GPIO_OUT_PIN, 0);
     sleep_ms(500);
     if (i >= len) {
@@ -43,5 +43,4 @@ int main(){
     }
   }
 
- 
 }
