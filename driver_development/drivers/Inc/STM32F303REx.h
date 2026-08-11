@@ -145,6 +145,21 @@ typedef struct
     _vo uint32_t I2SPR;
 } SPI_RegDef_t;
 
+typedef struct 
+{
+    _vo uint32_t CR1;
+    _vo uint32_t CR2;
+    _vo uint32_t OAR1;
+    _vo uint32_t OAR2;
+    _vo uint32_t TIMINGR;
+    _vo uint32_t TIMEOUTR;
+    _vo uint32_t ISR;
+    _vo uint32_t ICR;
+    _vo uint32_t PECR;
+    _vo uint32_t RXDR;
+    _vo uint32_t TXDR;
+} I2C_RegDef_t;
+
 typedef struct{
     _vo uint32_t CR; // RCC clock control register
     _vo uint32_t CFGR; // RCC clock configuration register
@@ -364,6 +379,56 @@ typedef struct{
 #define SPI2_REG_RESET() do{RCC->APB1RSTR |= (1<<14); RCC->APB1RSTR &= ~(1<<14);}while(0)
 #define SPI3_REG_RESET() do{RCC->APB1RSTR |= (1<<15); RCC->APB1RSTR &= ~(1<<15);}while(0)
 #define SPI4_REG_RESET() do{RCC->APB2RSTR |= (1<<15); RCC->APB2RSTR &= ~(1<<15);}while(0)
+
+// I2C Bit positions of I2C peripherial
+// Control Register 1
+#define I2C_CR1_PE 0
+#define I2C_CR1_TXIE 1 
+#define I2C_CR1_RXIE 2
+#define I2C_CR1_ADDRIE 3
+#define I2C_CR1_NACKIE 4
+#define I2C_CR1_STOPIE 5
+#define I2C_CR1_TCIE 6
+#define I2C_CR1_ERRIE 7
+#define I2C_CR1_DNF 8
+#define I2C_CR1_ANFOFF 12
+#define I2C_CR1_TXDMAEN 14
+#define I2C_CR1_RXDMAEN 15
+#define I2C_CR1_SBC 16
+#define I2C_CR1_NOSTRETCH 17
+#define I2C_CR1_WUPEN 18
+#define I2C_CR1_GCEN 19
+#define I2C_CR1_SMBHEN 20
+#define I2C_CR1_SMBDEN 21
+#define I2C_CR1_ALERTEN 22
+#define I2C_CR1_PECEN 23
+
+// Control register 2
+#define I2C_CR2_SAAD 0
+#define I2C_CR2_RD_WRN 10
+#define I2C_CR2_ADD0 11
+#define I2C_CR2_HEAD10R 12
+#define I2C_CR2_START 13
+#define I2C_CR2_STOP 14
+#define I2C_CR2_NACK 15
+#define I2C_CR2_NBYTES 16
+#define I2C_CR2_RELOAD 24
+#define I2C_CR2_AUTOEND 25
+#define I2C_CR2_PECBYTE 26
+
+// Timing register 
+#define I2C_TIMINGR_SCLL 0
+#define I2C_TIMINGR_SCLH 8
+#define I2C_TIMINGR_SDAEL 16
+#define I2C_TIMINGR_SCLDEL 20
+#define I2C_TIMINGR_PRESC 28
+
+/* I2C Base Addresses */
+#define I2C1 ((I2C_RegDef_t *) I2C1_BASEADDR)
+#define I2C2 ((I2C_RegDef_t *) I2C2_BASEADDR)
+
+/* Reset I2Cx peripherials */
+
 
 /*  IRQ numbers
 */
