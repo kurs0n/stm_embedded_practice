@@ -13,3 +13,6 @@ first byte is for address and read/write bit (if the master wants to write to sl
 next bytes are just data bytes (from slave or from master it depends on read/write bit) (each byte needs to be acknowledged)
 
 after successful transmission with all acknowledged bytes there is a end signal produced by master
+
+
+clock stretching: (write notes here)
