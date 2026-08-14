@@ -5,18 +5,22 @@
 
 typedef struct // for nucleo f3 I2C interface was completely redesigned comparing to f4, f1 (need to write it differently)
 {
-    uint32_t I2C_SCLSpeed;
-    uint8_t I2C_DeviceAddress;
+    uint32_t I2C_SCLSpeed; // 0x2000090E -> standard mode 100kHz for HSI 8MHz
+    uint8_t I2C_SlaveDeviceAddress;
+    uint8_t I2C_AddressingMode; // 7-bit -> 0, 10-bit -> 1
 } I2C_Config_t;
 
 typedef struct
 {
     I2C_RegDef_t *pI2Cx;
     I2C_Config_t I2C_Config;
+    uint8_t *pTxBuffer;
+    uint32_t TxLen;
 } I2C_Handle_t;
 
 void I2C_PeriClockControl(I2C_RegDef_t *pI2Cx, uint8_t EnorDi);
 
 void I2C_Init(I2C_Handle_t* pI2CHandle);
 
+void I2C_MasterSendData(I2C_Handle_t *pI2CHandle, uint8_t *pTxbuffer, uint32_t Len, uint8_t slaveAddr);
 #endif

@@ -13,6 +13,6 @@ add_executable(main
 pico_enable_stdio_usb(main 1)
 pico_enable_stdio_uart(main 0)
 
-target_link_libraries(main pico_stdlib pico_cyw43_arch_none hardware_spi hardware_gpio)
+target_link_libraries(main pico_stdlib pico_cyw43_arch_none hardware_spi hardware_gpio hardware_i2c pico_i2c_slave)
 
 pico_add_extra_outputs(main)

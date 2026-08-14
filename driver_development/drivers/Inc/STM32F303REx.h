@@ -423,6 +423,25 @@ typedef struct{
 #define I2C_TIMINGR_SCLDEL 20
 #define I2C_TIMINGR_PRESC 28
 
+// ISR register
+#define I2C_ISR_TXE 0
+#define I2C_ISR_TXIS 1
+#define I2C_ISR_RXNE 2
+#define I2C_ISR_ADDR 3
+#define I2C_ISR_NACKF 4
+#define I2C_ISR_STOPF 5
+#define I2C_ISR_TC 6
+#define I2C_ISR_TCR 7
+#define I2C_ISR_BERR 8
+#define I2C_ISR_ARLO 9
+#define I2C_ISR_OVR 10
+#define I2C_ISR_PECERR 11
+#define I2C_ISR_TIMEOUT 12
+#define I2C_ISR_ALERT 13
+#define I2C_ISR_BUSY 15
+#define I2C_ISR_DIR 16
+#define I2C_ISR_ADDCODE 17
+
 /* I2C Base Addresses */
 #define I2C1 ((I2C_RegDef_t *) I2C1_BASEADDR)
 #define I2C2 ((I2C_RegDef_t *) I2C2_BASEADDR)

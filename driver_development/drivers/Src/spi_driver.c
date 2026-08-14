@@ -243,9 +243,3 @@ void SPI_ClearOVRFlag(SPI_Handle_t *pSPIHandle){
   }
   (void)temp;
 }
-
-
-__attribute__((weak)) void SPI_ApplicationEventCallback(SPI_Handle_t *pSPIHandle, uint8_t AppEv)
-{
-  
-}
