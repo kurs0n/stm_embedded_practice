@@ -34,6 +34,7 @@ set(cpu_PARAMS
 set(sources_SRCS 
 ./drivers/Src/gpio_driver.c 
 ./drivers/Src/spi_driver.c
+./drivers/Src/i2c_driver.c
 )
 
 # Include directories for all compilers

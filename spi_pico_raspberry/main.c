@@ -14,12 +14,21 @@ static uint8_t mem[256] = {0};
 
 static void i2c_slave_handler(i2c_inst_t *i2c,i2c_slave_event_t event) {
     switch (event) {
-        case I2C_SLAVE_RECEIVE: // Master is writing to the slave
+        case I2C_SLAVE_RECEIVE:{ // receive from master
+            uint8_t data = i2c_read_byte_raw(i2c);
+            mem[reg_address++] = data;
             break;
-        case I2C_SLAVE_REQUEST: // Master wants a data from the slave
+        }
+        case I2C_SLAVE_REQUEST:{ // send to master
+            i2c_write_byte_raw(i2c, mem[reg_address++]);
             break;
-        case I2C_SLAVE_FINISH:
+        } 
+        case I2C_SLAVE_FINISH:{
+            for(int i=0; i<reg_address; i++){
+                printf((char *)mem[i]);
+            }
             break;
+        }
         default:
             break;
     }
@@ -33,7 +42,6 @@ int main(){
     gpio_set_function(PIN_SCL, GPIO_FUNC_I2C);
 
     i2c_init(i2c0, 100 * 1000); // normal mode 100kHz
-
 
     i2c_slave_init(i2c0, I2C_SLAVE_ADDRESS, &i2c_slave_handler);
     while(1){ 

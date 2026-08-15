@@ -16,3 +16,6 @@ after successful transmission with all acknowledged bytes there is a end signal 
 
 
 clock stretching: (write notes here)
+
+why we need to use configuration open drain for i2c?
+
