@@ -76,14 +76,14 @@ int main(void) {
   while (1) {
     if (GPIO_ReadFromInputPin(gpioButton.pGPIOx,
                               gpioButton.GPIO_PinConfig.GPIO_PinNumber)) {
-      SPI_Enable(&spi1, ENABLE);
+      SPI_Enable(&spi1);
       SPI_SendData(spi1.pSPIx, &howManyBytesToSend, 1);
       while (spi1.pSPIx->SR & (1 << SPI_SR_BSY)) {
       }
       SPI_SendData(spi1.pSPIx, (uint8_t *)test, howManyBytesToSend);
       while (spi1.pSPIx->SR & (1 << SPI_SR_BSY)) {
       }
-      SPI_Enable(&spi1, DISABLE);
+      SPI_Disable(&spi1);
       delay();
     }
   }

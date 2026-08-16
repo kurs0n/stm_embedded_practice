@@ -9,25 +9,30 @@
 #define PIN_SDA 0
 #define PIN_SCL 1
 
-static uint8_t reg_address = 0;
-static uint8_t mem[256] = {0};
-
+static uint8_t commandCode = 0;
+static uint8_t data_to_send[] = "test hello world";
+static uint8_t iteratorToSendData = 0;
 static void i2c_slave_handler(i2c_inst_t *i2c,i2c_slave_event_t event) {
     switch (event) {
         case I2C_SLAVE_RECEIVE:{ // receive from master
             uint8_t data = i2c_read_byte_raw(i2c);
-            mem[reg_address++] = data;
+            commandCode = data;
             break;
         }
         case I2C_SLAVE_REQUEST:{ // send to master
-            i2c_write_byte_raw(i2c, mem[reg_address++]);
-            break;
-        } 
-        case I2C_SLAVE_FINISH:{
-            for(int i=0; i<reg_address; i++){
-                printf((char *)mem[i]);
+            printf("");
+            if(commandCode == 0x51) {
+                i2c_write_byte_raw(i2c, strlen(data_to_send));
+            } else if(commandCode == 0x52){
+                if(iteratorToSendData < strlen(data_to_send)){
+                    i2c_write_byte_raw(i2c, data_to_send[iteratorToSendData]);
+                    iteratorToSendData++;
+                }
             }
             break;
+        }
+        case I2C_SLAVE_FINISH: {
+            iteratorToSendData = 0;
         }
         default:
             break;

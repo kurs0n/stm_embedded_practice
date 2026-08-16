@@ -2,7 +2,7 @@
 
 static void I2C_GenerateStartCondition(I2C_RegDef_t *pI2Cx);
 static void I2C_GenerateStopCondition(I2C_RegDef_t *pI2Cx);
-static void I2C_ConfigureSlaveConnection(I2C_Handle_t *pI2Cx);
+static void I2C_ConfigureSlaveConnection(I2C_Handle_t *pI2Cx, uint8_t write);
 
 void I2C_PeriClockControl(I2C_RegDef_t *pI2Cx, uint8_t EnorDi)
 {
@@ -42,17 +42,37 @@ void I2C_MasterSendData(I2C_Handle_t *pI2CHandle, uint8_t *pTxbuffer, uint32_t L
     // generate start condition
     pI2CHandle->TxLen = Len;
     pI2CHandle->pTxBuffer = pTxbuffer;
-    I2C_ConfigureSlaveConnection(pI2CHandle);
+    I2C_ConfigureSlaveConnection(pI2CHandle, 1);
 
     I2C_GenerateStartCondition(pI2CHandle->pI2Cx);
 
     for(uint8_t i=0; i < pI2CHandle->TxLen; i++){
-        while(!(pI2CHandle->pI2Cx->ISR & I2C_ISR_TXIS)){
-        }
         pI2CHandle->pI2Cx->TXDR=pI2CHandle->pTxBuffer[i];
-    }    
+        while(!(pI2CHandle->pI2Cx->ISR & (1 << I2C_ISR_TXE))){
+        }
+    }
+
     I2C_GenerateStopCondition(pI2CHandle->pI2Cx);
 }
+
+void I2C_MasterReadData(I2C_Handle_t *pI2CHandle, uint8_t *pRxbuffer, uint32_t Len, uint8_t slaveAddr)
+{
+    pI2CHandle->pI2Cx->CR2 = 0; //reset 
+    // generate start condition
+    pI2CHandle->RxLen = Len;
+    pI2CHandle->pRxBuffer = pRxbuffer;
+    I2C_ConfigureSlaveConnection(pI2CHandle, 0);
+
+    I2C_GenerateStartCondition(pI2CHandle->pI2Cx);
+    while(Len > 0){
+        while(!(pI2CHandle->pI2Cx->ISR & (1 << I2C_ISR_RXNE))){
+        }
+        *pI2CHandle->pRxBuffer = pI2CHandle->pI2Cx->RXDR;
+        pI2CHandle->pRxBuffer++;
+        Len--;
+    }
+    I2C_GenerateStopCondition(pI2CHandle->pI2Cx);
+} 
 
 void I2C_Enable(I2C_Handle_t *pI2CHandle){
     pI2CHandle->pI2Cx->CR1 |= (ENABLE << I2C_CR1_PE);
@@ -66,12 +86,18 @@ static void I2C_GenerateStopCondition(I2C_RegDef_t *pI2Cx){
     pI2Cx->CR2 |= (1 << I2C_CR2_STOP);
 }
 
-static void I2C_ConfigureSlaveConnection(I2C_Handle_t *pI2CHandle){
+static void I2C_ConfigureSlaveConnection(I2C_Handle_t *pI2CHandle, uint8_t write){
     if(!pI2CHandle->I2C_Config.I2C_AddressingMode){
         pI2CHandle->pI2Cx->CR2 |= (pI2CHandle->I2C_Config.I2C_SlaveDeviceAddress << (I2C_CR2_SAAD + 1)); // for 7 bit address we ignore first bit
     } else {
         pI2CHandle->pI2Cx->CR2 |= (pI2CHandle->I2C_Config.I2C_SlaveDeviceAddress << I2C_CR2_SAAD);
     }
-    pI2CHandle->pI2Cx->CR2 |= (pI2CHandle->TxLen << I2C_CR2_NBYTES);
+    if(write){
+        pI2CHandle->pI2Cx->CR2 |= (pI2CHandle->TxLen << I2C_CR2_NBYTES);
+        pI2CHandle->pI2Cx->CR2 |= (0 << I2C_CR2_RD_WRN);
+    } else { 
+        pI2CHandle->pI2Cx->CR2 |= (pI2CHandle->RxLen << I2C_CR2_NBYTES);
+        pI2CHandle->pI2Cx->CR2 |= (1 << I2C_CR2_RD_WRN);
+    }
     pI2CHandle->pI2Cx->CR2 |= (pI2CHandle->I2C_Config.I2C_AddressingMode << I2C_CR2_ADD0);
 }

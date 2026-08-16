@@ -19,6 +19,8 @@ typedef struct
     I2C_Config_t I2C_Config;
     uint8_t *pTxBuffer;
     uint32_t TxLen;
+    uint8_t *pRxBuffer;
+    uint32_t RxLen;
 } I2C_Handle_t;
 
 void I2C_PeriClockControl(I2C_RegDef_t *pI2Cx, uint8_t EnorDi);
@@ -28,4 +30,6 @@ void I2C_Init(I2C_Handle_t* pI2CHandle);
 void I2C_Enable(I2C_Handle_t* pI2CHandle);
 
 void I2C_MasterSendData(I2C_Handle_t *pI2CHandle, uint8_t *pTxbuffer, uint32_t Len, uint8_t slaveAddr);
+
+void I2C_MasterReadData(I2C_Handle_t *pI2CHandle, uint8_t *pRxbuffer, uint32_t Len, uint8_t slaveAddr); 
 #endif
