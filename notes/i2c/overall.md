@@ -20,3 +20,5 @@ clock stretching: (write notes here)
 why we need to use configuration open drain for i2c?
 
 because we can have multi master environment and there could be short circuit without pull up resistor in open drain
+
+repeated start is used when we don't want another master to interrupt our tranmission.

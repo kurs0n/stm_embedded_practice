@@ -55,7 +55,7 @@ int main(void){
 
     while(1){
         if(!GPIO_ReadFromInputPin(gpioButton.pGPIOx,gpioButton.GPIO_PinConfig.GPIO_PinNumber)){
-            I2C_MasterSendData(&I2C1Handle, (uint8_t *)buffer, strlen(buffer), PICO_SLAVE_ADDRESS);
+            I2C_MasterSendData(&I2C1Handle, (uint8_t *)buffer, strlen(buffer), PICO_SLAVE_ADDRESS, 0);
         }
         delay();
     }

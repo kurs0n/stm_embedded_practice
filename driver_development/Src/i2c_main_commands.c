@@ -60,12 +60,12 @@ int main(void){
     while(1){
         if(!GPIO_ReadFromInputPin(gpioButton.pGPIOx,gpioButton.GPIO_PinConfig.GPIO_PinNumber)){
             uint8_t command = READ_LENGTH_COMMAND_CODE;
-            I2C_MasterSendData(&I2C1Handle, &command, 1, PICO_SLAVE_ADDRESS);
+            I2C_MasterSendData(&I2C1Handle, &command, 1, PICO_SLAVE_ADDRESS, 1);
             uint8_t lengthOfDataToReceive = 0;
-            I2C_MasterReadData(&I2C1Handle, &lengthOfDataToReceive, 1, PICO_SLAVE_ADDRESS);
+            I2C_MasterReadData(&I2C1Handle, &lengthOfDataToReceive, 1, PICO_SLAVE_ADDRESS, 1);
             command = READ_DATA_COMMAND_CODE;
-            I2C_MasterSendData(&I2C1Handle, &command, 1, PICO_SLAVE_ADDRESS);
-            I2C_MasterReadData(&I2C1Handle, dataBuffer, lengthOfDataToReceive, PICO_SLAVE_ADDRESS);
+            I2C_MasterSendData(&I2C1Handle, &command, 1, PICO_SLAVE_ADDRESS, 1);
+            I2C_MasterReadData(&I2C1Handle, dataBuffer, lengthOfDataToReceive, PICO_SLAVE_ADDRESS, 0);
             (void)dataBuffer; // act as a printf
         }
         delay();

@@ -36,7 +36,7 @@ void I2C_Init(I2C_Handle_t* pI2CHandle)
 }
 
 
-void I2C_MasterSendData(I2C_Handle_t *pI2CHandle, uint8_t *pTxbuffer, uint32_t Len, uint8_t slaveAddr)
+void I2C_MasterSendData(I2C_Handle_t *pI2CHandle, uint8_t *pTxbuffer, uint32_t Len, uint8_t slaveAddr, uint8_t repeatedStart)
 {
     pI2CHandle->pI2Cx->CR2 = 0; //reset 
     // generate start condition
@@ -51,11 +51,13 @@ void I2C_MasterSendData(I2C_Handle_t *pI2CHandle, uint8_t *pTxbuffer, uint32_t L
         while(!(pI2CHandle->pI2Cx->ISR & (1 << I2C_ISR_TXE))){
         }
     }
-
-    I2C_GenerateStopCondition(pI2CHandle->pI2Cx);
+    
+    if(!repeatedStart) {
+        I2C_GenerateStopCondition(pI2CHandle->pI2Cx);
+    }
 }
 
-void I2C_MasterReadData(I2C_Handle_t *pI2CHandle, uint8_t *pRxbuffer, uint32_t Len, uint8_t slaveAddr)
+void I2C_MasterReadData(I2C_Handle_t *pI2CHandle, uint8_t *pRxbuffer, uint32_t Len, uint8_t slaveAddr, uint8_t repeatedStart)
 {
     pI2CHandle->pI2Cx->CR2 = 0; //reset 
     // generate start condition
@@ -70,8 +72,10 @@ void I2C_MasterReadData(I2C_Handle_t *pI2CHandle, uint8_t *pRxbuffer, uint32_t L
         *pI2CHandle->pRxBuffer = pI2CHandle->pI2Cx->RXDR;
         pI2CHandle->pRxBuffer++;
         Len--;
+    } 
+    if(!repeatedStart) {
+        I2C_GenerateStopCondition(pI2CHandle->pI2Cx);
     }
-    I2C_GenerateStopCondition(pI2CHandle->pI2Cx);
 } 
 
 void I2C_Enable(I2C_Handle_t *pI2CHandle){
